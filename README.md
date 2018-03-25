@@ -36,15 +36,15 @@ presented in the right hand side:
 
 The main entry point into the source code of the implementation is these classes:
 
-* [VirksomhedKalenderHentClient.java](src/main/java/dk/skat/rsu/b2b/sample/VirksomhedKalenderHentClient.java)
-* [ModtagMomsangivelseForeloebigClient.java](src/main/java/dk/skat/rsu/b2b/sample/ModtagMomsangivelseForeloebigClient.java)
-* [MomsangivelseKvitteringHentClient.java](src/main/java/dk/skat/rsu/b2b/sample/MomsangivelseKvitteringHentClient.java)
+* [VirksomhedKalenderHentClient.java](rsu-b2b-sample-client/src/main/java/dk/skat/rsu/b2b/sample/VirksomhedKalenderHentClient.java)
+* [ModtagMomsangivelseForeloebigClient.java](rsu-b2b-sample-client/src/main/java/dk/skat/rsu/b2b/sample/ModtagMomsangivelseForeloebigClient.java)
+* [MomsangivelseKvitteringHentClient.java](rsu-b2b-sample-client/src/main/java/dk/skat/rsu/b2b/sample/MomsangivelseKvitteringHentClient.java)
 
 ## Fulfillment of WS Policy of RSU Web Services
 
 The fulfillment of policies required to invoke RSU B2B Web Services is configured in the file:
 
-[rsu-policy.xml](src/main/resources/rsu-policy.xml)
+[rsu-policy.xml](rsu-b2b-sample-client/src/main/resources/rsu-policy.xml)
 
 Fulfillment of WS Policy requirements is achieved using CXF's in and out interceptor framework and 
 the `rsu-policy.xml` file details which parts are to be signed and encrypted, and how to present 
