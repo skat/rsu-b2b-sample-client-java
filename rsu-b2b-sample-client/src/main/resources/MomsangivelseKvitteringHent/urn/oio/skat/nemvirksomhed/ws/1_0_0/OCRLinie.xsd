@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:nemvirksomhed="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:angivelse="http://rep.oio.dk/skat.dk/TSE/angivelse/xml/schemas/2006/09/01/" xml:lang="DA">
+	<xs:annotation>
+		<xs:documentation/>
+	</xs:annotation>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/OCRKontoNummerIdentifikator.xsd"/><xs:import namespace="http://rep.oio.dk/skat.dk/TSE/angivelse/xml/schemas/2006/09/01/" schemaLocation="../../../../../../skat_dk/TSE/angivelse/xml/schemas/2006/09/01/OCRnummerIdentifikator.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/OCRKortTypeKode.xsd"/><xs:element name="OCRLinie" type="nemvirksomhedws:OCRLinieType"/>
+	<xs:complexType name="OCRLinieType">
+		<xs:sequence>
+			<xs:element ref="nemvirksomhed:OCRKortTypeKode"/>
+			<xs:element ref="angivelse:OCRnummerIdentifikator"/>
+			<xs:element ref="nemvirksomhed:OCRKontoNummerIdentifikator"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

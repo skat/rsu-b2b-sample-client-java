@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:angivelseperiodetildato="urn:oio:skat:nemvirksomhed:1.0.0" elementFormDefault="qualified" version="1.0" xml:lang="DA">
+	<xs:element name="AngivelsePeriodeTilDato" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Angiver sidste dag i en periode. AngivelsePeriodeTil udtrykker sammen med AngivelsePeriodeFra en kalenderperiode, eksempelvis en lønperiode.
+
+En eller flere kalenderperioder udtrykt med AngivelsePeriodeFra og AngivelsePeriodeTil kan specificere de oplysninger, som indgår i den kalenderperiode, som er udtrykt med AngivelseGyldigFra og AngivelseGyldigTil. AngivelsePeriodeTil indberettes kun indenfor en begrænset del af told-, skatte- og afgiftslovgivningen.
+
+Eksempelvis udtrykker to indberetninger af indkomstoplysninger med lønperioden 2007.12.14 - 2008.02.15 og 2008.01.14 - 2008.02.15 (AngivelsePeriodeFra og AngivelsePeriodeTil) en specifikation af indeholdt A-skat og AM-bidrag for februar måned 2008 (AngivelseGyldigFra og AngivelseGyldigTil). 
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

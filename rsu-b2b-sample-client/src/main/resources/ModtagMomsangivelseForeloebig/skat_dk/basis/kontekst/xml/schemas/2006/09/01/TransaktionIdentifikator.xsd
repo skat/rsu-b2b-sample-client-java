@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by SKAT, Hovedcentret (SKAT, Hovedcentret) -->
+<xs:schema xmlns:tsk="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:element name="TransaktionIdentifikator" type="tsk:TransaktionIdentifikatorType">
+		<xs:annotation>
+			<xs:documentation>Felt der giver kalder af service mulighed for at binde sit eget transaktionsspor sammen med den kaldte webservice. Når brug af dette felt understøttes af en service, så vil værdier af en TransaktionIdentifikator der gives ved et kald af service blive returneret ved svar fra samme service. Der er ikke nogen bindinger på hvordan TransaktionsIdentifikatoren skal udformes, men det er hensigten at det kaldende system selv skal administrere anvendelsen af unikke identifikationer af sine kald, så svar kan matches til kald.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="TransaktionIdentifikatorType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

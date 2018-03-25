@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:ctxt="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="FejlIdentifikator.xsd"/>
+	<xs:include schemaLocation="FejlTekst.xsd"/>
+	<xs:element name="FejlStruktur" type="ctxt:FejlStrukturType">
+		<xs:annotation>
+			<xs:documentation>Et dokumentfragment med denne struktur beskriver en enkelt forretningsmæssig fejl i svaret fra en webservice. Fejlen består i en identifikator for fejlen samt en fejlbeskrivelse der kan have specifikt forretningsmæssigt indhold. De forventelige værdierne i denne struktur er en del af kontrakten for de enkelte services som FejlStruktur indgår i.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="FejlStrukturType">
+		<xs:sequence>
+			<xs:element ref="ctxt:FejlIdentifikator"/>
+			<xs:element ref="ctxt:FejlTekst" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xml:lang="DA">
+	<xs:annotation>
+		<xs:documentation>Modtager en foreløbig momsangivelse fra et regnskabssystem til senere godkendelse ved indberetter</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="ModtagMomsangivelseForeloebig_I.xsd"/>
+	<xs:include schemaLocation="ModtagMomsangivelseForeloebig_O.xsd"/>
+	<xs:element name="ModtagMomsangivelseForeloebigInterface" type="nemvirksomhedws:ModtagMomsangivelseForeloebigInterfaceType"/>
+	<xs:complexType name="ModtagMomsangivelseForeloebigInterfaceType">
+		<xs:choice>
+			<xs:element ref="nemvirksomhedws:ModtagMomsangivelseForeloebig_I"/>
+			<xs:element ref="nemvirksomhedws:ModtagMomsangivelseForeloebig_O"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

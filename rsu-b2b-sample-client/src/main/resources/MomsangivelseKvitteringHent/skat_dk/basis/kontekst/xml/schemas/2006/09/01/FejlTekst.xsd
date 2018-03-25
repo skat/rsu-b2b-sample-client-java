@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by SKAT, Hovedcentret (SKAT, Hovedcentret) -->
+<xs:schema xmlns:ctxt="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="FejlTekst" type="ctxt:FejlTekstType">
+		<xs:annotation>
+			<xs:documentation>Element til at beskrive en forretningsmæssig fejl fra et servicekald. Indholdet er typisk en tekst der beskriver en forretningsmæssig fejl opstået i en service.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="FejlTekstType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

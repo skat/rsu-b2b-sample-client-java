@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:ctxt="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="FejlTekst.xsd"/>
+	<xs:element name="AdvisTekst" type="ctxt:FejlTekstType">
+		<xs:annotation>
+			<xs:documentation>Element til at beskrive en forretningsmæssig advis fra et servicekald. Indholdet er typisk en tekst der beskriver en advarsel fra en service.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

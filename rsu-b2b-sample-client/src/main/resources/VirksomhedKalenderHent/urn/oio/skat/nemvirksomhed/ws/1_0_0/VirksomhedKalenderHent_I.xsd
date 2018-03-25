@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:nemvirksomhed="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:virksomhed="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/" xmlns:kontekst="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xml:lang="DA">
+	<xs:annotation>
+		<xs:documentation/>
+	</xs:annotation>
+	<xs:import namespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" schemaLocation="../../../../../../skat_dk/basis/kontekst/xml/schemas/2006/09/01/HovedOplysninger.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/SoegeDatoTilDate.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/SoegeDatoFraDate.xsd"/><xs:import namespace="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/" schemaLocation="../../../../../../skat_dk/motor/class/virksomhed/xml/schemas/20080401/VirksomhedSENummerIdentifikator.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseTypeNavn.xsd"/><xs:element name="VirksomhedKalenderHent_I" type="nemvirksomhedws:VirksomhedKalenderHent_IType">
+	</xs:element>
+	<xs:complexType name="VirksomhedKalenderHent_IType">
+		<xs:sequence>
+			<xs:element ref="kontekst:HovedOplysninger"/>
+			<xs:element ref="virksomhed:VirksomhedSENummerIdentifikator"/>
+			<xs:element ref="nemvirksomhed:AngivelseTypeNavn"/>
+			<xs:element name="AngivelseBetalingFristHentFra">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="nemvirksomhed:SoegeDatoFraDate" minOccurs="0"/>
+						<xs:element ref="nemvirksomhed:SoegeDatoTilDate" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

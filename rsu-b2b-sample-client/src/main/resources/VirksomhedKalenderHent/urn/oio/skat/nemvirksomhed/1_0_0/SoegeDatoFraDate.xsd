@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soegedatofradate="urn:oio:skat:nemvirksomhed:1.0.0" elementFormDefault="qualified" version="1.0" xml:lang="DA">
+	<xs:element name="SoegeDatoFraDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Alle gyldige datoer i den danske kalender.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

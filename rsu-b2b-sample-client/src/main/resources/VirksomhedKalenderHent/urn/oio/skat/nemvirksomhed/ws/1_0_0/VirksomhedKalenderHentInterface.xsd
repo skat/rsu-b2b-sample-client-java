@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xml:lang="DA">
+	<xs:annotation>
+		<xs:documentation>formålet er at give mulighed for at en regnskabsudbyder kan hente frister for en bestemt virksomhed som har delegeret Nemvirksomhed til RSU virksomheden.Service giver mulighed for at en regnskabsudbyder kan hente frister for en bestemt virksomhed som har delegeret Nemvirksomhed til RSU virksomheden.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="VirksomhedKalenderHent_I.xsd"/>
+	<xs:include schemaLocation="VirksomhedKalenderHent_O.xsd"/>
+	<xs:element name="VirksomhedKalenderHentInterface" type="nemvirksomhedws:VirksomhedKalenderHentInterfaceType"/>
+	<xs:complexType name="VirksomhedKalenderHentInterfaceType">
+		<xs:choice>
+			<xs:element ref="nemvirksomhedws:VirksomhedKalenderHent_I"/>
+			<xs:element ref="nemvirksomhedws:VirksomhedKalenderHent_O"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

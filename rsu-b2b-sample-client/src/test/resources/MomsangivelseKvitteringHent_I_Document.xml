@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:MomsangivelseKvitteringHent_I
+        xmlns:urn="urn:oio:skat:nemvirksomhed:ws:1.0.0"
+        xmlns:ns="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+        xmlns:urn1="urn:oio:skat:nemvirksomhed:1.0.0"
+        xmlns:ns1="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/">
+    <ns:HovedOplysninger>
+        <ns:TransaktionIdentifikator>33593B0D-E7CF-40A2-AE76-530B72DE6AE3</ns:TransaktionIdentifikator>
+        <ns:TransaktionTid>2017-04-24T12:00:00.146+02:00</ns:TransaktionTid>
+    </ns:HovedOplysninger>
+    <urn1:TransaktionIdentifier>42C8FE92-0AE3-403E-AEFA-F3A0B4508E2E</urn1:TransaktionIdentifier>
+    <urn:Angiver>
+        <ns1:VirksomhedSENummerIdentifikator>12345678</ns1:VirksomhedSENummerIdentifikator>
+    </urn:Angiver>
+</urn:MomsangivelseKvitteringHent_I>

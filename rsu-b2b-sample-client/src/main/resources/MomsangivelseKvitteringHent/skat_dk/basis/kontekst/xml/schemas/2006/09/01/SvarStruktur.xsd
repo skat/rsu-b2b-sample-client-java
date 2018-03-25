@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by SKAT, Hovedcentret (SKAT, Hovedcentret) -->
+<xs:schema xmlns:ctxt="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="AdvisStruktur.xsd"/>
+	<xs:include schemaLocation="FejlStruktur.xsd"/>
+	<xs:element name="SvarStruktur" type="ctxt:SvarStrukturType">
+		<xs:annotation>
+			<xs:documentation>Valg mellem et antal forretningsmæssige adviser og fejl der kan returneres fra en service. Der kan rapporteres et ubegrænset antal af begge dele i en vilkårlig orden.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SvarStrukturType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="ctxt:AdvisStruktur"/>
+			<xs:element ref="ctxt:FejlStruktur"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

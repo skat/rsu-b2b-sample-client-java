@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:ctxt="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="FejlIdentifikator" type="ctxt:FejlIdentifikatorType">
+		<xs:annotation>
+			<xs:documentation>Element til at identificere en forretningsmæssig fejl fra et servicekald. Elementet er typisk en kode hvis aktuelle betydning er en del af beskrivelsen af funktionaliteten for den enkelte service.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="FejlIdentifikatorType">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:nemvirksomhed="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:kontekst="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xml:lang="DA">
+	<xs:annotation>
+		<xs:documentation/>
+	</xs:annotation>
+	<xs:import namespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" schemaLocation="../../../../../../skat_dk/basis/kontekst/xml/schemas/2006/09/01/HovedOplysninger.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseIkkeEUSalgBeloebVarerBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseEUSalgBeloebVarerBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseEUSalgYdelseBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseEUKoebYdelseBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseMomsEUYdelserBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseEksportOmsaetningBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseAfgiftTilsvarBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseVandAfgiftBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseCO2AfgiftBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseKulAfgiftBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseGasAfgiftBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseElAfgiftBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseEUKoebBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseOlieAfgiftBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseMomsEUKoebBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseKoebsMomsBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/MomsAngivelseSalgsMomsBeloeb.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelsePeriodeTilDato.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelsePeriodeFraDato.xsd"/><xs:include schemaLocation="AngiverVirksomhedSENummer.xsd"/>
+	<xs:element name="ModtagMomsangivelseForeloebig_I" type="nemvirksomhedws:ModtagMomsangivelseForeloebig_IType">
+	</xs:element>
+	<xs:complexType name="ModtagMomsangivelseForeloebig_IType">
+		<xs:sequence>
+			<xs:element ref="kontekst:HovedOplysninger"/>
+			<xs:element name="Angivelse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="nemvirksomhedws:AngiverVirksomhedSENummer"/>
+						<xs:element name="Angivelsesoplysninger">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="nemvirksomhed:AngivelsePeriodeFraDato"/>
+									<xs:element ref="nemvirksomhed:AngivelsePeriodeTilDato"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Angivelsesafgifter">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="nemvirksomhed:MomsAngivelseAfgiftTilsvarBeloeb"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseCO2AfgiftBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseEUKoebBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseEUSalgBeloebVarerBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseIkkeEUSalgBeloebVarerBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseElAfgiftBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseEksportOmsaetningBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseGasAfgiftBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseKoebsMomsBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseKulAfgiftBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseMomsEUKoebBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseMomsEUYdelserBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseOlieAfgiftBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseSalgsMomsBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseVandAfgiftBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseEUKoebYdelseBeloeb" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:MomsAngivelseEUSalgYdelseBeloeb" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

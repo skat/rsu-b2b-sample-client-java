@@ -1,0 +1,14 @@
+sudo: none
+
+language: java
+
+notifications:
+  email: false
+
+jdk:
+  - oraclejdk8
+
+script:
+  - mvn --version
+  # Skip unit test in CI
+  - mvn clean install

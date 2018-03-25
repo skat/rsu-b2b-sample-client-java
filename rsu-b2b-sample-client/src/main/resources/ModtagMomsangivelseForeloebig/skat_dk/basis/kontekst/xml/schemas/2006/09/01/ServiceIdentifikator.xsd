@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by SKAT, Hovedcentret (SKAT, Hovedcentret) -->
+<xs:schema xmlns:tsk="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:element name="ServiceIdentifikator" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Element til at identificere den service der svarer. Dens værdi skal antage navnet på den service der svarer.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

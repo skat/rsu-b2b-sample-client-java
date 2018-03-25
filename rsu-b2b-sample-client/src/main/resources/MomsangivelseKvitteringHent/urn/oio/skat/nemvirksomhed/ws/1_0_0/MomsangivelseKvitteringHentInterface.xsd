@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xml:lang="DA">
+	<xs:annotation>
+		<xs:documentation>At hente en Pdf kvittering til brug for regnskabssystemet i en momsangivelse.  Som input anvendes det transaktionsid som regnskabssystemet har fået som svar da den foreløbige angivelse blev sendt til skat.  Ud over PDF kvittering returneres beløb, OCR linje samt betalingsoplysninger.  Såfremt kvittering ikke findes sendes advis via hovedoplysningerne, adviset hedder enten Afvist, ikke godkendt eller findes ikke.  Såfremt kvittering ikke findes sendes status som forklarer fravær for en kvittering. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="MomsangivelseKvitteringHent_I.xsd"/>
+	<xs:include schemaLocation="MomsangivelseKvitteringHent_O.xsd"/>
+	<xs:element name="MomsangivelseKvitteringHentInterface" type="nemvirksomhedws:MomsangivelseKvitteringHentInterfaceType"/>
+	<xs:complexType name="MomsangivelseKvitteringHentInterfaceType">
+		<xs:choice>
+			<xs:element ref="nemvirksomhedws:MomsangivelseKvitteringHent_I"/>
+			<xs:element ref="nemvirksomhedws:MomsangivelseKvitteringHent_O"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>
