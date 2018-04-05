@@ -125,8 +125,11 @@
                             /src/main/java/oio/skat/nemvirksomhed/ws/_1_0/README.md -->
                             <target>
                                 <delete file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/ModtagMomsangivelseForeloebigIType.java" />
+                                <delete file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/ModtagMomsangivelseForeloebigOType.java" />
                                 <delete file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/MomsangivelseKvitteringHentIType.java" />
+                                <delete file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/MomsangivelseKvitteringHentOType.java" />
                                 <delete file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/VirksomhedKalenderHentIType.java" />
+                                <delete file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/VirksomhedKalenderHentOType.java" />
                             </target>
                         </configuration>
                     </execution>

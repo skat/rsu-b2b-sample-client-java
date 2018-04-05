@@ -1,12 +1,14 @@
 package dk.skat.rsu.b2b.sample.mvc;
 
+import java.io.Serializable;
+
 /**
  * OptionModel - Just for the dropdown buttons
  *
  * @author SKAT
  * @since 1.0
  */
-public class OptionModel {
+public class OptionModel implements Serializable {
 
     private String value;
 

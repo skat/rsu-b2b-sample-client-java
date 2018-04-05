@@ -1,7 +1,5 @@
 package dk.skat.rsu.b2b.sample.mvc;
 
-import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
 import dk.skat.rsu.b2b.sample.ModtagMomsangivelseForeloebigClient;
 import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentClient;
 import dk.skat.rsu.b2b.sample.VirksomhedKalenderHentClient;
@@ -9,7 +7,6 @@ import org.apache.struts.action.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.util.logging.Logger;
 
 /**
@@ -44,7 +41,7 @@ public class ServiceTestAction extends Action {
 
         String serviceResponse = "";
         try {
-            String endpoint = getConfiguration().getString(configurationPrefix);
+            String endpoint = ConfigHelper.getConfiguration().getString(configurationPrefix);
             if ("VirksomhedKalenderHent".equals(service)) {
                 VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint);
                 serviceResponse = client.invoke(requestAsString, cert, serviceTestForm.isOverrideTxInfo());
@@ -70,18 +67,5 @@ public class ServiceTestAction extends Action {
         return forward;
     }
 
-    /**
-     * Load configuration in following priority:
-     *
-     * 1. $user.dir/app.conf
-     * 2. jar!reference.conf (embedded)
-     *
-     * @return Configuration
-     */
-    private static Config getConfiguration() {
-        String appConf = System.getProperty("user.dir") + File.separator + "app.conf";
-        Config config = ConfigFactory.parseFile(new File(appConf)).withFallback(ConfigFactory.load());
-        return config;
-    }
 
 }

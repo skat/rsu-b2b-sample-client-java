@@ -1,14 +1,12 @@
 package dk.skat.rsu.b2b.sample.mvc;
 
 import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class ServiceTestForm extends ActionForm {
             services = new ArrayList();
             certificates = new ArrayList();
             environments = new ArrayList();
-            Config config = ConfigFactory.load();
+            Config config = ConfigHelper.getConfiguration();
             for (String service : config.getStringList("services")) {
                 services.add(new OptionModel(service, service));
             }

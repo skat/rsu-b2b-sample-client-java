@@ -12,7 +12,7 @@
     <dependencies>
         <dependency>
             <groupId>dk.skat.rsu.b2b.sample</groupId>
-            <artifactId>rsu-sample-client-gui</artifactId>
+            <artifactId>rsu-b2b-sample-client-gui</artifactId>
             <type>war</type>
             <version>${project.version}</version>
         </dependency>
@@ -39,7 +39,7 @@
                                 <warRunDependency>
                                     <dependency>
                                         <groupId>dk.skat.rsu.b2b.sample</groupId>
-                                        <artifactId>rsu-sample-client-gui</artifactId>
+                                        <artifactId>rsu-b2b-sample-client-gui</artifactId>
                                         <type>war</type>
                                         <version>1.0</version>
                                     </dependency>

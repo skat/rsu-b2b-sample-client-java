@@ -14,3 +14,6 @@ run-*.sh
 app.conf
 .extract
 overlays
+p12-internal
+import-intern.sh
+deploy-*.sh
