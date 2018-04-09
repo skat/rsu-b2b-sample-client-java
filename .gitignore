@@ -17,3 +17,4 @@ overlays
 p12-internal
 import-intern.sh
 deploy-*.sh
+rsu-b2b-sample-client-gui-tomcat-dist.zip
