@@ -13,43 +13,43 @@
             <ns1:VirksomhedSENummerIdentifikator>12345678</ns1:VirksomhedSENummerIdentifikator>
         </urn:AngiverVirksomhedSENummer>
         <urn:Angivelsesoplysninger>
-            <urn1:AngivelsePeriodeFraDato>2017-01-01</urn1:AngivelsePeriodeFraDato>
-            <urn1:AngivelsePeriodeTilDato>2017-01-31</urn1:AngivelsePeriodeTilDato>
+            <urn1:AngivelsePeriodeFraDato>2018-01-01</urn1:AngivelsePeriodeFraDato>
+            <urn1:AngivelsePeriodeTilDato>2018-03-31</urn1:AngivelsePeriodeTilDato>
         </urn:Angivelsesoplysninger>
         <urn:Angivelsesafgifter>
-            <urn1:MomsAngivelseAfgiftTilsvarBeloeb>10</urn1:MomsAngivelseAfgiftTilsvarBeloeb>
+            <urn1:MomsAngivelseAfgiftTilsvarBeloeb>1500</urn1:MomsAngivelseAfgiftTilsvarBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseCO2AfgiftBeloeb>10</urn1:MomsAngivelseCO2AfgiftBeloeb>
+            <urn1:MomsAngivelseCO2AfgiftBeloeb></urn1:MomsAngivelseCO2AfgiftBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseEUKoebBeloeb>10</urn1:MomsAngivelseEUKoebBeloeb>
+            <urn1:MomsAngivelseEUKoebBeloeb></urn1:MomsAngivelseEUKoebBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseEUSalgBeloebVarerBeloeb>10</urn1:MomsAngivelseEUSalgBeloebVarerBeloeb>
+            <urn1:MomsAngivelseEUSalgBeloebVarerBeloeb></urn1:MomsAngivelseEUSalgBeloebVarerBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseIkkeEUSalgBeloebVarerBeloeb>10</urn1:MomsAngivelseIkkeEUSalgBeloebVarerBeloeb>
+            <urn1:MomsAngivelseIkkeEUSalgBeloebVarerBeloeb></urn1:MomsAngivelseIkkeEUSalgBeloebVarerBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseElAfgiftBeloeb>10</urn1:MomsAngivelseElAfgiftBeloeb>
+            <urn1:MomsAngivelseElAfgiftBeloeb></urn1:MomsAngivelseElAfgiftBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseEksportOmsaetningBeloeb>10</urn1:MomsAngivelseEksportOmsaetningBeloeb>
+            <urn1:MomsAngivelseEksportOmsaetningBeloeb></urn1:MomsAngivelseEksportOmsaetningBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseGasAfgiftBeloeb>10</urn1:MomsAngivelseGasAfgiftBeloeb>
+            <urn1:MomsAngivelseGasAfgiftBeloeb></urn1:MomsAngivelseGasAfgiftBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseKoebsMomsBeloeb>10</urn1:MomsAngivelseKoebsMomsBeloeb>
+            <urn1:MomsAngivelseKoebsMomsBeloeb>500</urn1:MomsAngivelseKoebsMomsBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseKulAfgiftBeloeb>10</urn1:MomsAngivelseKulAfgiftBeloeb>
+            <urn1:MomsAngivelseKulAfgiftBeloeb></urn1:MomsAngivelseKulAfgiftBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseMomsEUKoebBeloeb>10</urn1:MomsAngivelseMomsEUKoebBeloeb>
+            <urn1:MomsAngivelseMomsEUKoebBeloeb></urn1:MomsAngivelseMomsEUKoebBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseMomsEUYdelserBeloeb>10</urn1:MomsAngivelseMomsEUYdelserBeloeb>
+            <urn1:MomsAngivelseMomsEUYdelserBeloeb></urn1:MomsAngivelseMomsEUYdelserBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseOlieAfgiftBeloeb>10</urn1:MomsAngivelseOlieAfgiftBeloeb>
+            <urn1:MomsAngivelseOlieAfgiftBeloeb></urn1:MomsAngivelseOlieAfgiftBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseSalgsMomsBeloeb>10</urn1:MomsAngivelseSalgsMomsBeloeb>
+            <urn1:MomsAngivelseSalgsMomsBeloeb>2000</urn1:MomsAngivelseSalgsMomsBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseVandAfgiftBeloeb>10</urn1:MomsAngivelseVandAfgiftBeloeb>
+            <urn1:MomsAngivelseVandAfgiftBeloeb></urn1:MomsAngivelseVandAfgiftBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseEUKoebYdelseBeloeb>10</urn1:MomsAngivelseEUKoebYdelseBeloeb>
+            <urn1:MomsAngivelseEUKoebYdelseBeloeb></urn1:MomsAngivelseEUKoebYdelseBeloeb>
             <!--Optional:-->
-            <urn1:MomsAngivelseEUSalgYdelseBeloeb>10</urn1:MomsAngivelseEUSalgYdelseBeloeb>
+            <urn1:MomsAngivelseEUSalgYdelseBeloeb></urn1:MomsAngivelseEUSalgYdelseBeloeb>
         </urn:Angivelsesafgifter>
     </urn:Angivelse>
 </urn:ModtagMomsangivelseForeloebig_I>

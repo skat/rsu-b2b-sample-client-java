@@ -8,9 +8,9 @@
         <ns:TransaktionTid>2017-04-24T12:00:00.146+02:00</ns:TransaktionTid>
     </ns:HovedOplysninger>
     <ns1:VirksomhedSENummerIdentifikator>12345678</ns1:VirksomhedSENummerIdentifikator>
-    <urn1:AngivelseTypeNavn>qwerty</urn1:AngivelseTypeNavn>
+    <urn1:AngivelseTypeNavn>Moms</urn1:AngivelseTypeNavn>
     <urn:AngivelseBetalingFristHentFra>
-        <urn1:SoegeDatoFraDate>2017-01-01</urn1:SoegeDatoFraDate>
-        <urn1:SoegeDatoTilDate>2017-03-31</urn1:SoegeDatoTilDate>
+        <urn1:SoegeDatoFraDate>2018-01-01</urn1:SoegeDatoFraDate>
+        <urn1:SoegeDatoTilDate>2018-12-31</urn1:SoegeDatoTilDate>
     </urn:AngivelseBetalingFristHentFra>
 </urn:VirksomhedKalenderHent_I>
