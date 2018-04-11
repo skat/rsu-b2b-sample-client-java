@@ -6,7 +6,7 @@ Sample clients for the RSU B2B Web Service Gateway developed in Java and using o
 This Java-client is just one example of how a B2B web service can be accessed. The client must not be 
 perceived as a piece of production code but more as an example one can take inspiration from and can use
 to quickly get started to test whether your company can implement a successful call to one of the B2B web 
-service using the company's digital signature. SKAT can not be held responsible if a company uses this client
+service using the company's digital signature. SKAT cannot be held responsible if a company uses this client
 or parts of it in their own systems. 
 
 **VIGTIG MEDDELELSE**: SKAT yder ikke support på kildekoden i nærværende kodebibliotek.
@@ -34,13 +34,29 @@ presented in the right hand side:
 
 ![gui](/assets/rsu_sample_gui_snapshot.png)
 
+The client has be default a sample request for **VirksomhedKalenderHent** in the **Request** textarea (left hand side). 
+
+Sample requests for all 3 service are found here:
+
+* [VirksomhedKalenderHent_I](rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document.xml)
+* [ModtagMomsangivelseForeloebig_I](rsu-b2b-sample-client/src/test/resources/ModtagMomsangivelseForeloebig_I_Document.xml)
+* [MomsangivelseKvitteringHent_I](rsu-b2b-sample-client/src/test/resources/MomsangivelseKvitteringHent_I_Document.xml)
+
+Use these as template and copy content to the **Request** textarea (left hand side).
+
+A check in **Override 'HovedOplysninger' (Transaction Id and Time)** results in the transaction id **and** transaction time
+in the provided XML request to be regenerated. This will likely be relevant as the service called will not allow reuse of the
+transaction id.
+
+## The implementation
+
 The main entry point into the source code of the implementation is these classes:
 
 * [VirksomhedKalenderHentClient.java](rsu-b2b-sample-client/src/main/java/dk/skat/rsu/b2b/sample/VirksomhedKalenderHentClient.java)
 * [ModtagMomsangivelseForeloebigClient.java](rsu-b2b-sample-client/src/main/java/dk/skat/rsu/b2b/sample/ModtagMomsangivelseForeloebigClient.java)
 * [MomsangivelseKvitteringHentClient.java](rsu-b2b-sample-client/src/main/java/dk/skat/rsu/b2b/sample/MomsangivelseKvitteringHentClient.java)
 
-## Fulfillment of WS Policy of RSU Web Services
+### Fulfillment of WS Policy of RSU Web Services
 
 The fulfillment of policies required to invoke RSU B2B Web Services is configured in the file:
 
@@ -136,6 +152,35 @@ endpoints {
 ```
 
 This is due the Tomcat installation is using context path: `rsu-b2b-sample-client-gui-tomcat`
+
+### Add another OCES certificate
+
+First complete the steps in section: **Installing other OCESII Certificates in the client keystore** (below)
+The chosen **alias**, e.g. `myalias` from the import must be added to  `app.conf` as follows:
+
+```
+activeCertificates = [ "valid", ... , "myalias" ]
+```
+
+Then add the passphrase:
+
+```
+certificatePassphrases {
+    valid = "secret"
+    ...
+    myalias = "verysecret"
+}
+```
+
+Finally add the name:
+
+```
+certificateCommenNames {
+    valid = "CVR:30808460-UID:25351738 - NETS DANID A/S - TU VOCES gyldig"
+    ...
+    myalias = "MyAlias Identity - This will be shown on the screen"
+}
+```
 
 ### Installing other OCESII Certificates in the client keystore
 

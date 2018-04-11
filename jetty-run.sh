@@ -1,7 +1,5 @@
 #!/bin/sh
 
-ifconfig | grep "inet addr"
-
 # remove symbolic link
 rm -f keystore
 # create symbolic link

@@ -2,11 +2,13 @@ package dk.skat.rsu.b2b.sample;
 
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
+import org.apache.commons.io.IOUtils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 
@@ -17,6 +19,11 @@ import java.io.StringWriter;
  * @since 1.0
  */
 public class MomsangivelseKvitteringHentMarshalling {
+
+    public static MomsangivelseKvitteringHentIType toObject(String document) throws JAXBException, IOException {
+        InputStream inputStream = IOUtils.toInputStream(document, "UTF-8");
+        return toObject(inputStream);
+    }
 
     public static MomsangivelseKvitteringHentIType toObject(InputStream inputStream) throws JAXBException {
         JAXBContext jc = JAXBContext.newInstance(MomsangivelseKvitteringHentIType.class);

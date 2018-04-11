@@ -76,8 +76,8 @@
                             </html:select>
                         </div>
                         <div class="form-group">
-                            <label for="request">Override 'HovedOplysninger' (Transaction Id and Time)</label>
-                            <html:checkbox styleClass="form-control" property="overrideTxInfo" styleId="request">
+                            <label for="txId">Override 'HovedOplysninger' (Transaction Id and Time)</label>
+                            <html:checkbox styleClass="form-control" property="overrideTxInfo" styleId="txId">
                             </html:checkbox>
                         </div>
                         <div class="form-group">
@@ -96,7 +96,7 @@
                     <b>Service Response</b>
                 </div>
                 <div class="card-body">
-                    <html:messages id="msg_name" property="common.call.err">
+                    <html:messages id="msg_name" property="common.test.resp.err">
                         <div class="alert alert-danger" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -104,15 +104,22 @@
                             <bean:write name="msg_name"/>
                         </div>
                     </html:messages>
-                    <form name="response" action="#" method="get">
-                        <div class="form-group">
-                            <label for="response">Response</label>
-                            <textarea class="form-control" id="response" rows="16">
-                            <html:messages id="msg_response" property="lastResponse">
-                                <bean:write name="msg_response"/>
-                            </html:messages>
-                            </textarea>
+                    <html:messages id="transactionId" property="downloadReceipt">
+                        <div class="alert alert-info" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            Click <a href="<%=request.getContextPath()%>/receipt?transactionId=<bean:write name="transactionId"/>">here</a> to download PDF.
                         </div>
+                    </html:messages>
+                    <form name="response" action="#" method="get">
+                        <html:messages id="msg_response" property="lastResponse">
+                            <div class="form-group">
+                                <label for="response">Response</label>
+                                <textarea class="form-control" id="response" rows="24"><bean:write name="msg_response"/>
+                                </textarea>
+                            </div>
+                        </html:messages>
                     </form>
                 </div>
             </div>
