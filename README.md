@@ -2,21 +2,22 @@
 
 [![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
 
-Sample clients for the RSU B2B Web Service Gateway developed in Java and using open source libraries.
+Sample client for the RSU B2B Web Service Gateway developed in Java and using open source libraries
+demonstrating how to submit **VAT returns** via SOAP/Webservices.
 
-**IMPORTANT NOTICE**: SKAT does not provide any kind of support for the code in this repository.
-This Java-client is just one example of how a B2B web service can be accessed. The client must not be 
-perceived as a piece of production code but more as an example one can take inspiration from and can use
-to quickly get started to test whether your company can implement a successful call to one of the B2B web 
-service using the company's digital signature. SKAT cannot be held responsible if a company uses this client
-or parts of it in their own systems. 
+> **IMPORTANT NOTICE**: SKAT does not provide any kind of support for the code in this repository.
+> This Java-client is just one example of how a B2B web service can be accessed. The client must not be 
+> perceived as a piece of production code but more as an example one can take inspiration from and can use
+> to quickly get started to test whether your company can implement a successful call to one of the B2B web 
+> service using the company's digital signature. SKAT cannot be held responsible if a company uses this client
+> or parts of it in their own systems. 
 
-**VIGTIG MEDDELELSE**: SKAT yder ikke support på kildekoden i nærværende kodebibliotek.
-Denne Java-klient er kun et eksempel på hvordan B2B webservicene kan tilgås. Klienten skal således ikke 
-opfattes som et stykke produktionskode men mere som en eksempel man kan lade sig inspirere af og kan bruge 
-til hurtigt at komme i gang og få afprøvet om ens virksomhed kan gennemføre et succesfuldt kald til en af 
-B2B webservicene ved at bruge virksomhedens digitale signatur. SKAT kan ikke stå til ansvar hvis en virksomhed
-anvender klienten eller dele af denne i deres egne systemer. 
+> **VIGTIG MEDDELELSE**: SKAT yder ikke support på kildekoden i nærværende kodebibliotek.
+> Denne Java-klient er kun et eksempel på hvordan B2B webservicene kan tilgås. Klienten skal således ikke 
+> opfattes som et stykke produktionskode men mere som en eksempel man kan lade sig inspirere af og kan bruge 
+> til hurtigt at komme i gang og få afprøvet om ens virksomhed kan gennemføre et succesfuldt kald til en af 
+> B2B webservicene ved at bruge virksomhedens digitale signatur. SKAT kan ikke stå til ansvar hvis en virksomhed
+> anvender klienten eller dele af denne i deres egne systemer. 
 
 ## About the client
 
@@ -30,7 +31,7 @@ This sample project implements calls to these services:
 * **ModtagMomsangivelseForeloebig**
 * **MomsangivelseKvitteringHent**
 
-> **Looking for a .NET Sample Client?**: SKAT provides a sample client Web Service Client written in .NET v4.6 using WCF for the
+> **Looking for a .NET Sample Client?** SKAT provides a sample client Web Service Client written in .NET v4.6 using WCF for the
 > [EMCS System](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet-wcf). The EMCS System is another system
 > than the VAT Returns system covered by the sample in this repository. However, the services of EMCS and VAT Returns
 > differ by the services descriptions (WSDLs) only. Hence, the referenced repository (also on GitHub) may be used as basis
@@ -95,6 +96,7 @@ The service response provides a deep link to the approval page (requires login).
         <ns:TransaktionIdentifikator>33593B0D-E7CF-40A2-AE76-530B72DE6AE3</ns:TransaktionIdentifikator>
         <ns:TransaktionTid>2017-04-24T12:00:00.146+02:00</ns:TransaktionTid>
     </ns:HovedOplysninger>
+    <!-- Enter the transaction id from ModtagMomsangivelseForeloebig here: -->
     <urn1:TransaktionIdentifier>42C8FE92-0AE3-403E-AEFA-F3A0B4508E2E</urn1:TransaktionIdentifier>
     <urn:Angiver>
         <ns1:VirksomhedSENummerIdentifikator>12345678</ns1:VirksomhedSENummerIdentifikator>
@@ -103,7 +105,7 @@ The service response provides a deep link to the approval page (requires login).
 ```
 
 For all three services the **VAT number** of the legal entity, e.g. submitting the VAT returns, 
-must provided in service request in the field `VirksomhedSENummerIdentifikator`.
+must by provided in service request in the field `VirksomhedSENummerIdentifikator`.
 
 Example:
 
