@@ -30,12 +30,12 @@ This sample project implements calls to these services:
 * **ModtagMomsangivelseForeloebig**
 * **MomsangivelseKvitteringHent**
 
-**Looking for a .NET Sample Client?**: SKAT provides a sample client Web Service Client written in .NET v4.6 using WCF for the
-[EMCS System](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet-wcf). The EMCS System is another system
-than the VAT Returns system covered by the sample in this repository. However, the services of EMCS and VAT Returns
-differ by the services descriptions (WSDLs) only. Hence, the referenced repository (also on GitHub) may be used as basis
-for implementing calls to above services. The key changes required are: import WSDL files from this repository
-and change the endpoint in `App.config`.
+> **Looking for a .NET Sample Client?**: SKAT provides a sample client Web Service Client written in .NET v4.6 using WCF for the
+> [EMCS System](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet-wcf). The EMCS System is another system
+> than the VAT Returns system covered by the sample in this repository. However, the services of EMCS and VAT Returns
+> differ by the services descriptions (WSDLs) only. Hence, the referenced repository (also on GitHub) may be used as basis
+> for implementing calls to above services. The key changes required are: import WSDL files from this repository
+> and change the endpoint in `App.config`.
 
 These services are invoked and tested via a very simple web app that - to some degree looks - like a desktop SoapUI client,
 but just in a browser. Using the browser a sample request (provided left hand side) can be sent and the response will
