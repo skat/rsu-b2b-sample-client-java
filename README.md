@@ -45,7 +45,7 @@ presented in the right hand side:
 ![gui](/assets/rsu_sample_gui_snapshot.png)
 
 The client has by default a sample request for **VirksomhedKalenderHent** in the **Request** textarea (left hand side),
-but not for the other two services.
+but not for the other services.
 
 Sample requests for all 3 service are found here:
 
@@ -81,7 +81,7 @@ The service response provides a deep link to the approval page (requires login).
 
 **IMPORTANT**: The ModtagMomsangivelseForeloebig service submits a draft only.
 
-**(3) ModtagMomsangivelseForeloebig**: Once the legal entity has approved the VAT returns this service provides receipt
+**(3) MomsangivelseKvitteringHent**: Once the legal entity has approved the VAT returns this service provides receipt
 (a PDF document) and payment details. The **transaction id** generated for submitting the draft VAT Returns is the
 **transaction id** to be used in the request of this service as the value in the field `TransaktionIdentifier` , e.g.:
 
