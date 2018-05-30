@@ -255,7 +255,7 @@ This is due the Tomcat installation is using context path: `rsu-b2b-sample-clien
 > This section describes how the **app.conf** provided by SKAT has been extended to allow
 > integration to the actual test environment hosted by SKAT.
 
-Add new environments and endpoints to the services on new environments are added to the 
+New environments and endpoints of the services on these environments are added to the 
 `app.conf` file as follows.
 
 First add the ID of the environment, e.g. `NEWENV` :
@@ -264,7 +264,7 @@ First add the ID of the environment, e.g. `NEWENV` :
 environments = [ "TFE", "NEWENV" ]
 ```
 
-Then add endpoints for each the three services, e.g.:
+Then add endpoints for each of the three services, e.g.:
 
 ```
 endpoints {
