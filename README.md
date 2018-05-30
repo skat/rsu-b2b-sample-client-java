@@ -233,6 +233,8 @@ Once Tomcat is running open URL:
 http://localhost:8080/rsu-b2b-sample-client-gui-tomcat
 ```
 
+### Change endpoints
+
 If you want to have the test client call the built-in Log Servlet modify `app.conf` and 
 replace the `endpoints` section with this section:
 
@@ -247,6 +249,38 @@ endpoints {
 ```
 
 This is due the Tomcat installation is using context path: `rsu-b2b-sample-client-gui-tomcat`
+
+### Add new environment and endpoints
+
+> This section describes how the **app.conf** provided by SKAT has been extended to allow
+> integration to the actual test environment hosted by SKAT.
+
+Add new environments and endpoints to the services on new environments are added to the 
+`app.conf` file as follows.
+
+First add the ID of the environment, e.g. `NEWENV` :
+
+```
+environments = [ "TFE", "NEWENV" ]
+```
+
+Then add endpoints for each the three services, e.g.:
+
+```
+endpoints {
+    TFE {
+        VirksomhedKalenderHent = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
+        ModtagMomsangivelseForeloebig = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
+        MomsangivelseKvitteringHent = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
+    }
+    NEWENV {
+        VirksomhedKalenderHent = "https://remotehost/VirksomhedKalenderHent"
+        ModtagMomsangivelseForeloebig = "https://remotehost/ModtagMomsangivelseForeloebig"
+        MomsangivelseKvitteringHent = "https://remotehost/MomsangivelseKvitteringHent"
+    }
+}
+
+```
 
 ### Add another OCES certificate
 
