@@ -1,17 +1,16 @@
 
 package oio.skat.nemvirksomhed.ws._1_0;
 
-import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerType;
-
 import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
+import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerType;
 
 
 /**
  * <p>Java class for VirksomhedKalenderHent_IType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="VirksomhedKalenderHent_IType"&gt;
  *   &lt;complexContent&gt;
@@ -37,16 +36,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="VirksomhedKalenderHent_I")
 @XmlType(name = "VirksomhedKalenderHent_IType", propOrder = {
-    "hovedOplysninger",
-    "virksomhedSENummerIdentifikator",
-    "angivelseTypeNavn",
-    "angivelseBetalingFristHentFra"
+        "hovedOplysninger",
+        "virksomhedSENummerIdentifikator",
+        "angivelseTypeNavn",
+        "angivelseBetalingFristHentFra"
 })
 public class VirksomhedKalenderHentIType {
 
@@ -57,7 +56,7 @@ public class VirksomhedKalenderHentIType {
     @XmlElement(name = "AngivelseTypeNavn", namespace = "urn:oio:skat:nemvirksomhed:1.0.0", required = true)
     protected String angivelseTypeNavn;
     @XmlElement(name = "AngivelseBetalingFristHentFra", required = true)
-    protected AngivelseBetalingFristHentFra angivelseBetalingFristHentFra;
+    protected VirksomhedKalenderHentIType.AngivelseBetalingFristHentFra angivelseBetalingFristHentFra;
 
     /**
      * Gets the value of the hovedOplysninger property.
@@ -136,10 +135,10 @@ public class VirksomhedKalenderHentIType {
      *
      * @return
      *     possible object is
-     *     {@link AngivelseBetalingFristHentFra }
+     *     {@link VirksomhedKalenderHentIType.AngivelseBetalingFristHentFra }
      *
      */
-    public AngivelseBetalingFristHentFra getAngivelseBetalingFristHentFra() {
+    public VirksomhedKalenderHentIType.AngivelseBetalingFristHentFra getAngivelseBetalingFristHentFra() {
         return angivelseBetalingFristHentFra;
     }
 
@@ -148,19 +147,19 @@ public class VirksomhedKalenderHentIType {
      *
      * @param value
      *     allowed object is
-     *     {@link AngivelseBetalingFristHentFra }
+     *     {@link VirksomhedKalenderHentIType.AngivelseBetalingFristHentFra }
      *
      */
-    public void setAngivelseBetalingFristHentFra(AngivelseBetalingFristHentFra value) {
+    public void setAngivelseBetalingFristHentFra(VirksomhedKalenderHentIType.AngivelseBetalingFristHentFra value) {
         this.angivelseBetalingFristHentFra = value;
     }
 
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
@@ -173,13 +172,13 @@ public class VirksomhedKalenderHentIType {
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "soegeDatoFraDate",
-        "soegeDatoTilDate"
+            "soegeDatoFraDate",
+            "soegeDatoTilDate"
     })
     public static class AngivelseBetalingFristHentFra {
 
@@ -192,11 +191,11 @@ public class VirksomhedKalenderHentIType {
 
         /**
          * Gets the value of the soegeDatoFraDate property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public XMLGregorianCalendar getSoegeDatoFraDate() {
             return soegeDatoFraDate;
@@ -204,11 +203,11 @@ public class VirksomhedKalenderHentIType {
 
         /**
          * Sets the value of the soegeDatoFraDate property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public void setSoegeDatoFraDate(XMLGregorianCalendar value) {
             this.soegeDatoFraDate = value;
@@ -216,11 +215,11 @@ public class VirksomhedKalenderHentIType {
 
         /**
          * Gets the value of the soegeDatoTilDate property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public XMLGregorianCalendar getSoegeDatoTilDate() {
             return soegeDatoTilDate;
@@ -228,11 +227,11 @@ public class VirksomhedKalenderHentIType {
 
         /**
          * Sets the value of the soegeDatoTilDate property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public void setSoegeDatoTilDate(XMLGregorianCalendar value) {
             this.soegeDatoTilDate = value;

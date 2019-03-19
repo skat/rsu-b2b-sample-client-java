@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:nemvirksomhed="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:kontekst="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xml:lang="DA">
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nemvirksomhed="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:virksomhed="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/" xmlns:kontekst="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xml:lang="DA">
 	<xs:annotation>
 		<xs:documentation/>
 	</xs:annotation>
-	<xs:import namespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" schemaLocation="../../../../../../skat_dk/basis/kontekst/xml/schemas/2006/09/01/HovedOplysningerSvar.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFristKalenderBetalingDato.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFristKalenderForfaldDato.xsd"/><xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFristKalenderFristDato.xsd"/><xs:element name="VirksomhedKalenderHent_O" type="nemvirksomhedws:VirksomhedKalenderHent_OType">
-	</xs:element>
+	<xs:import namespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" schemaLocation="../../../../../../skat_dk/basis/kontekst/xml/schemas/2006/09/01/HovedOplysningerSvar.xsd"/>
+	<xs:import namespace="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/" schemaLocation="../../../../../../skat_dk/motor/class/virksomhed/xml/schemas/20080401/VirksomhedSENummerIdentifikator.xsd"/>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/PligtKode.xsd"/>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFrekvensTypeCode.xsd"/>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFrekvensForholdGyldigTilDate.xsd"/>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFrekvensForholdGyldigFraDate.xsd"/>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFristKalenderBetalingDato.xsd"/>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFristKalenderForfaldDato.xsd"/>
+	<xs:import namespace="urn:oio:skat:nemvirksomhed:1.0.0" schemaLocation="../../1_0_0/AngivelseFristKalenderFristDato.xsd"/>
+	<xs:element name="VirksomhedKalenderHent_O" type="nemvirksomhedws:VirksomhedKalenderHent_OType"/>
 	<xs:complexType name="VirksomhedKalenderHent_OType">
 		<xs:sequence>
 			<xs:element ref="kontekst:HovedOplysningerSvar"/>
-			<xs:element name="AngivelseBetalingFristDatoListe" minOccurs="0">
+			<xs:element ref="virksomhed:VirksomhedSENummerIdentifikator" minOccurs="0"/>
+			<xs:element ref="nemvirksomhed:PligtKode" minOccurs="0"/>
+			<xs:element name="AngivelseFrekvensListe" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="AngivelseBetalingFristDato" minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="AngivelseFrekvens" minOccurs="0" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element ref="nemvirksomhed:AngivelseFristKalenderFristDato"/>
-									<xs:element ref="nemvirksomhed:AngivelseFristKalenderForfaldDato" minOccurs="0"/>
-									<xs:element ref="nemvirksomhed:AngivelseFristKalenderBetalingDato" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:AngivelseFrekvensForholdGyldigFraDate"/>
+									<xs:element ref="nemvirksomhed:AngivelseFrekvensForholdGyldigTilDate" minOccurs="0"/>
+									<xs:element ref="nemvirksomhed:AngivelseFrekvensTypeCode"/>
+									<xs:element name="AngivelseBetalingFristDatoListe">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="AngivelseBetalingFristDato" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element ref="nemvirksomhed:AngivelseFristKalenderFristDato"/>
+															<xs:element ref="nemvirksomhed:AngivelseFristKalenderForfaldDato" minOccurs="0"/>
+															<xs:element ref="nemvirksomhed:AngivelseFristKalenderBetalingDato" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
