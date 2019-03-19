@@ -6,6 +6,7 @@ import dk.skat.rsu.b2b.sample.ModtagMomsangivelseForeloebigClient;
 import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentClient;
 import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentMarshalling;
 import dk.skat.rsu.b2b.sample.VirksomhedKalenderHentClient;
+import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigOType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
 import org.apache.commons.io.IOUtils;
@@ -60,6 +61,15 @@ public class ServiceTestAction extends Action {
             if ("ModtagMomsangivelseForeloebig".equals(service)) {
                 ModtagMomsangivelseForeloebigClient client = new ModtagMomsangivelseForeloebigClient(endpoint);
                 serviceResponse = client.invoke(requestAsString, cert, serviceTestForm.isOverrideTxInfo());
+                // Get receipt and store PDF in memory for later download
+                InputStream inputStream = IOUtils.toInputStream(serviceResponse, "UTF-8");
+                JAXBContext jc = JAXBContext.newInstance(ModtagMomsangivelseForeloebigOType.class);
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                ModtagMomsangivelseForeloebigOType asObject = (ModtagMomsangivelseForeloebigOType) unmarshaller.unmarshal(inputStream);
+                if (asObject.getDybtlink() != null) {
+                    messages.add("confirmUrl",
+                            new ActionMessage("confirmUrl", asObject.getDybtlink().getUrlIndicator()));
+                }
             }
             if ("MomsangivelseKvitteringHent".equals(service)) {
                 MomsangivelseKvitteringHentClient client = new MomsangivelseKvitteringHentClient(endpoint);

@@ -112,6 +112,15 @@
                             Click <a href="<%=request.getContextPath()%>/receipt?transactionId=<bean:write name="transactionId"/>">here</a> to download PDF.
                         </div>
                     </html:messages>
+                    <html:messages id="confirmUrl" property="confirmUrl">
+                        <div class="alert alert-info" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            Login <a href="<bean:write name="confirmUrl"/>">here</a> to confirm the submitted data.
+                            (The link is the value of the path ModtagMomsangivelseForeloebig_O/Dybtlink/UrlIndicator)
+                        </div>
+                    </html:messages>
                     <form name="response" action="#" method="get">
                         <html:messages id="msg_response" property="lastResponse">
                             <div class="form-group">
