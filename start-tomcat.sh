@@ -5,4 +5,4 @@ echo "---"
 echo "http://localhost:8080/rsu-b2b-sample-client-gui-tomcat"
 echo "---"
 
-java -jar rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
+java -jar rsu-b2b-sample-client-gui-tomcat-1.1-war-exec.jar
