@@ -1,4 +1,6 @@
 sudo: none
+dist: trusty
+group: deprecated
 
 language: java
 
