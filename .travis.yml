@@ -1,4 +1,4 @@
-sudo: none
+sudo: false
 dist: trusty
 group: deprecated
 
