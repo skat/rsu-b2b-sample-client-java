@@ -2,7 +2,7 @@
 <xs:schema targetNamespace="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:momsangivelsemomseukoebbeloeb="urn:oio:skat:nemvirksomhed:1.0.0" elementFormDefault="qualified" version="1.0" xml:lang="DA">
 	<xs:element name="MomsAngivelseMomsEUKoebBeloeb" type="xs:integer">
 		<xs:annotation>
-			<xs:documentation>Moms af EU-varekøb</xs:documentation>
+			<xs:documentation>Moms af varekøb i udlandet (både EU og lande uden for EU)</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 </xs:schema>

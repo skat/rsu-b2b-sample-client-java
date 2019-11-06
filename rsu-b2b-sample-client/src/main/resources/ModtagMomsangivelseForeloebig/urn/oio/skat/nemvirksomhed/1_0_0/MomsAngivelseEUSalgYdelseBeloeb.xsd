@@ -2,7 +2,7 @@
 <xs:schema targetNamespace="urn:oio:skat:nemvirksomhed:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:momsangivelseeusalgydelsebeloeb="urn:oio:skat:nemvirksomhed:1.0.0" elementFormDefault="qualified" version="1.0" xml:lang="DA">
 	<xs:element name="MomsAngivelseEUSalgYdelseBeloeb" type="xs:integer">
 		<xs:annotation>
-			<xs:documentation>Værdien af ydelsessalg uden moms til andre EU-lande (EU-leverancer).</xs:documentation>
+			<xs:documentation>Værdien af visse ydelsessalg uden moms til andre EU-lande. Indberettes til EU-salg uden moms (Rubrik B)</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 </xs:schema>

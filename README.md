@@ -130,6 +130,29 @@ and the generated client code is then invoked by these classes:
 
 Each of these classes attach the configuration that fulfills the WS Policy of RSU Web Services.
 
+### VAT Returns request (input fields)
+
+The schema files (XSD) referenced by [ModtagMomsangivelseForeloebig.wsdl](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/ModtagMomsangivelseForeloebig.wsdl)
+include documentation per field for the VAT returns service (in Danish) as follows (click on link to see documentation):
+
+* [MomsAngivelseAfgiftTilsvarBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseAfgiftTilsvarBeloeb.xsd)
+* [MomsAngivelseCO2AfgiftBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseCO2AfgiftBeloeb.xsd)
+* [MomsAngivelseEUKoebBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseEUKoebBeloeb.xsd)
+* [MomsAngivelseEUKoebYdelseBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseEUKoebYdelseBeloeb.xsd)
+* [MomsAngivelseEUSalgBeloebVarerBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseEUSalgBeloebVarerBeloeb.xsd)
+* [MomsAngivelseEUSalgYdelseBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseEUSalgYdelseBeloeb.xsd)
+* [MomsAngivelseEksportOmsaetningBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseEksportOmsaetningBeloeb.xsd)
+* [MomsAngivelseElAfgiftBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseElAfgiftBeloeb.xsd)
+* [MomsAngivelseGasAfgiftBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseGasAfgiftBeloeb.xsd)
+* [MomsAngivelseIkkeEUSalgBeloebVarerBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseIkkeEUSalgBeloebVarerBeloeb.xsd)
+* [MomsAngivelseKoebsMomsBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseKoebsMomsBeloeb.xsd)
+* [MomsAngivelseKulAfgiftBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseKulAfgiftBeloeb.xsd)
+* [MomsAngivelseMomsEUKoebBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseMomsEUKoebBeloeb.xsd)
+* [MomsAngivelseMomsEUYdelserBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseMomsEUYdelserBeloeb.xsd)
+* [MomsAngivelseOlieAfgiftBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseOlieAfgiftBeloeb.xsd)
+* [MomsAngivelseSalgsMomsBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseSalgsMomsBeloeb.xsd)
+* [MomsAngivelseVandAfgiftBeloeb](rsu-b2b-sample-client/src/main/resources/ModtagMomsangivelseForeloebig/urn/oio/skat/nemvirksomhed/1_0_0/MomsAngivelseVandAfgiftBeloeb.xsd)
+
 ### Fulfillment of WS Policy of RSU Web Services
 
 The fulfillment of policies required to invoke RSU B2B Web Services is configured in the file:
@@ -140,6 +163,17 @@ Fulfillment of WS Policy requirements is achieved using CXF's in and out interce
 the `rsu-policy.xml` file details which parts are to be signed and encrypted, and how to present 
 certificate for authentication on the server side. This configuration file also demonstrates how
 secure transport (https) is enabled client side.
+
+### Security: Transport Protocol and using certificates
+
+This [link](https://github.com/skat/emcs-b2b-ws#security) provides all the technical details with regards to:
+
+* Transport Protocol
+* WS-Security Protocol
+* Use of Certificates for Signing and Encryption of messages
+
+**NOTE**: The link is for another system (the EMCS System) that provides a set of services (API) on the same
+platform as the services for VAT Returns.
 
 ### The web based test client
 
