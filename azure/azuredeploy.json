@@ -65,7 +65,7 @@
     },
     "_artifactsLocation": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/apache2-on-ubuntu-vm/",
+      "defaultValue": "https://raw.githubusercontent.com/skat/rsu-b2b-sample-client-java/master/azure/",
       "metadata": {
         "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
       }
@@ -272,7 +272,7 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
             "fileUris": [
-              "https://raw.githubusercontent.com/skat/rsu-b2b-sample-client-java/master/azure/ubuntu-18-04-LTS-compile-and-run.sh"
+              "[uri(parameters('_artifactsLocation'), concat('ubuntu-18-04-LTS-compile-and-run.sh', parameters('_artifactsLocationSasToken')))]"
             ],
             "commandToExecute": "sh ubuntu-18-04-LTS-compile-and-run.sh"
           }
