@@ -54,12 +54,13 @@ public class ServiceTestAction extends Action {
         String serviceResponse = "";
         try {
             String endpoint = ConfigHelper.getConfiguration().getString(configurationPrefix);
+            String policy = ConfigHelper.getConfiguration().getString("policy");
             if ("VirksomhedKalenderHent".equals(service)) {
-                VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint);
+                VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint, policy);
                 serviceResponse = client.invoke(requestAsString, cert, serviceTestForm.isOverrideTxInfo());
             }
             if ("ModtagMomsangivelseForeloebig".equals(service)) {
-                ModtagMomsangivelseForeloebigClient client = new ModtagMomsangivelseForeloebigClient(endpoint);
+                ModtagMomsangivelseForeloebigClient client = new ModtagMomsangivelseForeloebigClient(endpoint, policy);
                 serviceResponse = client.invoke(requestAsString, cert, serviceTestForm.isOverrideTxInfo());
                 // Get receipt and store PDF in memory for later download
                 InputStream inputStream = IOUtils.toInputStream(serviceResponse, "UTF-8");
@@ -72,7 +73,7 @@ public class ServiceTestAction extends Action {
                 }
             }
             if ("MomsangivelseKvitteringHent".equals(service)) {
-                MomsangivelseKvitteringHentClient client = new MomsangivelseKvitteringHentClient(endpoint);
+                MomsangivelseKvitteringHentClient client = new MomsangivelseKvitteringHentClient(endpoint, policy);
 
                 // The following code is more elaborate than the two above service calls.
                 //

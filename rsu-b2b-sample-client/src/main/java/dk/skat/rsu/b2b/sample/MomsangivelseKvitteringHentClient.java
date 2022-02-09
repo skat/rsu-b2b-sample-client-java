@@ -39,8 +39,8 @@ public class MomsangivelseKvitteringHentClient extends BaseClient {
      *
      * @param endpointURL Endpoint of ModtagMomsangivelseForeloebig service
      */
-    public MomsangivelseKvitteringHentClient(String endpointURL) {
-        super();
+    public MomsangivelseKvitteringHentClient(String endpointURL, String policy) {
+        super(policy);
         this.endpointURL = endpointURL;
     }
 

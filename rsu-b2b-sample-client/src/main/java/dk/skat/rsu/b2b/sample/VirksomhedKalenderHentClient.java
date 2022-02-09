@@ -38,8 +38,8 @@ public class VirksomhedKalenderHentClient extends BaseClient {
      *
      * @param endpointURL Endpoint of VirksomhedKalenderHent service
      */
-    public VirksomhedKalenderHentClient(String endpointURL) {
-        super();
+    public VirksomhedKalenderHentClient(String endpointURL, String policy) {
+        super(policy);
         this.endpointURL = endpointURL;
     }
 
