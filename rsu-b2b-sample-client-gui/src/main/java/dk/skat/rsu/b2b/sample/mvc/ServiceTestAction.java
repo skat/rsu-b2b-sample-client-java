@@ -11,6 +11,7 @@ import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
 import org.apache.commons.io.IOUtils;
 import org.apache.struts.action.*;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,7 +55,13 @@ public class ServiceTestAction extends Action {
         String serviceResponse = "";
         try {
             String endpoint = ConfigHelper.getConfiguration().getString(configurationPrefix);
-            String policy = ConfigHelper.getConfiguration().getString("policy");
+
+            String policy = serviceTestForm.getPolicy();
+            if (StringUtils.hasText(policy)) {
+                // Go for default defined in config
+                policy = ConfigHelper.getConfiguration().getString("policy");
+            }
+
             if ("VirksomhedKalenderHent".equals(service)) {
                 VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint, policy);
                 serviceResponse = client.invoke(requestAsString, cert, serviceTestForm.isOverrideTxInfo());
