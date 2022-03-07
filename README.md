@@ -345,6 +345,7 @@ The user must ensure to:
 * Select the **Service** (dropdown) to be tested.
 * Select the **Environment** (dropdown) on the which the **Service** runs.
 * Select the **Certificate** of the legal entity submitting the request/document.
+UYpda* Select the **Policy** to be attached to the call.
 
 A check in the **Override 'HovedOplysninger' (Transaction Id and Time)** checkbox results in the transaction id **and** 
 transaction time in the provided XML request to be regenerated. This will likely be relevant as the service called will
@@ -371,14 +372,21 @@ Each of these classes attach the configuration that fulfills the WS Policy of RS
 
 ### Fulfillment of WS Policy of RSU Web Services
 
-The fulfillment of policies required to invoke RSU B2B Web Services is configured in the file:
+The security policies required to call the RSU B2B Web Services are defined here:
+
+[rsu-policy-sign.xml](rsu-b2b-sample-client/src/main/resources/rsu-policy-sign.xml)
+
+Fulfillment of WS Policy requirements is achieved using CXF's in and out interceptor framework. 
+The `rsu-policy-sign.xml` file details which parts are to be signed and how to present 
+certificate for authentication on the server side. This configuration file also demonstrates how
+secure transport (https) is enabled client side.
+
+**NOTE:**: The RSU services are for a limited time also provided with this policy:
 
 [rsu-policy.xml](rsu-b2b-sample-client/src/main/resources/rsu-policy.xml)
 
-Fulfillment of WS Policy requirements is achieved using CXF's in and out interceptor framework and 
-the `rsu-policy.xml` file details which parts are to be signed and encrypted, and how to present 
-certificate for authentication on the server side. This configuration file also demonstrates how
-secure transport (https) is enabled client side.
+This policy configuration adds payload encryption in addition to the policies defined inside `rsu-policy-sign.xml` and
+is only provided here for users that have not yet migrated to `rsu-policy-sign.xml`  (or equivalent).
 
 ### The web based test client
 
