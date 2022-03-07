@@ -445,13 +445,13 @@ Clone this repository. Then execute:
 $ mvn clean install
 ```
 
-On your server create a directory named `rsu-b2b-sample-client-gui-tomcat`.
+On your **server** create a directory named `rsu-b2b-sample-client-gui`.
 
-Copy these these files to the directory `rsu-b2b-sample-client-gui-tomcat`:
+Copy these files to the directory `rsu-b2b-sample-client-gui`:
 
 ```
-rsu-b2b-sample-client-gui-tomcat/target/rsu-b2b-sample-client-gui-tomcat-1.0.war
-rsu-b2b-sample-client-gui-tomcat/target/rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
+rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-1.0.war
+rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-1.0-war-exec.jar
 rsu-b2b-sample-client/src/main/resources/keystore/client-keystore.jks
 rsu-b2b-sample-client/src/main/resources/keystore/server-keystore.jks
 ```
@@ -459,16 +459,16 @@ rsu-b2b-sample-client/src/main/resources/keystore/server-keystore.jks
 Organize the files as follows: 
 
 ```
-rsu-b2b-sample-client-gui-tomcat/
-  rsu-b2b-sample-client-gui-tomcat-1.0.war
-  rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
+rsu-b2b-sample-client-gui/
+  rsu-b2b-sample-client-gui-1.0.war
+  rsu-b2b-sample-client-gui-1.0-war-exec.jar
   keystore/
     client-keystore.jks
     server-keystore.jks
   app.conf
 ```
 
-Then inside `rsu-b2b-sample-client-gui-tomcat` run:
+Then inside `rsu-b2b-sample-client-gui` run:
 
 ```sh
 $ java -jar rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
@@ -477,7 +477,7 @@ $ java -jar rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
 Once Tomcat is running open URL:
 
 ```
-http://localhost:8080/rsu-b2b-sample-client-gui-tomcat
+http://localhost:8080/rsu-b2b-sample-client-gui
 ```
 
 ### Change endpoints
@@ -488,14 +488,12 @@ replace the `endpoints` section with this section:
 ```
 endpoints {
     TFE {
-        VirksomhedKalenderHent = "http://localhost:8080/rsu-b2b-sample-client-gui-tomcat/log"
-        ModtagMomsangivelseForeloebig = "http://localhost:8080/rsu-b2b-sample-client-gui-tomcat/log"
-        MomsangivelseKvitteringHent = "http://localhost:8080/rsu-b2b-sample-client-gui-tomcat/log"
+        VirksomhedKalenderHent = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
+        ModtagMomsangivelseForeloebig = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
+        MomsangivelseKvitteringHent = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
     }
 }
 ```
-
-This is due the Tomcat installation is using context path: `rsu-b2b-sample-client-gui-tomcat`
 
 ### Add new environment and endpoints
 

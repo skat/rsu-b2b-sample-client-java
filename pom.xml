@@ -10,7 +10,6 @@
     <modules>
         <module>rsu-b2b-sample-client</module>
         <module>rsu-b2b-sample-client-gui</module>
-        <module>rsu-b2b-sample-client-gui-tomcat</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
