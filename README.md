@@ -450,8 +450,7 @@ On your **server** create a directory named `rsu-b2b-sample-client-gui`.
 Copy these files to the directory `rsu-b2b-sample-client-gui`:
 
 ```
-rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-1.0.war
-rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-1.0-war-exec.jar
+rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
 rsu-b2b-sample-client/src/main/resources/keystore/client-keystore.jks
 rsu-b2b-sample-client/src/main/resources/keystore/server-keystore.jks
 ```
@@ -460,8 +459,7 @@ Organize the files as follows:
 
 ```
 rsu-b2b-sample-client-gui/
-  rsu-b2b-sample-client-gui-1.0.war
-  rsu-b2b-sample-client-gui-1.0-war-exec.jar
+  rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
   keystore/
     client-keystore.jks
     server-keystore.jks
@@ -471,7 +469,7 @@ rsu-b2b-sample-client-gui/
 Then inside `rsu-b2b-sample-client-gui` run:
 
 ```sh
-$ java -jar rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
+$ java -jar rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
 ```
 
 Once Tomcat is running open URL:
