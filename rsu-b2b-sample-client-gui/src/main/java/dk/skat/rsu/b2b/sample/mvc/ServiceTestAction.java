@@ -57,7 +57,7 @@ public class ServiceTestAction extends Action {
             String endpoint = ConfigHelper.getConfiguration().getString(configurationPrefix);
 
             String policy = serviceTestForm.getPolicy();
-            if (StringUtils.hasText(policy)) {
+            if (!StringUtils.hasText(policy)) {
                 // Go for default defined in config
                 policy = ConfigHelper.getConfiguration().getString("policy");
             }
