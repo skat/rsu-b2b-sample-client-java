@@ -13,19 +13,16 @@
     <title>RSU Sample GUI</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${request.contextPath}assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<%=request.getContextPath()%>/assets/css/starter-template.css" rel="stylesheet">
+    <link href="${request.contextPath}/assets/css/starter-template.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">RSU Sample GUI</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="<%=request.getContextPath()%>/index.jsp">Test Zone</a>
-            </li>
         </ul>
     </div>
 </nav>
@@ -54,9 +51,12 @@
                         </div>
                     </html:messages>
                     <html:form action="/serviceTest" method="post">
+                        <html:hidden property="requestMMF" styleId="request_mmf"/>
+                        <html:hidden property="requestMKH" styleId="request_mkh"/>
+                        <html:hidden property="requestVKH" styleId="request_vkh"/>
                         <div class="form-group">
                             <label for="service">Service</label>
-                            <html:select styleClass="form-control" property="service" styleId="service">
+                            <html:select styleClass="form-control" property="service" styleId="service" onchange="setRequest(this.value);">
                                 <html:optionsCollection name="serviceTestForm" property="services" label="label"
                                                         value="label"/>
                             </html:select>
@@ -72,6 +72,13 @@
                             <label for="certificate">Certificate</label>
                             <html:select styleClass="form-control" property="certificateAlias" styleId="certificate">
                                 <html:optionsCollection name="serviceTestForm" property="certificates" label="label"
+                                                        value="value"/>
+                            </html:select>
+                        </div>
+                        <div class="form-group">
+                            <label for="policy">Policy</label>
+                            <html:select styleClass="form-control" property="policy" styleId="policy">
+                                <html:optionsCollection name="serviceTestForm" property="policiesList" label="label"
                                                         value="value"/>
                             </html:select>
                         </div>
@@ -109,7 +116,7 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            Click <a href="<%=request.getContextPath()%>/receipt?transactionId=<bean:write name="transactionId"/>">here</a> to download PDF.
+                            Click <a href="${request.contextPath}/receipt?transactionId=<bean:write name="transactionId"/>">here</a> to download PDF.
                         </div>
                     </html:messages>
                     <html:messages id="confirmUrl" property="confirmUrl">
@@ -140,9 +147,29 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="<%=request.getContextPath()%>/assets/js/jquery-3.2.1.slim.min.js"
+<script src="${request.contextPath}/assets/js/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+<script src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
+
+<script>
+    function setRequest (selectedIndex) {
+        if (selectedIndex.indexOf("ModtagMomsangivelseForeloebig") != -1 )
+        {
+            document.getElementById('request').value = document.getElementById('request_mmf').value;
+        }
+        else
+        {
+            if (selectedIndex.indexOf("MomsangivelseKvitteringHent") != -1 )
+            {
+                document.getElementById('request').value = document.getElementById('request_mkh').value;
+            }
+            else
+            {
+                document.getElementById('request').value = document.getElementById('request_vkh').value;
+            }
+        }
+    }
+</script>
 </body>
 </html>
