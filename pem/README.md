@@ -38,9 +38,11 @@ It depends on your system and/or your strategy:
 **IMPORTANT**: Certificates in this section **CANNOT** be used for **Transport Layer Security**
 
 The following certificates are for **Web Service Security** to ensure **non-repudiation** (signing) when exchanging
-messages:
+messages.
 
-* [TEST System](/pem/ws-security/b2b-test-system.pem) (**Note**: Expires on April 10, 2026)
+### Test Environment
+
+* OCES3 certificate for the [TEST Environment](/pem/ws-security/b2b-test-system.pem) (**Note**: Expires on April 10, 2026)
 
 ```
 Owner: C=DK, OID.2.5.4.97=NTRDK-19552101, O=Skatteforvaltningen, SERIALNUMBER=UI:DK-O:G:5e50b9bb-22fd-483d-baf7-fd077ed975f5, CN=Skatteministeriet - B2B gateway TSE TEST
@@ -56,5 +58,37 @@ Subject Public Key Algorithm: 3072-bit RSA key
 Version: 3
 ```
 
+Issued by [intermediate CA](/pem/ws-security/Den_Danske_Stat_OCES_udstedende_CA_1_Test_cti.pem):
+
+```
+Owner: C=DK, O=Den Danske Stat, OU=Test - cti, CN=Den Danske Stat OCES udstedende-CA 1
+Issuer: C=DK, O=Den Danske Stat, OU=Test - cti, CN=Den Danske Stat OCES rod-CA
+Serial number: 734d70a62e521cd17c644c99a0900e1d59e061ae
+Valid from: Fri Mar 12 08:42:59 CET 2021 until: Mon Mar 10 08:42:58 CET 2031
+Certificate fingerprints:
+	 MD5:  4F:60:24:4C:A3:81:E7:F6:6B:BA:77:97:0F:18:03:C9
+	 SHA1: 72:34:7B:AE:17:45:68:89:42:D4:9D:FF:5F:2C:80:53:8B:5B:02:3B
+	 SHA256: 57:C7:85:23:6A:D7:C9:C9:86:B9:4D:49:AB:DA:FD:1B:95:5C:55:09:33:8F:A4:3A:7C:E0:D6:60:88:C8:AF:9B
+Signature algorithm name: 1.2.840.113549.1.1.10
+Subject Public Key Algorithm: 3072-bit RSA key
+Version: 3
+
+```
+
+Issued by [root CA](/pem/ws-security/Den_Danske_Stat_OCES_rod_CA_Test_cti.pem):
+
+```
+Owner: C=DK, O=Den Danske Stat, OU=Test - cti, CN=Den Danske Stat OCES rod-CA
+Issuer: C=DK, O=Den Danske Stat, OU=Test - cti, CN=Den Danske Stat OCES rod-CA
+Serial number: 573f57e67530f1a0777dfbc69f090438d3360256
+Valid from: Thu Jan 28 10:49:25 CET 2021 until: Mon Jan 22 10:49:24 CET 2046
+Certificate fingerprints:
+MD5:  48:AC:59:94:E7:62:BE:EA:23:41:31:0B:47:A1:7B:51
+SHA1: 0E:99:4B:E0:FA:C7:E8:59:85:4C:39:49:95:59:99:F4:E3:03:7D:22
+SHA256: D1:BC:EC:41:D7:AC:AE:93:2B:7D:FE:66:A8:B7:34:1C:A7:59:52:C8:66:4F:CC:EF:4C:4A:E2:15:0F:95:C5:EC
+Signature algorithm name: 1.2.840.113549.1.1.10
+Subject Public Key Algorithm: 4096-bit RSA key
+Version: 3
+```
 
 
