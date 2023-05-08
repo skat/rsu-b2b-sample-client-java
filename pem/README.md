@@ -4,7 +4,7 @@
 
 The following certificates are for **Transport Layer Security** only.
 
-* [TEST System](/crt/tls/ssl-chain-0.pem) with the following details:
+* [TEST System](/pem/tls/ssl-chain-0.pem) with the following details:
 
 ```
 Owner: CN=*.skat.dk, O=Skatteforvaltningen, L=Herning, ST=Herning, C=DK
@@ -20,8 +20,8 @@ Certificate fingerprints:
 
 Issuer certificates for both **TEST** and **PRODUCTION**:
 
-* [GlobalSign RSA OV SSL CA 2018](/crt/tls/ssl-chain-1.pem)
-* [GlobalSign Root CA](/crt/tls/ssl-chain-2.pem)
+* [GlobalSign RSA OV SSL CA 2018](/pem/tls/ssl-chain-1.pem)
+* [GlobalSign Root CA](/pem/tls/ssl-chain-2.pem)
 
 ### Do I have to install or update these certificates in my system?
 
