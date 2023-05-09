@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
 
+> **NOTICE REGARDING MitID Erhverv**: This test client supports MitID Erhverv certificates (OCES3).
+> Although the documentation states OCES3 certificates are required the RSU services will support OCES2 certificates until further
+> notices, but no later than end of October 2023.
+
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
 
 > **IMPORTANT NOTICE**: Skatteforvaltningen does not provide any kind of support for the code in this repository.
@@ -44,8 +48,8 @@ This GitHub contains documentation and a sample client for the RSU B2B Web Servi
       * [Run on Tomcat](#run-on-tomcat)
       * [Change endpoints](#change-endpoints)
       * [Add new environment and endpoints](#add-new-environment-and-endpoints)
-      * [Add another OCES certificate](#add-another-oces-certificate)
-      * [Installing other OCESII Certificates in the client key store](#installing-other-oceii-certificates-in-the-client-key-store)
+      * [Add another OCES3 certificate](#add-another-oces3-certificate)
+      * [Installing other OCES3 Certificates in the client key store](#installing-other-oces3-certificates-in-the-client-key-store)
       * [Changing certificate in the client trust store](#changing-certificate-in-the-client-trust-store)
       * [References](#references)
 
@@ -97,7 +101,9 @@ The sample client in this GitHub already has the server certificate for the test
 
 **WS-Security Protocol**
 
-To be able to use the Web Services you also need a company certificate (VOCES). A company certificate for the test environment is provided by contacting Skattestyrelsen. To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here:  [https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
+To be able to use the Web Services you also need a company certificate (VOCES3) from MitID Erhverv (OCES3).
+A company certificate for the test environment is provided by contacting Skattestyrelsen. 
+To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here:  [https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
 
 The company certificate is used to encrypt the soap:body of the request and to create a signature. The certificate is also used to validate and decrypt the response. See details of how to do the encryption, decryption and signature here: [https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements](https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements)
 
@@ -391,6 +397,16 @@ MVC framework (Struts) and provides a simple SOAP test framework that invokes th
 As the test client allows input of XML documents there is a process to convert the XML to Java objects that
 are used as input in the generated Webservice Clients.
 
+#### Test certificates
+
+The client comes with 3 x OCES3 certificates that may be used for testing as follows:
+
+* **Luca_Pacioli**: Certificate identifying to an employee of our test RSU, but the employee is registered, but not authorized to invoke the RSU services.
+* **LucaPacioli_ApS_System_Integrationstest_S1**: Certificate identifying the system of our test RSU. This certificate is registered and authorized to invoke the RSU services.
+* **LucaPacioli_ApS_Organisation_Integrationstest_O1**: Certificate identifying our test RSU. The certificate is not registered and consequently not authorized to invoke the RSU services.
+
+That is, for sunshine testing use **LucaPacioli_ApS_System_Integrationstest_S1**.
+
 ## Run clients
 
 The sample clients must be configured with parameters that are necessary for the client to run and
@@ -521,9 +537,9 @@ endpoints {
 
 ```
 
-### Add another OCES certificate
+### Add another OCES3 certificate
 
-First complete the steps in section: **Installing other OCESII Certificates in the client keystore** (below)
+First complete the steps in section: **Installing other OCES3 Certificates in the client keystore** (below)
 The chosen **alias**, e.g. `myalias` from the import must be added to  `app.conf` as follows:
 
 ```
@@ -550,7 +566,7 @@ certificateCommenNames {
 }
 ```
 
-### Installing other OCESII Certificates in the client key store
+### Installing other OCES3 Certificates in the client key store
 
 The keystore `rsu-b2b-sample-client/src/main/resources/keystore/client-keystore.jks` is already prepared with the
 necessary test certificate that is authorized to access the test environment. However, in the
@@ -565,8 +581,8 @@ $ keytool -changealias -keystore target/VOCES_yours.p12 -storepass $P12_PASSPHRA
 $ keytool -v -importkeystore -srckeystore target/VOCES_yours.p12 -srcstoretype PKCS12 -destkeystore src/main/resources/keystore/client-keystore.jks -deststoretype JKS -deststorepass storepassword -srcstorepass $P12_PASSPHRASE
 ```
 
-Where `P12_PASSPHRASE` and `P12_CURRENT_ALIAS` are passphrase and value of the OCESII certificate,
-respectively. The three keytool command removes the pre configured certificate, changes the the value
+Where `P12_PASSPHRASE` and `P12_CURRENT_ALIAS` are passphrase and value of the OCES3 certificate,
+respectively. The three keytool command removes the pre configured certificate, changes the value
 of the new certificate, and finally imports it into the keystore.
 
 ### Changing certificate in the client trust store
