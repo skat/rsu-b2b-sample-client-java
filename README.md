@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
 
+> **NOTICE REGARDING MitID Erhverv**: This test client supports MitID Erhverv certificates (OCES3).
+> Although the documentation states OCES3 certificates are required the RSU services will support OCES2 certificates until further
+> notices, but no later than end of October 2023.
+
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
 
 > **IMPORTANT NOTICE**: Skatteforvaltningen does not provide any kind of support for the code in this repository.
@@ -44,8 +48,8 @@ This GitHub contains documentation and a sample client for the RSU B2B Web Servi
       * [Run on Tomcat](#run-on-tomcat)
       * [Change endpoints](#change-endpoints)
       * [Add new environment and endpoints](#add-new-environment-and-endpoints)
-      * [Add another OCES certificate](#add-another-oces-certificate)
-      * [Installing other OCESII Certificates in the client key store](#installing-other-oceii-certificates-in-the-client-key-store)
+      * [Add another OCES3 certificate](#add-another-oces3-certificate)
+      * [Installing other OCES3 Certificates in the client key store](#installing-other-oces3-certificates-in-the-client-key-store)
       * [Changing certificate in the client trust store](#changing-certificate-in-the-client-trust-store)
       * [References](#references)
 
@@ -97,7 +101,9 @@ The sample client in this GitHub already has the server certificate for the test
 
 **WS-Security Protocol**
 
-To be able to use the Web Services you also need a company certificate (VOCES). A company certificate for the test environment is provided by contacting Skattestyrelsen. To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here:  [https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
+To be able to use the Web Services you also need a company certificate (VOCES3) from MitID Erhverv (OCES3).
+A company certificate for the test environment is provided by contacting Skattestyrelsen. 
+To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here:  [https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
 
 The company certificate is used to encrypt the soap:body of the request and to create a signature. The certificate is also used to validate and decrypt the response. See details of how to do the encryption, decryption and signature here: [https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements](https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements)
 
@@ -318,12 +324,8 @@ Error code | Error Description (EN) | Error Description (DA)
 
 The following is documentation of a sample client for the RSU B2B Web Service Gateway. The sample client is implemented based on the [Apache CXF](http://cxf.apache.org/) framework, the Spring Framework, and Java 8. See `pom.xml` file in this repo for details regarding the current versions of the mentioned frameworks in use. 
 
-> **Looking for a .NET Sample Client?** Skatteforvaltningen provides a sample client Web Service Client written in .NET v4.6 using WCF for the
-> [EMCS System](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet-wcf). The EMCS System is another system
-> than the VAT Returns system covered by the sample in this repository. However, the services of EMCS and VAT Returns
-> differ by the services descriptions (WSDLs) only. Hence, the referenced repository (also on GitHub) may be used as basis
-> for implementing calls to above services. The key changes required are: import WSDL files from this repository
-> and change the endpoint in `App.config`.
+> **Looking for a .NET Core sample?** Skatteforvaltningen provides a sample Web Service Client written in .NET Core
+> [here](https://github.com/skat/rsu-b2b-sample-client-dotnet).
 
 These services are invoked and tested via a very simple web app that looks like a desktop SoapUI client, but just in a browser. Using the browser a sample request (provided left hand side) can be sent and the response will presented in the right hand side:
 
@@ -345,6 +347,7 @@ The user must ensure to:
 * Select the **Service** (dropdown) to be tested.
 * Select the **Environment** (dropdown) on the which the **Service** runs.
 * Select the **Certificate** of the legal entity submitting the request/document.
+UYpda* Select the **Policy** to be attached to the call.
 
 A check in the **Override 'HovedOplysninger' (Transaction Id and Time)** checkbox results in the transaction id **and** 
 transaction time in the provided XML request to be regenerated. This will likely be relevant as the service called will
@@ -371,14 +374,21 @@ Each of these classes attach the configuration that fulfills the WS Policy of RS
 
 ### Fulfillment of WS Policy of RSU Web Services
 
-The fulfillment of policies required to invoke RSU B2B Web Services is configured in the file:
+The security policies required to call the RSU B2B Web Services are defined here:
+
+[rsu-policy-sign.xml](rsu-b2b-sample-client/src/main/resources/rsu-policy-sign.xml)
+
+Fulfillment of WS Policy requirements is achieved using CXF's in and out interceptor framework. 
+The `rsu-policy-sign.xml` file details which parts are to be signed and how to present 
+certificate for authentication on the server side. This configuration file also demonstrates how
+secure transport (https) is enabled client side.
+
+**NOTE:**: The RSU services are for a limited time also provided with this policy:
 
 [rsu-policy.xml](rsu-b2b-sample-client/src/main/resources/rsu-policy.xml)
 
-Fulfillment of WS Policy requirements is achieved using CXF's in and out interceptor framework and 
-the `rsu-policy.xml` file details which parts are to be signed and encrypted, and how to present 
-certificate for authentication on the server side. This configuration file also demonstrates how
-secure transport (https) is enabled client side.
+This policy configuration adds payload encryption in addition to the policies defined inside `rsu-policy-sign.xml` and
+is only provided here for users that have not yet migrated to `rsu-policy-sign.xml`  (or equivalent).
 
 ### The web based test client
 
@@ -386,6 +396,16 @@ The web based test client (`rsu-b2b-sample-client-gui`) is kept as simple as pos
 MVC framework (Struts) and provides a simple SOAP test framework that invokes the above three webservices.
 As the test client allows input of XML documents there is a process to convert the XML to Java objects that
 are used as input in the generated Webservice Clients.
+
+#### Test certificates
+
+The client comes with 3 x OCES3 certificates that may be used for testing as follows:
+
+* **Luca_Pacioli**: Certificate identifying to an employee of our test RSU, but the employee is registered, but not authorized to invoke the RSU services.
+* **LucaPacioli_ApS_System_Integrationstest_S1**: Certificate identifying the system of our test RSU. This certificate is registered and authorized to invoke the RSU services.
+* **LucaPacioli_ApS_Organisation_Integrationstest_O1**: Certificate identifying our test RSU. The certificate is not registered and consequently not authorized to invoke the RSU services.
+
+That is, for sunshine testing use **LucaPacioli_ApS_System_Integrationstest_S1**.
 
 ## Run clients
 
@@ -437,13 +457,12 @@ Clone this repository. Then execute:
 $ mvn clean install
 ```
 
-On your server create a directory named `rsu-b2b-sample-client-gui-tomcat`.
+On your **server** create a directory named `rsu-b2b-sample-client-gui`.
 
-Copy these these files to the directory `rsu-b2b-sample-client-gui-tomcat`:
+Copy these files to the directory `rsu-b2b-sample-client-gui`:
 
 ```
-rsu-b2b-sample-client-gui-tomcat/target/rsu-b2b-sample-client-gui-tomcat-1.0.war
-rsu-b2b-sample-client-gui-tomcat/target/rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
+rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
 rsu-b2b-sample-client/src/main/resources/keystore/client-keystore.jks
 rsu-b2b-sample-client/src/main/resources/keystore/server-keystore.jks
 ```
@@ -451,25 +470,24 @@ rsu-b2b-sample-client/src/main/resources/keystore/server-keystore.jks
 Organize the files as follows: 
 
 ```
-rsu-b2b-sample-client-gui-tomcat/
-  rsu-b2b-sample-client-gui-tomcat-1.0.war
-  rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
+rsu-b2b-sample-client-gui/
+  rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
   keystore/
     client-keystore.jks
     server-keystore.jks
   app.conf
 ```
 
-Then inside `rsu-b2b-sample-client-gui-tomcat` run:
+Then inside `rsu-b2b-sample-client-gui` run:
 
 ```sh
-$ java -jar rsu-b2b-sample-client-gui-tomcat-1.0-war-exec.jar
+$ java -jar rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
 ```
 
 Once Tomcat is running open URL:
 
 ```
-http://localhost:8080/rsu-b2b-sample-client-gui-tomcat
+http://localhost:8080/rsu-b2b-sample-client-gui
 ```
 
 ### Change endpoints
@@ -480,14 +498,12 @@ replace the `endpoints` section with this section:
 ```
 endpoints {
     TFE {
-        VirksomhedKalenderHent = "http://localhost:8080/rsu-b2b-sample-client-gui-tomcat/log"
-        ModtagMomsangivelseForeloebig = "http://localhost:8080/rsu-b2b-sample-client-gui-tomcat/log"
-        MomsangivelseKvitteringHent = "http://localhost:8080/rsu-b2b-sample-client-gui-tomcat/log"
+        VirksomhedKalenderHent = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
+        ModtagMomsangivelseForeloebig = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
+        MomsangivelseKvitteringHent = "http://localhost:8080/rsu-b2b-sample-client-gui/log"
     }
 }
 ```
-
-This is due the Tomcat installation is using context path: `rsu-b2b-sample-client-gui-tomcat`
 
 ### Add new environment and endpoints
 
@@ -521,9 +537,9 @@ endpoints {
 
 ```
 
-### Add another OCES certificate
+### Add another OCES3 certificate
 
-First complete the steps in section: **Installing other OCESII Certificates in the client keystore** (below)
+First complete the steps in section: **Installing other OCES3 Certificates in the client keystore** (below)
 The chosen **alias**, e.g. `myalias` from the import must be added to  `app.conf` as follows:
 
 ```
@@ -550,7 +566,7 @@ certificateCommenNames {
 }
 ```
 
-### Installing other OCESII Certificates in the client key store
+### Installing other OCES3 Certificates in the client key store
 
 The keystore `rsu-b2b-sample-client/src/main/resources/keystore/client-keystore.jks` is already prepared with the
 necessary test certificate that is authorized to access the test environment. However, in the
@@ -565,8 +581,8 @@ $ keytool -changealias -keystore target/VOCES_yours.p12 -storepass $P12_PASSPHRA
 $ keytool -v -importkeystore -srckeystore target/VOCES_yours.p12 -srcstoretype PKCS12 -destkeystore src/main/resources/keystore/client-keystore.jks -deststoretype JKS -deststorepass storepassword -srcstorepass $P12_PASSPHRASE
 ```
 
-Where `P12_PASSPHRASE` and `P12_CURRENT_ALIAS` are passphrase and value of the OCESII certificate,
-respectively. The three keytool command removes the pre configured certificate, changes the the value
+Where `P12_PASSPHRASE` and `P12_CURRENT_ALIAS` are passphrase and value of the OCES3 certificate,
+respectively. The three keytool command removes the pre configured certificate, changes the value
 of the new certificate, and finally imports it into the keystore.
 
 ### Changing certificate in the client trust store

@@ -36,8 +36,8 @@ public class ModtagMomsangivelseForeloebigClient extends BaseClient {
      *
      * @param endpointURL Endpoint of ModtagMomsangivelseForeloebig service
      */
-    public ModtagMomsangivelseForeloebigClient(String endpointURL) {
-        super();
+    public ModtagMomsangivelseForeloebigClient(String endpointURL, String policy) {
+        super(policy);
         this.endpointURL = endpointURL;
     }
 

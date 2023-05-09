@@ -25,7 +25,14 @@ public class BaseClient {
      * Constructor
      */
     public BaseClient() {
-        this.configuration = "rsu-policy.xml";
+        this.configuration = null;
+    }
+
+    /**
+     * Constructor
+     */
+    public BaseClient(String policy) {
+        this.configuration = policy;
     }
 
     protected void configureBus(String cert) {
