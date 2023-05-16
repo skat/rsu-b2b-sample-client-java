@@ -91,7 +91,10 @@ Subject Public Key Algorithm: 4096-bit RSA key
 Version: 3
 ```
 
-### PROD Environment --- Active from 2023-05-25 0800 hours CET
+### PROD Environment 
+
+**Important**: This certificate is scheduled to be active from 2023-05-25 0800 hours CET. Please
+follow this page to check changes in the schedule.
 
 * OCES3 certificate for the [PROD Environment](/pem/ws-security/b2b-prod-system.pem) (**Note**: Expires on April 27, 2026)
 
