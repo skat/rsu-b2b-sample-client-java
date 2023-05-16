@@ -91,4 +91,23 @@ Subject Public Key Algorithm: 4096-bit RSA key
 Version: 3
 ```
 
+### PROD Environment --- Active from 2023-05-25 0800 hours CET
+
+* OCES3 certificate for the [PROD Environment](/pem/ws-security/b2b-prod-system.pem) (**Note**: Expires on April 27, 2026)
+
+```
+Owner: C=DK, OID.2.5.4.97=NTRDK-19552101, O=Skatteforvaltningen, SERIALNUMBER=UI:DK-O:G:bf204036-6f12-4d62-bcc7-5930618355c6, CN=Skatteforvaltningen - B2B gateway TSE
+Issuer: C=DK, O=Den Danske Stat, CN=Den Danske Stat OCES udstedende-CA 1
+Serial number: 77460c604bc7b989f36c6c856a5d28304ce06704
+Valid from: Fri Apr 28 10:09:37 CEST 2023 until: Mon Apr 27 10:09:36 CEST 2026
+Certificate fingerprints:
+	 SHA1: EE:02:32:28:C9:9F:2D:0E:98:A7:D3:8B:B4:B2:37:F1:1F:63:BC:E1
+	 SHA256: 35:BD:E8:B4:CC:11:7F:02:1F:8B:72:AF:0B:43:E7:D8:27:B5:81:30:E8:EA:9F:B4:76:2B:A1:96:44:FC:28:A9
+Signature algorithm name: RSASSA-PSS
+Subject Public Key Algorithm: 3072-bit RSA key
+Version: 3
+```
+
+* Issued by [intermediate CA](https://cms.nemlog-in.dk/media/fgqokbqr/oces-intermediate-ca-pem-cer.txt)
+* Issued by [root CA](https://cms.nemlog-in.dk/media/fdalnwib/ocesrootca-cacert-pem-cer.txt)
 
