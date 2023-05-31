@@ -236,11 +236,41 @@ The fields are:
 
 This Web Service returns a receipts for the submitted VAT Returns once the legal entity has approved the VAT returns. This service returns a receipt (a PDF document) and payment details.
 
-To use this service, you need the transaction id from the 'ModtagMomsangivelseForeloebig' request. This transaction id is placed in the request `<urn1:TransaktionIdentifier>` and not in `<ns:HovedOplysninger>`.
+To use this service, you take the transaction id from the `ModtagMomsangivelseForeloebig_O` response and pass it on the `<urn1:TransaktionIdentifier>` field in the `MomsangivelseKvitteringHent_I` request
+(and not in `<ns:HovedOplysninger>`).
 
 A new unique transaction id is still required in `<ns:HovedOplysninger>`.
 
 **Example:**
+
+A call to the service `ModtagMomsangivelseForeloebig` returns this response:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ns3:ModtagMomsangivelseForeloebig_O
+        xmlns:ns="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" 
+        xmlns:ns2="urn:oio:skat:nemvirksomhed:1.0.0" 
+        xmlns:ns3="urn:oio:skat:nemvirksomhed:ws:1.0.0">
+    <ns:HovedOplysningerSvar>
+        <ns:TransaktionIdentifikator>f1c5ca7a-532d-4d79-a419-f4cdc5660e13</ns:TransaktionIdentifikator>
+        <ns:ServiceIdentifikator>ModtagMomsangivelseForelobig</ns:ServiceIdentifikator>
+        <ns:TransaktionTid>2017-04-24T11:00:00.146+02:00</ns:TransaktionTid>
+        <ns:SvarStruktur/>
+    </ns:HovedOplysningerSvar>
+    <ns2:TransaktionIdentifier>42C8FE92-0AE3-403E-AEFA-F3A0B4508E2E</ns2:TransaktionIdentifier>
+    <ns3:Dybtlink>
+        <ns2:UrlIndicator>https://...</ns2:UrlIndicator>
+    </ns3:Dybtlink>
+</ns3:ModtagMomsangivelseForeloebig_O>
+```
+
+Extract the value from the field `<ns2:TransaktionIdentifier>`:
+
+```
+42C8FE92-0AE3-403E-AEFA-F3A0B4508E2E
+```
+
+Insert the value in the `MomsangivelseKvitteringHent_I` request:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -253,7 +283,7 @@ A new unique transaction id is still required in `<ns:HovedOplysninger>`.
         <ns:TransaktionIdentifikator>33593B0D-E7CF-40A2-AE76-530B72DE6AE3</ns:TransaktionIdentifikator>
         <ns:TransaktionTid>2017-04-24T12:00:00.146+02:00</ns:TransaktionTid>
     </ns:HovedOplysninger>
-    <!-- Enter the transaction id from ModtagMomsangivelseForeloebig here: -->
+    <!-- Enter the TransaktionIdentifier id from ModtagMomsangivelseForeloebig here: -->
     <urn1:TransaktionIdentifier>42C8FE92-0AE3-403E-AEFA-F3A0B4508E2E</urn1:TransaktionIdentifier>
     <urn:Angiver>
         <ns1:VirksomhedSENummerIdentifikator>12345678</ns1:VirksomhedSENummerIdentifikator>
