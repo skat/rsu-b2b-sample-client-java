@@ -1,0 +1,80 @@
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       env:mustUnderstand="1">
+            <wsse:BinarySecurityToken
+                    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                    wsu:Id="bst_2i0AsJLDeZ4D6g31"
+                    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                    ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"
+                    EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">
+                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
+            </wsse:BinarySecurityToken>
+            <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                <dsig:SignedInfo>
+                    <dsig:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <dsig:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                    <dsig:Reference URI="#Timestamp_7WtkuYH1iNE6tDG1">
+                        <dsig:Transforms>
+                            <dsig:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </dsig:Transforms>
+                        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                        <dsig:DigestValue>mEtPEvM1ewDTJAD1a0A9IMFjjFI=</dsig:DigestValue>
+                    </dsig:Reference>
+                    <dsig:Reference URI="#Body_4zgBlM4G1Bjk2A35">
+                        <dsig:Transforms>
+                            <dsig:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </dsig:Transforms>
+                        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                        <dsig:DigestValue>QDCOjrBoC7CmsrF3Y9sdM2vezGs=</dsig:DigestValue>
+                    </dsig:Reference>
+                    <dsig:Reference URI="#bst_2i0AsJLDeZ4D6g31">
+                        <dsig:Transforms>
+                            <dsig:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </dsig:Transforms>
+                        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                        <dsig:DigestValue>vZYulFfQwKPSribW+0Z/Ltzbcpg=</dsig:DigestValue>
+                    </dsig:Reference>
+                </dsig:SignedInfo>
+                <dsig:SignatureValue>
+                    TwujVChob0Ad5X1EbVP/TK7B+o3jYapsmiW4Y2Ot68suvCHevQ5ZRtTRPihawV+18OpiqjGxti9CmJ5WwQFAXJ147ELgnPJFlL2Zn2cahdKQxMruv8JQwbLopan299ZgjaPN3iNkjtHpYEKOxwJTrgxzZNlMe1etZpVLo+ayD3cYdf50HcvW5N+Z+h2sZbY81jzaiBByayrCLLAQw6+hAoTf8v6bTW6lLsu2+7DkIz7ULdmET/bcUpe14bBlIs3XIRk5bkgVoFZzYa/FBZWHHiR2379v9ZpzAfam9Xi72eclKUx9RBnpPVJat+5qvicYXabZ61wXu+Ryw+ZWitqR552OAY1e8O9w/BTW0iOIy5gmQGujS9C/2SGoO3sE+ps04BH78ym/ExGgDVNITj8Y1QePE0tHFUOrW1qhwywSB5z7l+4+TPrt+2hF61BsGgO080gtp1xADAKSE2u467dlW7z+qqg8OtFr2dFconmF287gjW9cgJksVJo17VZc/arU
+                </dsig:SignatureValue>
+                <dsig:KeyInfo>
+                    <wsse:SecurityTokenReference
+                            xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                            xmlns:wsse11="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd"
+                            xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                            wsse11:TokenType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"
+                            wsu:Id="str_e0pdYYeyVAFTGBye">
+                        <wsse:Reference URI="#bst_2i0AsJLDeZ4D6g31"
+                                        ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"/>
+                    </wsse:SecurityTokenReference>
+                </dsig:KeyInfo>
+            </dsig:Signature>
+            <wsu:Timestamp wsu:Id="Timestamp_7WtkuYH1iNE6tDG1"
+                           xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                <wsu:Created>2023-06-07T08:05:30Z</wsu:Created>
+                <wsu:Expires>2023-06-07T08:06:30Z</wsu:Expires>
+            </wsu:Timestamp>
+        </wsse:Security>
+    </env:Header>
+    <env:Body wsu:Id="Body_4zgBlM4G1Bjk2A35"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <nemvirksomhedws:VirksomhedKalenderHent_O xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0"
+                                                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                  xmlns:ctxt="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+                                                  xsi:schemaLocation="urn:oio:skat:nemvirksomhed:ws:1.0.0 VirksomhedKalenderHent_O.xsd">
+            <tsk:HovedOplysningerSvar xmlns:tsk="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/">
+                <tsk:TransaktionIdentifikator>fb7cd3aa-1baf-4a5f-88ae-4d68a56396bf</tsk:TransaktionIdentifikator>
+                <tsk:ServiceIdentifikator>VirksomhedKalenderHentService</tsk:ServiceIdentifikator>
+                <tsk:TransaktionTid>2023-06-07T10:05:27.694+02:00</tsk:TransaktionTid>
+                <tsk:SvarStruktur>
+                    <tsk:FejlStruktur>
+                        <tsk:FejlIdentifikator>4801</tsk:FejlIdentifikator>
+                        <tsk:FejlTekst>RSU er ikke delegeret</tsk:FejlTekst>
+                    </tsk:FejlStruktur>
+                </tsk:SvarStruktur>
+            </tsk:HovedOplysningerSvar>
+        </nemvirksomhedws:VirksomhedKalenderHent_O>
+    </env:Body>
+</env:Envelope>
