@@ -93,7 +93,7 @@ Version: 3
 
 ### PROD Environment 
 
-**Important**: The following certificate replace the existing PRODUCTION certificate on 23. June 2023 at 0800 hours CET. Please
+**Important**: The following certificate replace the existing PRODUCTION certificate on 23. June 2023 at 0700 hours CET. Please
 follow this page to check changes in the schedule.
 
 * OCES3 certificate for the [PROD Environment](/pem/ws-security/b2b-prod-system.pem) (**Note**: Expires on April 27, 2026)
