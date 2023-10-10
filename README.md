@@ -83,7 +83,7 @@ From Skattestyrelsen you will get access the test environment (endpoints and cer
 
 ### Onboard Legal Entities
 
-Before a legal entity can use an RSU for submitting VAT Returns, that legal entity has to delegate rights to that RSU. This is done on skat.dk. A guide on how to delegate rights to an RSU is here: [https://skat.dk/skat.aspx?oid=2234574](https://skat.dk/skat.aspx?oid=2234574)
+Before a legal entity can use an RSU for submitting VAT Returns, that legal entity has to delegate rights to that RSU. This is done on skat.dk. A guide on how to delegate rights to an RSU is here: [https://skat.dk/erhverv/moms/momsregnskab](https://skat.dk/erhverv/moms/momsregnskab)
 
 ## About the web services
 
@@ -348,7 +348,10 @@ Error code | Error Description (EN) | Error Description (DA)
 4810 | The VAT statement draft has not been approved | Foreløbig statement ikke godkendt
 4813 | The VAT statement draft does not exist | Der findes ingen foreløbig momsindberetning
 4816 | The value in `<AngivelsesTypeNavn>` does not exist. Should be "Moms". | Værdien i `<Angivelsestype>` findes ikke. Skal være "Moms".
+4811 | Ingen kvittering, den foreløbige momsangivelse er afvist
+4812 | Kvittering findes ikke
 4817 | The search start date is later than the search end date | Søgedato start er efter søgedatoslut
+
 
 ## About the client
 
