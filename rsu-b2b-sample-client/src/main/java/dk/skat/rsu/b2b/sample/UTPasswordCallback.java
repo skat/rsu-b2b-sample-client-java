@@ -49,7 +49,8 @@ public class UTPasswordCallback implements CallbackHandler {
         Config config = ConfigFactory.parseFile(new File(appConf)).withFallback(ConfigFactory.load());
         List<String> activeAliases = config.getStringList("activeCertificates");
         for (String alias : activeAliases) {
-            passwords.put(alias, config.getString("certificatePassphrases." + alias));
+            // toLowerCase() added due to CXF returning Caused by: org.apache.wss4j.common.ext.WSSecurityException: The private key for the supplied alias does not exist in the keystore
+            passwords.put(alias.toLowerCase(), config.getString("certificatePassphrases." + alias));
         }
     }
 
@@ -61,7 +62,7 @@ public class UTPasswordCallback implements CallbackHandler {
         for (int i = 0; i < callbacks.length; i++) {
             WSPasswordCallback pc = (WSPasswordCallback) callbacks[i];
 
-            String pass = passwords.get(pc.getIdentifier());
+            String pass = passwords.get(pc.getIdentifier().toLowerCase());
             if (pass != null) {
                 pc.setPassword(pass);
                 return;
