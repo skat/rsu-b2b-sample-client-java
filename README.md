@@ -2,10 +2,6 @@
 
 [![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
 
-> **NOTICE REGARDING MitID Erhverv**: This test client supports MitID Erhverv certificates (OCES3).
-> Although the documentation states OCES3 certificates are required the RSU services will support OCES2 certificates until further
-> notices, but no later than end of October 2023.
-
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
 
 > **IMPORTANT NOTICE**: Skatteforvaltningen does not provide any kind of support for the code in this repository.
