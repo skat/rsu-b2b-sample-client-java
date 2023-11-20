@@ -150,10 +150,10 @@ public class ServiceTestForm {
             policiesList.put("rsu-policy.xml","Timestamp-Sign-Encrypt");
 
             // set default values
-            this.service = "VirksomhedKalenderHent";
-            this.environment = "EMCSTEST_SIGNONLY";
-            this.policy = "rsu-policy-sign.xml";
-            this.certificateAlias = "LucaPacioli_ApS_System_Integrationstest_S1";
+            this.service = config.getString("default.service");
+            this.environment = config.getString("default.environment");
+            this.policy = config.getString("default.policy");
+            this.certificateAlias = config.getString("default.certificateAlias");
 
             String virksomhedSENummerIdentifikator = "12345678";
 
