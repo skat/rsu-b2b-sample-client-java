@@ -1,15 +1,7 @@
 package dk.skat.rsu.b2b.sample.mvc;
 
 import com.typesafe.config.Config;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * ServiceTestForm
@@ -17,7 +9,7 @@ import java.util.List;
  * @author SKAT
  * @since 1.0
  */
-public class ServiceTestForm extends ActionForm {
+public class ServiceTestForm {
 
     private String environment;
 
@@ -28,40 +20,146 @@ public class ServiceTestForm extends ActionForm {
     private String policy;
 
     private String request;
+
     private String requestMMF;
+
     private String requestMKH;
+
     private String requestVKH;
 
     private boolean overrideTxInfo;
 
-    private List services;
+    private HashMap<String,String> services;
 
-    private List environments;
+    private HashMap<String,String> environments;
 
-    private List certificates;
+    private HashMap<String,String> certificates;
 
-    private List policiesList;
+    private HashMap<String,String> policiesList;
+
+    public String getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(String environment) {
+        this.environment = environment;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getCertificateAlias() {
+        return certificateAlias;
+    }
+
+    public void setCertificateAlias(String certificateAlias) {
+        this.certificateAlias = certificateAlias;
+    }
+
+    public String getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(String policy) {
+        this.policy = policy;
+    }
+
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
+    }
+
+    public boolean isOverrideTxInfo() {
+        return overrideTxInfo;
+    }
+
+    public void setOverrideTxInfo(boolean overrideTxInfo) {
+        this.overrideTxInfo = overrideTxInfo;
+    }
+
+    public HashMap<String, String> getServices() {
+        return services;
+    }
+
+    public void setServices(HashMap<String, String> services) {
+        this.services = services;
+    }
+
+    public HashMap<String, String> getEnvironments() {
+        return environments;
+    }
+
+    public void setEnvironments(HashMap<String, String> environments) {
+        this.environments = environments;
+    }
+
+    public HashMap<String, String> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(HashMap<String, String> certificates) {
+        this.certificates = certificates;
+    }
+
+    public HashMap<String, String> getPoliciesList() {
+        return policiesList;
+    }
+
+    public void setPoliciesList(HashMap<String, String> policiesList) {
+        this.policiesList = policiesList;
+    }
+
+    public String getRequestMMF() { return requestMMF; }
+
+    public void setRequestMMF(String requestMMF) { this.requestMMF = requestMMF; }
+
+    public String getRequestMKH() { return requestMKH; }
+
+    public void setRequestMKH(String requestMKH) { this.requestMKH = requestMKH; }
+
+    public String getRequestVKH() { return requestVKH; }
+
+    public void setRequestVKH(String requestVKH) { this.requestVKH = requestVKH; }
 
     public ServiceTestForm() {
         try {
-            services = new ArrayList();
-            certificates = new ArrayList();
-            environments = new ArrayList();
-            policiesList = new LinkedList();
+            services = new HashMap<String,String>();
+            certificates = new HashMap<String,String>();
+            environments = new HashMap<String,String>();
+            policiesList = new HashMap<String,String>();
             Config config = ConfigHelper.getConfiguration();
             for (String service : config.getStringList("services")) {
-                services.add(new OptionModel(service, service));
+                HashMap<String, String> map = new HashMap<String,String>();
+                map.put(service,service);
+                services.putAll(map);
             }
             for (String environment : config.getStringList("environments")) {
-                environments.add(new OptionModel(environment, environment));
+                HashMap<String, String> map = new HashMap<String,String>();
+                map.put(environment,environment);
+                environments.putAll(map);
             }
             List<String> activeAliases = config.getStringList("activeCertificates");
             for (String alias : activeAliases) {
-                certificates.add(new OptionModel(alias, config.getString("certificateCommenNames." + alias)));
+                HashMap<String, String> map = new HashMap<String,String>();
+                map.put(alias,config.getString("certificateCommenNames." + alias));
+                certificates.putAll(map);
             }
+            HashMap<String, String> map = new HashMap<String,String>();
+            map.put("rsu-policy-sign.xml","Timestamp-Sign");
 
-            policiesList.add(new OptionModel("rsu-policy-sign.xml", "Timestamp-Sign"));
-            policiesList.add(new OptionModel("rsu-policy.xml", "Timestamp-Sign-Encrypt"));
+            HashMap<String, String> map1 = new HashMap<String,String>();
+            map1.put("rsu-policy.xml","Timestamp-Sign-Encrypt");
+
+            policiesList.putAll(map);
+            policiesList.putAll(map1);
 
             String virksomhedSENummerIdentifikator = "12345678";
 
@@ -128,112 +226,4 @@ public class ServiceTestForm extends ActionForm {
             e.printStackTrace();
         }
     }
-
-
-    public String getEnvironment() {
-        return environment;
-    }
-
-    public void setEnvironment(String environment) {
-        this.environment = environment;
-    }
-
-    public String getService() {
-        return service;
-    }
-
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    public String getCertificateAlias() {
-        return certificateAlias;
-    }
-
-    public void setCertificateAlias(String certificateAlias) {
-        this.certificateAlias = certificateAlias;
-    }
-
-    public String getPolicy() {
-        return policy;
-    }
-
-    public void setPolicy(String policy) {
-        this.policy = policy;
-    }
-
-    public String getRequest() {
-        return request;
-    }
-
-    public void setRequest(String request) {
-        this.request = request;
-    }
-
-    public boolean isOverrideTxInfo() {
-        return overrideTxInfo;
-    }
-
-    public void setOverrideTxInfo(boolean overrideTxInfo) {
-        this.overrideTxInfo = overrideTxInfo;
-    }
-
-    public List getServices() {
-        return services;
-    }
-
-    public void setServices(List services) {
-        this.services = services;
-    }
-
-    public List getEnvironments() {
-        return environments;
-    }
-
-    public void setEnvironments(List environments) {
-        this.environments = environments;
-    }
-
-    public List getCertificates() {
-        return certificates;
-    }
-
-    public void setCertificates(List certificates) {
-        this.certificates = certificates;
-    }
-
-    public List getPoliciesList() {
-        return policiesList;
-    }
-
-    public void setPoliciesList(List policiesList) {
-        this.policiesList = policiesList;
-    }
-
-    public String getRequestMMF() { return requestMMF; }
-
-    public void setRequestMMF(String requestMMF) { this.requestMMF = requestMMF; }
-
-    public String getRequestMKH() { return requestMKH; }
-
-    public void setRequestMKH(String requestMKH) { this.requestMKH = requestMKH; }
-
-    public String getRequestVKH() { return requestVKH; }
-
-    public void setRequestVKH(String requestVKH) { this.requestVKH = requestVKH; }
-
-    @Override
-    public ActionErrors validate(ActionMapping mapping,
-                                 HttpServletRequest request) {
-        ActionErrors errors = new ActionErrors();
-
-        if(getRequest() != null && "".equals(getRequest())) {
-            errors.add("common.test.err",
-                    new ActionMessage("error.test.request.required"));
-            return errors;
-        }
-
-        return errors;
-    }
-
 }

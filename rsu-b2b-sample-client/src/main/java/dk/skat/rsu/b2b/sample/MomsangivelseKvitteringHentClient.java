@@ -2,12 +2,9 @@ package dk.skat.rsu.b2b.sample;
 
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
-import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentIType;
-import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentOType;
 import oio.skat.nemvirksomhed.ws._1_0_0.MomsangivelseKvitteringHentServiceBindingQSService;
 import oio.skat.nemvirksomhed.ws._1_0_0.MomsangivelseKvitteringHentServicePortType;
 import org.apache.commons.io.IOUtils;
-import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;

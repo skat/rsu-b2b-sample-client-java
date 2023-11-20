@@ -4,7 +4,6 @@ import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentOType;
 import oio.skat.nemvirksomhed.ws._1_0_0.VirksomhedKalenderHentServiceBindingQSService;
 import oio.skat.nemvirksomhed.ws._1_0_0.VirksomhedKalenderHentServicePortType;
-import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
