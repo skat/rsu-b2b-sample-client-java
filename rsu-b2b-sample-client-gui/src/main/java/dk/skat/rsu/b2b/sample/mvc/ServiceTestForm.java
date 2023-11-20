@@ -137,29 +137,23 @@ public class ServiceTestForm {
             policiesList = new HashMap<String,String>();
             Config config = ConfigHelper.getConfiguration();
             for (String service : config.getStringList("services")) {
-                HashMap<String, String> map = new HashMap<String,String>();
-                map.put(service,service);
-                services.putAll(map);
+                services.put(service,service);
             }
             for (String environment : config.getStringList("environments")) {
-                HashMap<String, String> map = new HashMap<String,String>();
-                map.put(environment,environment);
-                environments.putAll(map);
+                environments.put(environment,environment);
             }
             List<String> activeAliases = config.getStringList("activeCertificates");
             for (String alias : activeAliases) {
-                HashMap<String, String> map = new HashMap<String,String>();
-                map.put(alias,config.getString("certificateCommenNames." + alias));
-                certificates.putAll(map);
+                certificates.put(alias,config.getString("certificateCommenNames." + alias));
             }
-            HashMap<String, String> map = new HashMap<String,String>();
-            map.put("rsu-policy-sign.xml","Timestamp-Sign");
+            policiesList.put("rsu-policy-sign.xml","Timestamp-Sign");
+            policiesList.put("rsu-policy.xml","Timestamp-Sign-Encrypt");
 
-            HashMap<String, String> map1 = new HashMap<String,String>();
-            map1.put("rsu-policy.xml","Timestamp-Sign-Encrypt");
-
-            policiesList.putAll(map);
-            policiesList.putAll(map1);
+            // set default values
+            this.service = "VirksomhedKalenderHent";
+            this.environment = "EMCSTEST_SIGNONLY";
+            this.policy = "rsu-policy-sign.xml";
+            this.certificateAlias = "LucaPacioli_ApS_System_Integrationstest_S1";
 
             String virksomhedSENummerIdentifikator = "12345678";
 

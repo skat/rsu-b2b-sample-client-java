@@ -46,6 +46,13 @@ public class ServiceTestAction extends ActionSupport {
         this.serviceTestForm = serviceTestForm;
     }
 
+    public String init()
+            throws Exception {
+        this.serviceTestForm = new ServiceTestForm();
+        return SUCCESS;
+    }
+
+
     @Override
     public String execute()
             throws Exception {

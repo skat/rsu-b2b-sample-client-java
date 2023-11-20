@@ -10,7 +10,12 @@
   <constant name="struts.xwork.chainingcopyMessages" value="true"></constant>
 
   <package name="basicstruts6" extends="struts-default" namespace="/">
-    <default-action-ref name="action"></default-action-ref>
+    <default-action-ref name="init"></default-action-ref>
+
+
+    <action name="init" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestAction" method="init">
+      <result name="success">/WEB-INF/app/index.jsp</result>
+    </action>
 
     <action name="action" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestAction" method="execute">
       <result name="success">/WEB-INF/app/index.jsp</result>
