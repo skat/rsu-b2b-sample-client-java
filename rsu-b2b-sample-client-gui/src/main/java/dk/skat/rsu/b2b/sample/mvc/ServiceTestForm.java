@@ -29,13 +29,13 @@ public class ServiceTestForm {
 
     private boolean overrideTxInfo;
 
-    private HashMap<String,String> services;
+    private Map<String,String> services;
 
-    private HashMap<String,String> environments;
+    private Map<String,String> environments;
 
-    private HashMap<String,String> certificates;
+    private Map<String,String> certificates;
 
-    private HashMap<String,String> policiesList;
+    private Map<String,String> policiesList;
 
     public String getEnvironment() {
         return environment;
@@ -85,7 +85,7 @@ public class ServiceTestForm {
         this.overrideTxInfo = overrideTxInfo;
     }
 
-    public HashMap<String, String> getServices() {
+    public Map<String, String> getServices() {
         return services;
     }
 
@@ -93,7 +93,7 @@ public class ServiceTestForm {
         this.services = services;
     }
 
-    public HashMap<String, String> getEnvironments() {
+    public Map<String, String> getEnvironments() {
         return environments;
     }
 
@@ -101,7 +101,7 @@ public class ServiceTestForm {
         this.environments = environments;
     }
 
-    public HashMap<String, String> getCertificates() {
+    public Map<String, String> getCertificates() {
         return certificates;
     }
 
@@ -109,7 +109,7 @@ public class ServiceTestForm {
         this.certificates = certificates;
     }
 
-    public HashMap<String, String> getPoliciesList() {
+    public Map<String, String> getPoliciesList() {
         return policiesList;
     }
 
