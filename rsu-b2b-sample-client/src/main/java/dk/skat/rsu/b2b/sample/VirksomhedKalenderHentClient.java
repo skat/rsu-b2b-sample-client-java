@@ -1,13 +1,14 @@
 package dk.skat.rsu.b2b.sample;
 
+
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.ws.BindingProvider;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentOType;
 import oio.skat.nemvirksomhed.ws._1_0_0.VirksomhedKalenderHentServiceBindingQSService;
 import oio.skat.nemvirksomhed.ws._1_0_0.VirksomhedKalenderHentServicePortType;
 
-import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.ws.BindingProvider;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
@@ -55,11 +56,11 @@ public class VirksomhedKalenderHentClient extends BaseClient {
     public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
 
+
         configureBus(certicateAlias);
 
         VirksomhedKalenderHentServiceBindingQSService service = new VirksomhedKalenderHentServiceBindingQSService();
         VirksomhedKalenderHentServicePortType port = service.getVirksomhedKalenderHentServiceBindingQSPort();
-
         // Set endpoint of service.
         BindingProvider bp = (BindingProvider)port;
         bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, this.endpointURL);
@@ -72,8 +73,9 @@ public class VirksomhedKalenderHentClient extends BaseClient {
             virksomhedKalenderHentIType.getHovedOplysninger().setTransaktionTid(getTransactionTime());
             LOGGER.info("HovedOplysninger populated with new Transaction Id and Time");
         }
-
+        System.out.println("før");
         VirksomhedKalenderHentOType out = port.getVirksomhedKalenderHent(virksomhedKalenderHentIType);
+        System.out.println("efter");
         return VirksomhedKalenderHentMarshalling.toString(out);
     }
 

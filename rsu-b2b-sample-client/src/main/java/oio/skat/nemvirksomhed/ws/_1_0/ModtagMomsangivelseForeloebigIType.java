@@ -2,16 +2,16 @@
 package oio.skat.nemvirksomhed.ws._1_0;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerType;
+import jakarta.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for ModtagMomsangivelseForeloebig_IType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ModtagMomsangivelseForeloebig_IType"&gt;
  *   &lt;complexContent&gt;
@@ -73,8 +73,8 @@ import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysnin
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="ModtagMomsangivelseForeloebig_I")
@@ -91,11 +91,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
     /**
      * Gets the value of the hovedOplysninger property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HovedOplysningerType }
-     *     
+     *
      */
     public HovedOplysningerType getHovedOplysninger() {
         return hovedOplysninger;
@@ -103,11 +103,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
     /**
      * Sets the value of the hovedOplysninger property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HovedOplysningerType }
-     *     
+     *
      */
     public void setHovedOplysninger(HovedOplysningerType value) {
         this.hovedOplysninger = value;
@@ -115,11 +115,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
     /**
      * Gets the value of the angivelse property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ModtagMomsangivelseForeloebigIType.Angivelse }
-     *     
+     *
      */
     public ModtagMomsangivelseForeloebigIType.Angivelse getAngivelse() {
         return angivelse;
@@ -127,11 +127,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
     /**
      * Sets the value of the angivelse property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ModtagMomsangivelseForeloebigIType.Angivelse }
-     *     
+     *
      */
     public void setAngivelse(ModtagMomsangivelseForeloebigIType.Angivelse value) {
         this.angivelse = value;
@@ -140,9 +140,9 @@ public class ModtagMomsangivelseForeloebigIType {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
@@ -193,8 +193,8 @@ public class ModtagMomsangivelseForeloebigIType {
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
@@ -213,11 +213,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * Gets the value of the angiverVirksomhedSENummer property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link AngiverVirksomhedSENummerType }
-         *     
+         *
          */
         public AngiverVirksomhedSENummerType getAngiverVirksomhedSENummer() {
             return angiverVirksomhedSENummer;
@@ -225,11 +225,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * Sets the value of the angiverVirksomhedSENummer property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link AngiverVirksomhedSENummerType }
-         *     
+         *
          */
         public void setAngiverVirksomhedSENummer(AngiverVirksomhedSENummerType value) {
             this.angiverVirksomhedSENummer = value;
@@ -237,11 +237,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * Gets the value of the angivelsesoplysninger property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesoplysninger }
-         *     
+         *
          */
         public ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesoplysninger getAngivelsesoplysninger() {
             return angivelsesoplysninger;
@@ -249,11 +249,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * Sets the value of the angivelsesoplysninger property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesoplysninger }
-         *     
+         *
          */
         public void setAngivelsesoplysninger(ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesoplysninger value) {
             this.angivelsesoplysninger = value;
@@ -261,11 +261,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * Gets the value of the angivelsesafgifter property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesafgifter }
-         *     
+         *
          */
         public ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesafgifter getAngivelsesafgifter() {
             return angivelsesafgifter;
@@ -273,11 +273,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * Sets the value of the angivelsesafgifter property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesafgifter }
-         *     
+         *
          */
         public void setAngivelsesafgifter(ModtagMomsangivelseForeloebigIType.Angivelse.Angivelsesafgifter value) {
             this.angivelsesafgifter = value;
@@ -286,9 +286,9 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * <p>Java class for anonymous complex type.
-         * 
+         *
          * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
+         *
          * <pre>
          * &lt;complexType&gt;
          *   &lt;complexContent&gt;
@@ -316,8 +316,8 @@ public class ModtagMomsangivelseForeloebigIType {
          *   &lt;/complexContent&gt;
          * &lt;/complexType&gt;
          * </pre>
-         * 
-         * 
+         *
+         *
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
@@ -378,11 +378,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseAfgiftTilsvarBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseAfgiftTilsvarBeloeb() {
                 return momsAngivelseAfgiftTilsvarBeloeb;
@@ -390,11 +390,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseAfgiftTilsvarBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseAfgiftTilsvarBeloeb(BigInteger value) {
                 this.momsAngivelseAfgiftTilsvarBeloeb = value;
@@ -402,11 +402,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseCO2AfgiftBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseCO2AfgiftBeloeb() {
                 return momsAngivelseCO2AfgiftBeloeb;
@@ -414,11 +414,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseCO2AfgiftBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseCO2AfgiftBeloeb(BigInteger value) {
                 this.momsAngivelseCO2AfgiftBeloeb = value;
@@ -426,11 +426,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseEUKoebBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseEUKoebBeloeb() {
                 return momsAngivelseEUKoebBeloeb;
@@ -438,11 +438,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseEUKoebBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseEUKoebBeloeb(BigInteger value) {
                 this.momsAngivelseEUKoebBeloeb = value;
@@ -450,11 +450,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseEUSalgBeloebVarerBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseEUSalgBeloebVarerBeloeb() {
                 return momsAngivelseEUSalgBeloebVarerBeloeb;
@@ -462,11 +462,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseEUSalgBeloebVarerBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseEUSalgBeloebVarerBeloeb(BigInteger value) {
                 this.momsAngivelseEUSalgBeloebVarerBeloeb = value;
@@ -474,11 +474,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseIkkeEUSalgBeloebVarerBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseIkkeEUSalgBeloebVarerBeloeb() {
                 return momsAngivelseIkkeEUSalgBeloebVarerBeloeb;
@@ -486,11 +486,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseIkkeEUSalgBeloebVarerBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseIkkeEUSalgBeloebVarerBeloeb(BigInteger value) {
                 this.momsAngivelseIkkeEUSalgBeloebVarerBeloeb = value;
@@ -498,11 +498,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseElAfgiftBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseElAfgiftBeloeb() {
                 return momsAngivelseElAfgiftBeloeb;
@@ -510,11 +510,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseElAfgiftBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseElAfgiftBeloeb(BigInteger value) {
                 this.momsAngivelseElAfgiftBeloeb = value;
@@ -522,11 +522,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseEksportOmsaetningBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseEksportOmsaetningBeloeb() {
                 return momsAngivelseEksportOmsaetningBeloeb;
@@ -534,11 +534,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseEksportOmsaetningBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseEksportOmsaetningBeloeb(BigInteger value) {
                 this.momsAngivelseEksportOmsaetningBeloeb = value;
@@ -546,11 +546,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseGasAfgiftBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseGasAfgiftBeloeb() {
                 return momsAngivelseGasAfgiftBeloeb;
@@ -558,11 +558,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseGasAfgiftBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseGasAfgiftBeloeb(BigInteger value) {
                 this.momsAngivelseGasAfgiftBeloeb = value;
@@ -570,11 +570,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseKoebsMomsBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseKoebsMomsBeloeb() {
                 return momsAngivelseKoebsMomsBeloeb;
@@ -582,11 +582,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseKoebsMomsBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseKoebsMomsBeloeb(BigInteger value) {
                 this.momsAngivelseKoebsMomsBeloeb = value;
@@ -594,11 +594,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseKulAfgiftBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseKulAfgiftBeloeb() {
                 return momsAngivelseKulAfgiftBeloeb;
@@ -606,11 +606,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseKulAfgiftBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseKulAfgiftBeloeb(BigInteger value) {
                 this.momsAngivelseKulAfgiftBeloeb = value;
@@ -618,11 +618,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseMomsEUKoebBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseMomsEUKoebBeloeb() {
                 return momsAngivelseMomsEUKoebBeloeb;
@@ -630,11 +630,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseMomsEUKoebBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseMomsEUKoebBeloeb(BigInteger value) {
                 this.momsAngivelseMomsEUKoebBeloeb = value;
@@ -642,11 +642,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseMomsEUYdelserBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseMomsEUYdelserBeloeb() {
                 return momsAngivelseMomsEUYdelserBeloeb;
@@ -654,11 +654,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseMomsEUYdelserBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseMomsEUYdelserBeloeb(BigInteger value) {
                 this.momsAngivelseMomsEUYdelserBeloeb = value;
@@ -666,11 +666,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseOlieAfgiftBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseOlieAfgiftBeloeb() {
                 return momsAngivelseOlieAfgiftBeloeb;
@@ -678,11 +678,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseOlieAfgiftBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseOlieAfgiftBeloeb(BigInteger value) {
                 this.momsAngivelseOlieAfgiftBeloeb = value;
@@ -690,11 +690,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseSalgsMomsBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseSalgsMomsBeloeb() {
                 return momsAngivelseSalgsMomsBeloeb;
@@ -702,11 +702,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseSalgsMomsBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseSalgsMomsBeloeb(BigInteger value) {
                 this.momsAngivelseSalgsMomsBeloeb = value;
@@ -714,11 +714,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseVandAfgiftBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseVandAfgiftBeloeb() {
                 return momsAngivelseVandAfgiftBeloeb;
@@ -726,11 +726,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseVandAfgiftBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseVandAfgiftBeloeb(BigInteger value) {
                 this.momsAngivelseVandAfgiftBeloeb = value;
@@ -738,11 +738,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseEUKoebYdelseBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseEUKoebYdelseBeloeb() {
                 return momsAngivelseEUKoebYdelseBeloeb;
@@ -750,11 +750,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseEUKoebYdelseBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseEUKoebYdelseBeloeb(BigInteger value) {
                 this.momsAngivelseEUKoebYdelseBeloeb = value;
@@ -762,11 +762,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the momsAngivelseEUSalgYdelseBeloeb property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public BigInteger getMomsAngivelseEUSalgYdelseBeloeb() {
                 return momsAngivelseEUSalgYdelseBeloeb;
@@ -774,11 +774,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the momsAngivelseEUSalgYdelseBeloeb property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link BigInteger }
-             *     
+             *
              */
             public void setMomsAngivelseEUSalgYdelseBeloeb(BigInteger value) {
                 this.momsAngivelseEUSalgYdelseBeloeb = value;
@@ -789,9 +789,9 @@ public class ModtagMomsangivelseForeloebigIType {
 
         /**
          * <p>Java class for anonymous complex type.
-         * 
+         *
          * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
+         *
          * <pre>
          * &lt;complexType&gt;
          *   &lt;complexContent&gt;
@@ -804,8 +804,8 @@ public class ModtagMomsangivelseForeloebigIType {
          *   &lt;/complexContent&gt;
          * &lt;/complexType&gt;
          * </pre>
-         * 
-         * 
+         *
+         *
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
@@ -823,11 +823,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the angivelsePeriodeFraDato property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link XMLGregorianCalendar }
-             *     
+             *
              */
             public XMLGregorianCalendar getAngivelsePeriodeFraDato() {
                 return angivelsePeriodeFraDato;
@@ -835,11 +835,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the angivelsePeriodeFraDato property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link XMLGregorianCalendar }
-             *     
+             *
              */
             public void setAngivelsePeriodeFraDato(XMLGregorianCalendar value) {
                 this.angivelsePeriodeFraDato = value;
@@ -847,11 +847,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Gets the value of the angivelsePeriodeTilDato property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link XMLGregorianCalendar }
-             *     
+             *
              */
             public XMLGregorianCalendar getAngivelsePeriodeTilDato() {
                 return angivelsePeriodeTilDato;
@@ -859,11 +859,11 @@ public class ModtagMomsangivelseForeloebigIType {
 
             /**
              * Sets the value of the angivelsePeriodeTilDato property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link XMLGregorianCalendar }
-             *     
+             *
              */
             public void setAngivelsePeriodeTilDato(XMLGregorianCalendar value) {
                 this.angivelsePeriodeTilDato = value;

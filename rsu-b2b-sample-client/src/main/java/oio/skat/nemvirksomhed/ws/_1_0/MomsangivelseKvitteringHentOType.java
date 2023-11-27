@@ -2,17 +2,17 @@
 package oio.skat.nemvirksomhed.ws._1_0;
 
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerSvarType;
+import jakarta.xml.bind.annotation.*;
 
-import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.math.BigInteger;
 
 
 /**
  * <p>Java class for MomsangivelseKvitteringHent_OType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="MomsangivelseKvitteringHent_OType"&gt;
  *   &lt;complexContent&gt;
@@ -48,8 +48,8 @@ import java.math.BigInteger;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="MomsangivelseKvitteringHent_O")
@@ -142,9 +142,9 @@ public class MomsangivelseKvitteringHentOType {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
@@ -158,8 +158,8 @@ public class MomsangivelseKvitteringHentOType {
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
@@ -179,11 +179,11 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Gets the value of the ocrLinie property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link OCRLinieType }
-         *     
+         *
          */
         public OCRLinieType getOCRLinie() {
             return ocrLinie;
@@ -191,11 +191,11 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Sets the value of the ocrLinie property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link OCRLinieType }
-         *     
+         *
          */
         public void setOCRLinie(OCRLinieType value) {
             this.ocrLinie = value;
@@ -203,11 +203,11 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Gets the value of the betalingIkkeBetaltBeloeb property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link BigInteger }
-         *     
+         *
          */
         public BigInteger getBetalingIkkeBetaltBeloeb() {
             return betalingIkkeBetaltBeloeb;
@@ -215,11 +215,11 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Sets the value of the betalingIkkeBetaltBeloeb property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link BigInteger }
-         *     
+         *
          */
         public void setBetalingIkkeBetaltBeloeb(BigInteger value) {
             this.betalingIkkeBetaltBeloeb = value;
@@ -227,11 +227,11 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Gets the value of the angivelseFristKalenderBetalingDato property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public XMLGregorianCalendar getAngivelseFristKalenderBetalingDato() {
             return angivelseFristKalenderBetalingDato;
@@ -239,11 +239,11 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Sets the value of the angivelseFristKalenderBetalingDato property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public void setAngivelseFristKalenderBetalingDato(XMLGregorianCalendar value) {
             this.angivelseFristKalenderBetalingDato = value;
@@ -254,9 +254,9 @@ public class MomsangivelseKvitteringHentOType {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
@@ -268,8 +268,8 @@ public class MomsangivelseKvitteringHentOType {
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
@@ -282,7 +282,7 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Gets the value of the dokumentFilIndholdData property.
-         * 
+         *
          * @return
          *     possible object is
          *     byte[]
@@ -293,7 +293,7 @@ public class MomsangivelseKvitteringHentOType {
 
         /**
          * Sets the value of the dokumentFilIndholdData property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     byte[]
