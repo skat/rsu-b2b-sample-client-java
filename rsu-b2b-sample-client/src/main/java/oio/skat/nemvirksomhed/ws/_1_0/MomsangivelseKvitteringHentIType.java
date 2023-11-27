@@ -2,7 +2,6 @@
 package oio.skat.nemvirksomhed.ws._1_0;
 
 
-
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerType;
 import jakarta.xml.bind.annotation.*;
 

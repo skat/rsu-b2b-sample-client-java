@@ -1,6 +1,5 @@
 package dk.skat.rsu.b2b.sample;
 
-
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;

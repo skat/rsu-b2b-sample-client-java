@@ -1,6 +1,5 @@
 package dk.skat.rsu.b2b.sample;
 
-
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.ws.BindingProvider;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentIType;
@@ -56,7 +55,6 @@ public class VirksomhedKalenderHentClient extends BaseClient {
     public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
 
-
         configureBus(certicateAlias);
 
         VirksomhedKalenderHentServiceBindingQSService service = new VirksomhedKalenderHentServiceBindingQSService();
@@ -73,9 +71,7 @@ public class VirksomhedKalenderHentClient extends BaseClient {
             virksomhedKalenderHentIType.getHovedOplysninger().setTransaktionTid(getTransactionTime());
             LOGGER.info("HovedOplysninger populated with new Transaction Id and Time");
         }
-        System.out.println("før");
         VirksomhedKalenderHentOType out = port.getVirksomhedKalenderHent(virksomhedKalenderHentIType);
-        System.out.println("efter");
         return VirksomhedKalenderHentMarshalling.toString(out);
     }
 

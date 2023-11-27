@@ -1,6 +1,5 @@
 package dk.skat.rsu.b2b.sample;
 
-
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.ws.BindingProvider;
 import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigIType;
