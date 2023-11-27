@@ -8,7 +8,6 @@ import oio.skat.nemvirksomhed.ws._1_0_0.ModtagMomsangivelseForeloebigServiceBind
 import oio.skat.nemvirksomhed.ws._1_0_0.ModtagMomsangivelseForeloebigServicePortType;
 import org.apache.commons.io.IOUtils;
 
-
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;

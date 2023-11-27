@@ -14,6 +14,7 @@ import java.io.InputStream;
 
 public class VirksomhedKalenderHentClientTest {
 
+    // IMPORTANT: Place 'app.conf' in root of 'rsu-b2b-sample-client' module before run
     @Ignore("Test manually in IDE")
     @Test
     public void testClient() throws JAXBException, DatatypeConfigurationException, IOException {
@@ -24,7 +25,7 @@ public class VirksomhedKalenderHentClientTest {
 
         String endpoint = config.getString("endpoints.EMCSTEST_SIGNONLY.VirksomhedKalenderHent");
         String cerAlias = "LucaPacioli_ApS_System_Integrationstest_S1";
-        VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint, "rsu-policy-sign.xml");
+        VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint, "rsu-policy-sign-classpath.xml");
         client.invoke(doc, cerAlias, true);
 
     }
