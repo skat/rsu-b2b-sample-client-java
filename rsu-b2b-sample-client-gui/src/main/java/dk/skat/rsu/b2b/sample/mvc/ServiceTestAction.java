@@ -91,12 +91,6 @@ public class ServiceTestAction extends ActionSupport {
             if ("VirksomhedKalenderHent".equals(service)) {
                 VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint, policy);
                 serviceResponse = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
-                System.out.println("enpoint = " + endpoint);
-                System.out.println("policy = " + policy);
-                System.out.println("requestAsString = " + requestAsString);
-                System.out.println("cert = " + cert);
-                System.out.println("this.serviceTestForm.isOverrideTxInfo() = " + this.serviceTestForm.isOverrideTxInfo());
-                System.out.println("serviceResponse = " + serviceResponse);
             }
             if ("ModtagMomsangivelseForeloebig".equals(service)) {
                 ModtagMomsangivelseForeloebigClient client = new ModtagMomsangivelseForeloebigClient(endpoint, policy);

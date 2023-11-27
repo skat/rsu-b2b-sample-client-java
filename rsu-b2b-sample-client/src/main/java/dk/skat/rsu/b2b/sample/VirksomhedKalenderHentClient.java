@@ -54,6 +54,23 @@ public class VirksomhedKalenderHentClient extends BaseClient {
      */
     public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
+        InputStream inputStream = IOUtils.toInputStream(document, "UTF-8");
+        VirksomhedKalenderHentIType virksomhedKalenderHentIType = VirksomhedKalenderHentMarshalling.toObject(inputStream);
+        return invoke(virksomhedKalenderHentIType, certicateAlias, overrideHovedoplysninger);
+    }
+
+    /**
+         * Call VirksomhedKalenderHent service
+         *
+         * @param document                 Request document as String
+         * @param certicateAlias           Alias of certificate to use in call
+         * @param overrideHovedoplysninger If transaction Id and Time should be regenerated
+         * @throws IOException                    N/A
+         * @throws JAXBException                  N/A
+         * @throws DatatypeConfigurationException N/A
+         */
+    public String invoke(VirksomhedKalenderHentIType virksomhedKalenderHentIType, String certicateAlias, boolean overrideHovedoplysninger)
+            throws IOException, DatatypeConfigurationException, JAXBException {
 
         configureBus(certicateAlias);
 
@@ -63,8 +80,6 @@ public class VirksomhedKalenderHentClient extends BaseClient {
         BindingProvider bp = (BindingProvider)port;
         bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, this.endpointURL);
 
-        InputStream inputStream = IOUtils.toInputStream(document, "UTF-8");
-        VirksomhedKalenderHentIType virksomhedKalenderHentIType = VirksomhedKalenderHentMarshalling.toObject(inputStream);
 
         if (overrideHovedoplysninger) {
             virksomhedKalenderHentIType.getHovedOplysninger().setTransaktionIdentifikator(TransactionIdGenerator.getTransactionId());
