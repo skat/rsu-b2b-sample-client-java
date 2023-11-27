@@ -5,8 +5,6 @@ import jakarta.xml.bind.JAXBException;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentIType;
 import org.junit.Test;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
