@@ -1,5 +1,5 @@
 sudo: false
-dist: precise
+dist: focal
 group: deprecated
 
 language: java
@@ -12,5 +12,4 @@ jdk:
 
 script:
   - mvn --version
-  # Skip unit test in CI
   - mvn clean install
