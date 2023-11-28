@@ -16,6 +16,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -153,14 +154,14 @@ public class ServiceTestAction extends ActionSupport {
             }
             addActionMessage("lastResponse"+serviceResponse);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error", e);
             serviceResponse = e.getMessage();
             addActionMessage("error.test.request.failed" + serviceResponse);
         }
 
         this.serviceResponse = serviceResponse;
         LOGGER.info("response = " + serviceResponse);
-        return "success";
+        return SUCCESS;
     }
 
 

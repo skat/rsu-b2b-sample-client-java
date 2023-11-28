@@ -12,10 +12,8 @@
       <title>RSU Sample GUI</title>
 
       <!-- Bootstrap core CSS -->
-      <link href="${request.contextPath}assets/css/bootstrap.min.css" rel="stylesheet">
+      <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
 
-      <!-- Custom styles for this template -->
-      <link href="${request.contextPath}/assets/css/starter-template.css" rel="stylesheet">
   </head>
 
   <body>
@@ -97,7 +95,7 @@
 
                           <div class="form-group">
                             <label for="request">Request</label>
-                            <s:textarea name="serviceTestForm.getRequest()" class="form-control" id="request" rows="16"></s:textarea>
+                            <s:textarea name="serviceTestForm.request" class="form-control" id="request" rows="16"></s:textarea>
                           </div>
 
                           <input type="submit" value="Test" class="btn btn-primary"/>
@@ -136,20 +134,18 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-    <script src="${request.contextPath}/assets/js/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
     <script>
         function setRequest (selectedIndex) {
-            if (selectedIndex.indexOf("ModtagMomsangivelseForeloebig") != -1 )
+            if (selectedIndex.indexOf("ModtagMomsangivelseForeloebig") !== -1 )
             {
                 document.getElementById('request').value = document.getElementById('request_mmf').value;
             }
             else
             {
-                if (selectedIndex.indexOf("MomsangivelseKvitteringHent") != -1 )
+                if (selectedIndex.indexOf("MomsangivelseKvitteringHent") !== -1 )
                 {
                     document.getElementById('request').value = document.getElementById('request_mkh').value;
                 }
