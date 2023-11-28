@@ -1,5 +1,5 @@
 sudo: false
-dist: precise
+dist: trusty
 group: deprecated
 
 language: java
@@ -9,6 +9,13 @@ notifications:
 
 jdk:
   - oraclejdk8
+
+before_install:
+  - wget https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+  - sha512sum -c apache-maven-3.6.3-bin.tar.gz.sha512
+  - tar xzvf apache-maven-3.6.3-bin.tar.gz
+  - export PATH=`pwd`/apache-maven-3.6.3/bin:$PATH
+  - mvn -v
 
 script:
   - mvn --version
