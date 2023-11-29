@@ -17,7 +17,7 @@
       <result name="success">/WEB-INF/app/index.jsp</result>
     </action>
 
-    <action name="action" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestAction" method="execute">
+    <action name="invokeService" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestAction" method="execute">
       <result name="success">/WEB-INF/app/index.jsp</result>
     </action>
 

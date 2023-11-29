@@ -11,7 +11,10 @@ import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigOType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
 import org.apache.commons.io.IOUtils;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import java.io.InputStream;
@@ -102,7 +105,8 @@ public class ServiceTestAction extends ActionSupport {
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 ModtagMomsangivelseForeloebigOType asObject = (ModtagMomsangivelseForeloebigOType) unmarshaller.unmarshal(inputStream);
                 if (asObject.getDybtlink() != null) {
-                    addActionMessage("confirmUrl" + asObject.getDybtlink().getUrlIndicator());
+                    addActionMessage("Confirm Link (as text): " + asObject.getDybtlink().getUrlIndicator());
+                    addActionMessage("Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\">Click here</a>");
                 }
             }
             if ("MomsangivelseKvitteringHent".equals(service)) {
@@ -129,18 +133,13 @@ public class ServiceTestAction extends ActionSupport {
                 for (Object o : advisStrukturOrFejlStruktur) {
                     if (o instanceof AdvisStrukturType) {
                         AdvisStrukturType advisStrukturType = (AdvisStrukturType) o;
-                        String message = "[" + advisStrukturType.getAdvisIdentifikator().toString() + "]" + advisStrukturType.getAdvisTekst();
-                        String advisId = advisStrukturType.getAdvisIdentifikator().toString();
-                        if ("4810".equals(advisId) || "4812".equals(advisId)) {
-                            // 4810 = VAT return has yet to be approved in self service app.
-                            addActionMessage("error.test.response.failed" + message);
-                            failed = true;
-                        }
+                        addActionMessage(advisStrukturType.getAdvisIdentifikator().toString() + " : " + advisStrukturType.getAdvisTekst());
+                        failed = true;
                     }
                     if (o instanceof FejlStrukturType) {
                         FejlStrukturType fejlStrukturType = (FejlStrukturType) o;
                         String message = fejlStrukturType.getFejlIdentifikator().toString() + fejlStrukturType.getFejlTekst();
-                        addActionMessage("error.test.response.failed" + message);
+                        addActionError(fejlStrukturType.getFejlIdentifikator().toString() + " : " + fejlStrukturType.getFejlTekst());
                         failed = true;
                     }
                 }
@@ -149,10 +148,11 @@ public class ServiceTestAction extends ActionSupport {
                     receipt.setTransactionId(receiptTransactionId);
                     receipt.setReceipt(asObject.getPDFkvittering().getDokumentFilIndholdData());
                     ReceiptsStorage.put(receipt);
-                    addActionMessage("downloadReceipt" + receipt.getTransactionId());
+                    HttpServletRequest request = ServletActionContext.getRequest();
+                    String contextPath = request.getContextPath();
+                    addActionMessage("Download receipt (PDF): <a href=\"" + contextPath +"/receipt?transactionId=" + receipt.getTransactionId() + "\" target=\"_blank\">Download PDF</a>");
                 }
             }
-            addActionMessage("lastResponse"+serviceResponse);
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error", e);
             serviceResponse = e.getMessage();

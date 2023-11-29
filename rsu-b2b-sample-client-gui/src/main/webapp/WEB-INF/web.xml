@@ -12,7 +12,7 @@
 
     <filter-mapping>
         <filter-name>struts2</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/app/*</url-pattern>
     </filter-mapping>
 
     <servlet>
@@ -35,6 +35,6 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>init.action</welcome-file>
+        <welcome-file>WEB-INF/start.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

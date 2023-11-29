@@ -45,7 +45,7 @@
 
                   <div class="card-body">
 
-                      <s:form action="action" method="post">
+                      <s:form action="app/invokeService" method="post">
 
                           <s:hidden name="serviceTestForm.requestMMF" id="request_mmf"/>
                           <s:hidden name="serviceTestForm.requestMKH" id="request_mkh"/>
@@ -117,6 +117,26 @@
                   </div>
 
                   <div class="card-body">
+                      <s:if test="hasActionErrors()">
+                          <s:iterator value="actionErrors">
+                              <div class="alert alert-danger" role="alert">
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <s:property/>
+                              </div>
+                          </s:iterator>
+                      </s:if>
+                      <s:if test="hasActionMessages()">
+                          <s:iterator value="actionMessages">
+                              <div class="alert alert-info" role="alert">
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <s:property escapeHtml="false"/>
+                              </div>
+                          </s:iterator>
+                      </s:if>
                     <s:form name="response" action="#" method="get">
                       <textarea class="form-control" id="response" rows="24"><s:property value="serviceResponse"/></textarea>
                     </s:form>
