@@ -105,8 +105,7 @@ public class ServiceTestAction extends ActionSupport {
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 ModtagMomsangivelseForeloebigOType asObject = (ModtagMomsangivelseForeloebigOType) unmarshaller.unmarshal(inputStream);
                 if (asObject.getDybtlink() != null) {
-                    addActionMessage("Confirm Link (as text): " + asObject.getDybtlink().getUrlIndicator());
-                    addActionMessage("Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\">Click here</a>");
+                    addActionMessage("Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\" target=\"_blank\">" + asObject.getDybtlink().getUrlIndicator() + "</a>");
                 }
             }
             if ("MomsangivelseKvitteringHent".equals(service)) {
