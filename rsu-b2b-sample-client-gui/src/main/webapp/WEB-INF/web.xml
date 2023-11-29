@@ -2,30 +2,18 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-        http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     <display-name>FileUploadServletExample</display-name>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
 
-
-    <servlet>
-        <servlet-name>action</servlet-name>
-        <servlet-class>
-            org.apache.struts.action.ActionServlet
-        </servlet-class>
-        <init-param>
-            <param-name>config</param-name>
-            <param-value>
-                /WEB-INF/struts-config.xml
-            </param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>action</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/app/*</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>DownloadReceipt</servlet-name>
@@ -46,8 +34,7 @@
         <url-pattern>/log</url-pattern>
     </servlet-mapping>
 
-
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>WEB-INF/start.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -572,14 +572,14 @@ First complete the steps in section: **Installing other OCES3 Certificates in th
 The chosen **alias**, e.g. `myalias` from the import must be added to  `app.conf` as follows:
 
 ```
-activeCertificates = [ "valid", ... , "myalias" ]
+activeCertificates = [ "LucaPacioli_ApS_System_Integrationstest_S1", ... , "myalias" ]
 ```
 
 Then add the passphrase:
 
 ```
 certificatePassphrases {
-    valid = "secret"
+    LucaPacioli_ApS_System_Integrationstest_S1 = "secret"
     ...
     myalias = "verysecret"
 }
@@ -589,7 +589,7 @@ Finally add the name:
 
 ```
 certificateCommenNames {
-    valid = "CVR:30808460-UID:25351738 - NETS DANID A/S - TU VOCES gyldig"
+    LucaPacioli_ApS_System_Integrationstest_S1 = "LucaPacioli_ApS_System_Integrationstest_S1"
     ...
     myalias = "MyAlias Identity - This will be shown on the screen"
 }

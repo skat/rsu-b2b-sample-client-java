@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 6.0//EN"
+  "http://struts.apache.org/dtds/struts-6.0.dtd">
+
+<struts>
+  <constant name="struts.devMode" value="true"></constant>
+  <constant name="struts.ui.theme" value="simple"></constant>
+  <constant name="struts.xwork.chaining.copyErrors" value="true"></constant>
+  <constant name="struts.xwork.chainingcopyMessages" value="true"></constant>
+
+  <package name="basicstruts6" extends="struts-default" namespace="/">
+    <default-action-ref name="init"></default-action-ref>
+
+
+    <action name="init" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestAction" method="init">
+      <result name="success">/WEB-INF/app/index.jsp</result>
+    </action>
+
+    <action name="invokeService" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestAction" method="execute">
+      <result name="success">/WEB-INF/app/index.jsp</result>
+    </action>
+
+  </package>
+</struts>
