@@ -1,6 +1,6 @@
 # RSU B2B Sample Web Service Client written in Java
 
-[![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
+[![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java) ![Java17](https://img.shields.io/badge/Java-17-green.svg)
 
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
 
@@ -350,7 +350,9 @@ Error code | Error Description (EN) | Error Description (DA)
 
 ## About the client
 
-The following is documentation of a sample client for the RSU B2B Web Service Gateway. The sample client is implemented based on the [Apache CXF](http://cxf.apache.org/) framework, the Spring Framework, and Java 8. See `pom.xml` file in this repo for details regarding the current versions of the mentioned frameworks in use. 
+The following is documentation of a sample client for the RSU B2B Web Service Gateway. The sample client is implemented based on the [Apache CXF](http://cxf.apache.org/) framework, the Spring Framework, and Java 17. See `pom.xml` file in this repo for details regarding the current versions of the mentioned frameworks in use. 
+
+For a **Java 8** based client please take a look at release [v1.3](https://github.com/skat/rsu-b2b-sample-client-java/releases/tag/v1.3)
 
 > **Looking for a .NET Core sample?** Skatteforvaltningen provides a sample Web Service Client written in .NET Core
 > [here](https://github.com/skat/rsu-b2b-sample-client-dotnet).
