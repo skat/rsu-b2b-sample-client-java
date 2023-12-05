@@ -91,7 +91,7 @@ The Web Services are protected using both TLS over HTTPS and by WS-Security usin
 
 **Transport Layer Security (TLS)**
 
-To be able to use the services, you need to add the server certificate to your trust store. You can find the certificates for both test and production in [/pem/README.md](/pem/README.md) directory of this repository.
+To be able to use the services, you need to add the server certificate to your trust store. You can find the certificates for both test and production in [pem/README.md](/pem/README.md).
 
 The sample client in this GitHub already has the server certificate for the test environment in the trust store.
 
