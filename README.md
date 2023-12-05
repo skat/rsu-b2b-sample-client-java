@@ -91,7 +91,7 @@ The Web Services are protected using both TLS over HTTPS and by WS-Security usin
 
 **Transport Layer Security (TLS)**
 
-To be able to use the services, you need to add the server certificate to your trust store. You can find the certificates for both test and production here [https://github.com/skat/emcs-b2b-ws/tree/master/crt](https://github.com/skat/emcs-b2b-ws/tree/master/crt)
+To be able to use the services, you need to add the server certificate to your trust store. You can find the certificates for both test and production in [/pem/README.md](/pem/README.md) directory of this repository.
 
 The sample client in this GitHub already has the server certificate for the test environment in the trust store.
 
@@ -99,13 +99,11 @@ The sample client in this GitHub already has the server certificate for the test
 
 To be able to use the Web Services you also need a company certificate (VOCES3) from MitID Erhverv (OCES3).
 A company certificate for the test environment is provided by contacting Skattestyrelsen. 
-To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here:  [https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
+To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment.
 
-The company certificate is used to encrypt the soap:body of the request and to create a signature. The certificate is also used to validate and decrypt the response. See details of how to do the encryption, decryption and signature here: [https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements](https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements)
+The company certificate is used to sign (seal) the soap:body of the request and other additional security headers such a timesmap. The certificate is also used to validate the response. 
 
-An example of a payload encrypted and signed can be found here: [https://github.com/skat/emcs-b2b-ws/blob/master/sample/request-test-system.xml](https://github.com/skat/emcs-b2b-ws/blob/master/sample/request-test-system.xml)
-
-**NOTE**: The links are for another system (the EMCS System) that provides another set of web services (APIs) from Skatteforvaltningen on the same platform as the services for VAT Returns. The security part of the two systems is identical.
+An example of a signed request can be found here: [rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml](rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml)
 
 ### Legal Entity Identification
 
@@ -628,7 +626,7 @@ $ keytool -delete -alias skatserver -keystore client-truststore.jks -storepass s
 Then you can add the new certificate to the trust store.
 
 ```sh
-$ keytool -import -alias skatserver -file emcs-b2b-server-prod-as-of-20171026.crt -keystore client-truststore.jks -storepass storepassword
+$ keytool -import -alias skatserver -file newcert.crt -keystore client-truststore.jks -storepass storepassword
 ```
 
 ## References
