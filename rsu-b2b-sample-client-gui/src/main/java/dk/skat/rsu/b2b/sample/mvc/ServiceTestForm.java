@@ -1,6 +1,8 @@
 package dk.skat.rsu.b2b.sample.mvc;
 
 import com.typesafe.config.Config;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -9,7 +11,8 @@ import java.util.*;
  * @author SKAT
  * @since 1.0
  */
-public class ServiceTestForm {
+
+public class ServiceTestForm implements Serializable {
 
     private String environment;
 

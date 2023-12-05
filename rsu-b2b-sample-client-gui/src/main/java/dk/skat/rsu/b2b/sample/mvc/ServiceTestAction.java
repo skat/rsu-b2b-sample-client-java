@@ -1,34 +1,44 @@
 package dk.skat.rsu.b2b.sample.mvc;
 
-import com.opensymphony.xwork2.ActionSupport;
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.AdvisStrukturType;
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.FejlStrukturType;
 import dk.skat.rsu.b2b.sample.ModtagMomsangivelseForeloebigClient;
 import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentClient;
 import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentMarshalling;
 import dk.skat.rsu.b2b.sample.VirksomhedKalenderHentClient;
-import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigOType;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Unmarshaller;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
 import org.apache.commons.io.IOUtils;
 import org.springframework.util.StringUtils;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
+
 import java.io.InputStream;
 import java.util.List;
-import java.util.logging.Logger;
 
+import java.util.logging.Logger;
+import java.io.Serializable;
 /**
  * ServiceTestAction
  *
  * @author SKAT
  * @since 1.0
  */
-public class ServiceTestAction extends ActionSupport {
+
+public class ServiceTestAction implements Serializable{
 
     private static final Logger LOGGER = Logger.getLogger(ServiceTestAction.class.getName());
     private ServiceTestForm serviceTestForm;
     private String serviceResponse;
+    private String tID;
+
+    public String gettID() {
+        return tID;
+    }
+
+    public void settID(String tID) {
+        this.tID = tID;
+    }
 
     public String getServiceResponse() {
         return serviceResponse;
@@ -49,16 +59,17 @@ public class ServiceTestAction extends ActionSupport {
     public String init()
             throws Exception {
         this.serviceTestForm = new ServiceTestForm();
-        return SUCCESS;
+        return "success";
     }
 
 
-    @Override
-    public String execute()
+    public String execute(ServiceTestForm serviceTestForm1)
             throws Exception {
 
-        if (serviceTestForm == null){
-            this.serviceTestForm = new ServiceTestForm();
+        this.tID = "";
+
+        if (this.serviceTestForm == null){
+            this.setServiceTestForm(serviceTestForm1);
         }
 
         LOGGER.info("Testing service : " + this.serviceTestForm.getService());
@@ -95,14 +106,7 @@ public class ServiceTestAction extends ActionSupport {
             if ("ModtagMomsangivelseForeloebig".equals(service)) {
                 ModtagMomsangivelseForeloebigClient client = new ModtagMomsangivelseForeloebigClient(endpoint, policy);
                 serviceResponse = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
-                // Get receipt and store PDF in memory for later download
-                InputStream inputStream = IOUtils.toInputStream(serviceResponse, "UTF-8");
-                JAXBContext jc = JAXBContext.newInstance(ModtagMomsangivelseForeloebigOType.class);
-                Unmarshaller unmarshaller = jc.createUnmarshaller();
-                ModtagMomsangivelseForeloebigOType asObject = (ModtagMomsangivelseForeloebigOType) unmarshaller.unmarshal(inputStream);
-                if (asObject.getDybtlink() != null) {
-                    addActionMessage("confirmUrl" + asObject.getDybtlink().getUrlIndicator());
-                }
+
             }
             if ("MomsangivelseKvitteringHent".equals(service)) {
                 MomsangivelseKvitteringHentClient client = new MomsangivelseKvitteringHentClient(endpoint, policy);
@@ -128,18 +132,13 @@ public class ServiceTestAction extends ActionSupport {
                 for (Object o : advisStrukturOrFejlStruktur) {
                     if (o instanceof AdvisStrukturType) {
                         AdvisStrukturType advisStrukturType = (AdvisStrukturType) o;
-                        String message = "[" + advisStrukturType.getAdvisIdentifikator().toString() + "]" + advisStrukturType.getAdvisTekst();
                         String advisId = advisStrukturType.getAdvisIdentifikator().toString();
                         if ("4810".equals(advisId) || "4812".equals(advisId)) {
                             // 4810 = VAT return has yet to be approved in self service app.
-                            addActionMessage("error.test.response.failed" + message);
                             failed = true;
                         }
                     }
                     if (o instanceof FejlStrukturType) {
-                        FejlStrukturType fejlStrukturType = (FejlStrukturType) o;
-                        String message = fejlStrukturType.getFejlIdentifikator().toString() + fejlStrukturType.getFejlTekst();
-                        addActionMessage("error.test.response.failed" + message);
                         failed = true;
                     }
                 }
@@ -148,20 +147,16 @@ public class ServiceTestAction extends ActionSupport {
                     receipt.setTransactionId(receiptTransactionId);
                     receipt.setReceipt(asObject.getPDFkvittering().getDokumentFilIndholdData());
                     ReceiptsStorage.put(receipt);
-                    addActionMessage("downloadReceipt" + receipt.getTransactionId());
+                    this.tID = receiptTransactionId;
                 }
             }
-            addActionMessage("lastResponse"+serviceResponse);
         } catch (Exception e) {
             e.printStackTrace();
             serviceResponse = e.getMessage();
-            addActionMessage("error.test.request.failed" + serviceResponse);
         }
 
         this.serviceResponse = serviceResponse;
         LOGGER.info("response = " + serviceResponse);
         return "success";
     }
-
-
 }
