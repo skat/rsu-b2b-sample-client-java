@@ -41,7 +41,6 @@ This GitHub contains documentation and a sample client for the RSU B2B Web Servi
    * [Run clients](#run-clients)
       * [Prerequisites](#prerequisites)
       * [Build and Run](#build-and-run)
-      * [Run on Tomcat](#run-on-tomcat)
       * [Change endpoints](#change-endpoints)
       * [Add new environment and endpoints](#add-new-environment-and-endpoints)
       * [Add another OCES3 certificate](#add-another-oces3-certificate)
@@ -443,18 +442,15 @@ call the test environment of RSU B2B Web Service Gateway.
 
 The parameters (provided as a file named `app.conf`) can be obtained by contacting Skattestyrelsen.
 
-In the following sections we describe two methods for running the sample:
-
-* **Build and Run** - Clone repo, build repo, and run locally.
-* **Run on Tomcat** - Clone repo, build repo, and run on a Tomcat server.
+In the following sections we describe a simple method for running the sample.
 
 ### Prerequisites
 
 For both methods the following tools are required:
 
-* JDK 1.8
-* Maven 3.3 (or above)
-
+* JDK 17
+* Maven 3.9.5
+* 
 ### Build and Run
 
 Clone this repository. 
@@ -473,47 +469,6 @@ $ mvn jetty:run -f rsu-b2b-sample-client-gui/pom.xml
 symbolic link to the actual location in `rsu-b2b-sample-client/src/main/resources/keystore`.
 
 Once Jetty is running open URL:
-
-```
-http://localhost:8080/rsu-b2b-sample-client-gui
-```
-
-### Run on Tomcat
-
-Clone this repository. Then execute:
-
-```sh
-$ mvn clean install
-```
-
-On your **server** create a directory named `rsu-b2b-sample-client-gui`.
-
-Copy these files to the directory `rsu-b2b-sample-client-gui`:
-
-```
-rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
-rsu-b2b-sample-client/src/main/resources/keystore/client-keystore.jks
-rsu-b2b-sample-client/src/main/resources/keystore/server-keystore.jks
-```
-
-Organize the files as follows: 
-
-```
-rsu-b2b-sample-client-gui/
-  rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
-  keystore/
-    client-keystore.jks
-    server-keystore.jks
-  app.conf
-```
-
-Then inside `rsu-b2b-sample-client-gui` run:
-
-```sh
-$ java -jar rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
-```
-
-Once Tomcat is running open URL:
 
 ```
 http://localhost:8080/rsu-b2b-sample-client-gui
