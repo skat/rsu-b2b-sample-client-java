@@ -101,7 +101,7 @@ To be able to use the Web Services you also need a company certificate (VOCES3) 
 A company certificate for the test environment is provided by contacting Skattestyrelsen. 
 To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment.
 
-The company certificate is used to sign (seal) the soap:body of the request and other additional security headers such a timesmap. The certificate is also used to validate the response. 
+The company certificate is used to sign (seal) the soap:body of the request and other additional security headers such a timestamp. The certificate is also used to validate the response. 
 
 An example of a signed request can be found here: [rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml](rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml)
 
