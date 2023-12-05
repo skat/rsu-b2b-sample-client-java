@@ -137,10 +137,4 @@
       </dependency>
     </dependencies>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>artifacts.alfresco.com</id>
-            <url>https://artifacts.alfresco.com/nexus/content/repositories/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
