@@ -10,8 +10,6 @@
   <view-state id="indexflow" model="model" view="views/index.html">
     <transition on="test" to="indexflow" >
       <evaluate expression="handler.execute(model)" result="flowScope.result"/>
-      <!--<set name="result" value="handler.getServiceResponse()"/>-->
-      <!--<set name="tID" value="handler.gettID()"/>-->
       <set name="result" value="handler"/>
     </transition>
 

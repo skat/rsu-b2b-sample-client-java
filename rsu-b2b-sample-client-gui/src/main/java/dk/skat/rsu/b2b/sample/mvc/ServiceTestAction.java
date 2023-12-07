@@ -8,6 +8,7 @@ import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentMarshalling;
 import dk.skat.rsu.b2b.sample.VirksomhedKalenderHentClient;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
+import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigOType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
 import org.apache.commons.io.IOUtils;
@@ -31,6 +32,24 @@ public class ServiceTestAction implements Serializable{
     private ServiceTestForm serviceTestForm;
     private String serviceResponse;
     private String tID;
+    private String errror;
+    private String deepLink;
+
+    public String getDeepLink() {
+        return deepLink;
+    }
+
+    public void setDeepLink(String deepLink) {
+        this.deepLink = deepLink;
+    }
+
+    public String getErrror() {
+        return errror;
+    }
+
+    public void setErrror(String errror) {
+        this.errror = errror;
+    }
 
     public String gettID() {
         return tID;
@@ -67,6 +86,8 @@ public class ServiceTestAction implements Serializable{
             throws Exception {
 
         this.tID = "";
+        this.errror = "";
+        this.deepLink = "";
 
         if (this.serviceTestForm == null){
             this.setServiceTestForm(serviceTestForm1);
@@ -107,6 +128,15 @@ public class ServiceTestAction implements Serializable{
                 ModtagMomsangivelseForeloebigClient client = new ModtagMomsangivelseForeloebigClient(endpoint, policy);
                 serviceResponse = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
 
+                // Get receipt and store PDF in memory for later download
+                InputStream inputStream = IOUtils.toInputStream(serviceResponse, "UTF-8");
+                JAXBContext jc = JAXBContext.newInstance(ModtagMomsangivelseForeloebigOType.class);
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                ModtagMomsangivelseForeloebigOType asObject = (ModtagMomsangivelseForeloebigOType) unmarshaller.unmarshal(inputStream);
+                if (asObject.getDybtlink() != null) {
+                    this.deepLink = "Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\" target=\"_blank\">" + asObject.getDybtlink().getUrlIndicator() + "</a>";
+                }
+
             }
             if ("MomsangivelseKvitteringHent".equals(service)) {
                 MomsangivelseKvitteringHentClient client = new MomsangivelseKvitteringHentClient(endpoint, policy);
@@ -139,6 +169,8 @@ public class ServiceTestAction implements Serializable{
                         }
                     }
                     if (o instanceof FejlStrukturType) {
+                        FejlStrukturType fejlStrukturType = (FejlStrukturType) o;
+                        this.errror = fejlStrukturType.getFejlIdentifikator().toString() + " : " + fejlStrukturType.getFejlTekst();
                         failed = true;
                     }
                 }

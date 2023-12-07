@@ -9,7 +9,7 @@
       <title>RSU Sample GUI</title>
 
       <!-- Bootstrap core CSS -->
-      <link href="/rsu-b2b-sample-client-gui/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" />
 
   </head>
 
@@ -114,16 +114,30 @@
                       <b>Service Response</b>
                   </div>
 
-                  <div class="card-body" th:if="${result != null}" >
-                    <div th:if="${result.gettID != ''}" class="alert alert-info" role="alert" >
+                <div class="card-body">
+
+                    <div th:if="${result != null && result.gettID != ''}" class="alert alert-info" role="alert" >
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                       Download receipt (PDF): <a th:href="@{/download/{id}(id=${result.gettID()})}">Download PDF</a>
                     </div>
+
+                  <div th:if="${result != null && result.getDeepLink != ''}" class="alert alert-info" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div th:utext="${result.deepLink}"></div>
                   </div>
 
-                  <div class="card-body">
+                    <div th:if="${result != null && result.getErrror != ''}" class="alert alert-danger" role="alert" >
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <p th:text="${result.getErrror()}"></p>
+                    </div>
+
+
                     <form name="response" action="#" method="get">
                       <textarea class="form-control" id="response" rows="24" th:if="${result != null}" th:text="${result.getServiceResponse()}"></textarea>
                     </form>
@@ -140,10 +154,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/rsu-b2b-sample-client-gui/assets/js/jquery-3.2.1.slim.min.js"
+    <script th:src="@{/assets/js/jquery-3.2.1.slim.min.js}"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
-    <script src="/rsu-b2b-sample-client-gui/assets/js/bootstrap.min.js"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
 
     <script>
         function setRequest (selectedIndex) {
