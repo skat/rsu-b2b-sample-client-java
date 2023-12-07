@@ -52,7 +52,7 @@ public class VirksomhedKalenderHentClient extends BaseClient {
      * @throws JAXBException                  N/A
      * @throws DatatypeConfigurationException N/A
      */
-    public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
+    public VirksomhedKalenderHentOType invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
         InputStream inputStream = IOUtils.toInputStream(document, "UTF-8");
         VirksomhedKalenderHentIType virksomhedKalenderHentIType = VirksomhedKalenderHentMarshalling.toObject(inputStream);
@@ -69,7 +69,7 @@ public class VirksomhedKalenderHentClient extends BaseClient {
          * @throws JAXBException                  N/A
          * @throws DatatypeConfigurationException N/A
          */
-    public String invoke(VirksomhedKalenderHentIType virksomhedKalenderHentIType, String certicateAlias, boolean overrideHovedoplysninger)
+    public VirksomhedKalenderHentOType invoke(VirksomhedKalenderHentIType virksomhedKalenderHentIType, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
 
         configureBus(certicateAlias);
@@ -87,7 +87,7 @@ public class VirksomhedKalenderHentClient extends BaseClient {
             LOGGER.info("HovedOplysninger populated with new Transaction Id and Time");
         }
         VirksomhedKalenderHentOType out = port.getVirksomhedKalenderHent(virksomhedKalenderHentIType);
-        return VirksomhedKalenderHentMarshalling.toString(out);
+        return out;
     }
 
 

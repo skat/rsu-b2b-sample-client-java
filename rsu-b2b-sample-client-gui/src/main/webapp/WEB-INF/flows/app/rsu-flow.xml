@@ -9,7 +9,7 @@
 
   <view-state id="indexflow" model="model" view="views/index.html">
     <transition on="test" to="indexflow" >
-      <evaluate expression="handler.execute(model)" result="flowScope.result"/>
+      <evaluate expression="handler.execute(model, messageContext)" result="flowScope.result"/>
       <set name="result" value="handler"/>
     </transition>
 

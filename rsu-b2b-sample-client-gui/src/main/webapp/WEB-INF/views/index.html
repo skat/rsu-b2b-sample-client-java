@@ -116,6 +116,24 @@
 
                 <div class="card-body">
 
+                    <div th:if="${#arrays.length(flowRequestContext.messageContext.getMessagesBySource('ERROR'))>0}">
+                        <div class="alert alert-danger" role="alert" th:each="err : ${flowRequestContext.messageContext.getMessagesBySource('ERROR')}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span th:text="${err.text}" th:remove="tag"></span>
+                        </div>
+                    </div>
+                    <div th:if="${#arrays.length(flowRequestContext.messageContext.getMessagesBySource('INFO'))>0}">
+                        <div class="alert alert-info" role="alert" th:each="info : ${flowRequestContext.messageContext.getMessagesBySource('INFO')}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span th:text="${info.text}" th:remove="tag"></span>
+                        </div>
+                    </div>
+
+
                     <div th:if="${result != null && result.gettID != ''}" class="alert alert-info" role="alert" >
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -129,14 +147,6 @@
                     </button>
                     <div th:utext="${result.deepLink}"></div>
                   </div>
-
-                    <div th:if="${result != null && result.getErrror != ''}" class="alert alert-danger" role="alert" >
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                      <p th:text="${result.getErrror()}"></p>
-                    </div>
-
 
                     <form name="response" action="#" method="get">
                       <textarea class="form-control" id="response" rows="24" th:if="${result != null}" th:text="${result.getServiceResponse()}"></textarea>

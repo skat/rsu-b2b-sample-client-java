@@ -2,16 +2,17 @@ package dk.skat.rsu.b2b.sample.mvc;
 
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.AdvisStrukturType;
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.FejlStrukturType;
-import dk.skat.rsu.b2b.sample.ModtagMomsangivelseForeloebigClient;
-import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentClient;
-import dk.skat.rsu.b2b.sample.MomsangivelseKvitteringHentMarshalling;
-import dk.skat.rsu.b2b.sample.VirksomhedKalenderHentClient;
+import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerSvarType;
+import dk.skat.rsu.b2b.sample.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigOType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
+import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentOType;
 import org.apache.commons.io.IOUtils;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
 import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
@@ -32,7 +33,6 @@ public class ServiceTestAction implements Serializable{
     private ServiceTestForm serviceTestForm;
     private String serviceResponse;
     private String tID;
-    private String errror;
     private String deepLink;
 
     public String getDeepLink() {
@@ -41,14 +41,6 @@ public class ServiceTestAction implements Serializable{
 
     public void setDeepLink(String deepLink) {
         this.deepLink = deepLink;
-    }
-
-    public String getErrror() {
-        return errror;
-    }
-
-    public void setErrror(String errror) {
-        this.errror = errror;
     }
 
     public String gettID() {
@@ -82,11 +74,10 @@ public class ServiceTestAction implements Serializable{
     }
 
 
-    public String execute(ServiceTestForm serviceTestForm1)
+    public String execute(ServiceTestForm serviceTestForm1, MessageContext context)
             throws Exception {
 
         this.tID = "";
-        this.errror = "";
         this.deepLink = "";
 
         if (this.serviceTestForm == null){
@@ -110,7 +101,6 @@ public class ServiceTestAction implements Serializable{
         String requestAsString = this.serviceTestForm.getRequest();
         String configurationPrefix = "endpoints." + environment + "." + service;
 
-
         String serviceResponse = "";
         try {
             String endpoint = ConfigHelper.getConfiguration().getString(configurationPrefix);
@@ -122,11 +112,19 @@ public class ServiceTestAction implements Serializable{
 
             if ("VirksomhedKalenderHent".equals(service)) {
                 VirksomhedKalenderHentClient client = new VirksomhedKalenderHentClient(endpoint, policy);
-                serviceResponse = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
+                VirksomhedKalenderHentOType out = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
+                serviceResponse = VirksomhedKalenderHentMarshalling.toString(out);
+                if (out != null && out.getHovedOplysningerSvar() != null) {
+                    addMessages(out.getHovedOplysningerSvar(), context);
+                }
             }
             if ("ModtagMomsangivelseForeloebig".equals(service)) {
                 ModtagMomsangivelseForeloebigClient client = new ModtagMomsangivelseForeloebigClient(endpoint, policy);
-                serviceResponse = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
+                ModtagMomsangivelseForeloebigOType out = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
+                serviceResponse = ModtagMomsangivelseForeloebigMarshalling.toString(out);
+                if (out != null && out.getHovedOplysningerSvar() != null) {
+                    addMessages(out.getHovedOplysningerSvar(), context);
+                }
 
                 // Get receipt and store PDF in memory for later download
                 InputStream inputStream = IOUtils.toInputStream(serviceResponse, "UTF-8");
@@ -149,29 +147,25 @@ public class ServiceTestAction implements Serializable{
                 MomsangivelseKvitteringHentIType requestAsObject = MomsangivelseKvitteringHentMarshalling.toObject(requestAsString);
                 String receiptTransactionId = requestAsObject.getTransaktionIdentifier();
 
-                serviceResponse =  client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
-
+                MomsangivelseKvitteringHentOType asObject = client.invoke(requestAsString, cert, this.serviceTestForm.isOverrideTxInfo());
+                serviceResponse = MomsangivelseKvitteringHentMarshalling.toString(asObject);
                 // Get receipt and store PDF in memory for later download
-                InputStream inputStream = IOUtils.toInputStream(serviceResponse, "UTF-8");
-                JAXBContext jc = JAXBContext.newInstance(MomsangivelseKvitteringHentOType.class);
-                Unmarshaller unmarshaller = jc.createUnmarshaller();
-                MomsangivelseKvitteringHentOType asObject = (MomsangivelseKvitteringHentOType) unmarshaller.unmarshal(inputStream);
-
-                List<Object> advisStrukturOrFejlStruktur = asObject.getHovedOplysningerSvar().getSvarStruktur().getAdvisStrukturOrFejlStruktur();
                 boolean failed = false;
-                for (Object o : advisStrukturOrFejlStruktur) {
-                    if (o instanceof AdvisStrukturType) {
-                        AdvisStrukturType advisStrukturType = (AdvisStrukturType) o;
-                        String advisId = advisStrukturType.getAdvisIdentifikator().toString();
-                        if ("4810".equals(advisId) || "4812".equals(advisId)) {
-                            // 4810 = VAT return has yet to be approved in self service app.
+                if (asObject != null && asObject.getHovedOplysningerSvar() != null) {
+                    addMessages(asObject.getHovedOplysningerSvar(), context);
+                    List<Object> advisStrukturOrFejlStruktur = asObject.getHovedOplysningerSvar().getSvarStruktur().getAdvisStrukturOrFejlStruktur();
+                    for (Object o : advisStrukturOrFejlStruktur) {
+                        if (o instanceof AdvisStrukturType) {
+                            AdvisStrukturType advisStrukturType = (AdvisStrukturType) o;
+                            String advisId = advisStrukturType.getAdvisIdentifikator().toString();
+                            if ("4810".equals(advisId) || "4812".equals(advisId)) {
+                                // 4810 = VAT return has yet to be approved in self service app.
+                                failed = true;
+                            }
+                        }
+                        if (o instanceof FejlStrukturType) {
                             failed = true;
                         }
-                    }
-                    if (o instanceof FejlStrukturType) {
-                        FejlStrukturType fejlStrukturType = (FejlStrukturType) o;
-                        this.errror = fejlStrukturType.getFejlIdentifikator().toString() + " : " + fejlStrukturType.getFejlTekst();
-                        failed = true;
                     }
                 }
                 if (!failed && asObject.getPDFkvittering() != null) {
@@ -190,5 +184,25 @@ public class ServiceTestAction implements Serializable{
         this.serviceResponse = serviceResponse;
         LOGGER.info("response = " + serviceResponse);
         return "success";
+    }
+
+    private void addMessages(HovedOplysningerSvarType hovedOplysningerSvarType, MessageContext context) {
+        List<Object> advisStrukturOrFejlStruktur = hovedOplysningerSvarType.getSvarStruktur().getAdvisStrukturOrFejlStruktur();
+        for (Object o : advisStrukturOrFejlStruktur) {
+            if (o instanceof AdvisStrukturType) {
+                AdvisStrukturType advisStrukturType = (AdvisStrukturType) o;
+                String advisId = advisStrukturType.getAdvisIdentifikator().toString();
+                String advisText = advisStrukturType.getAdvisTekst();
+                context.addMessage(new MessageBuilder().info().source("INFO")
+                        .defaultText(advisId + " - " + advisText).build());
+            }
+            if (o instanceof FejlStrukturType) {
+                FejlStrukturType fejlStrukturType = (FejlStrukturType) o;
+                String fejlId = fejlStrukturType.getFejlIdentifikator().toString();
+                String fejlText = fejlStrukturType.getFejlTekst();
+                context.addMessage(new MessageBuilder().info().source("ERROR")
+                        .defaultText(fejlId + " - " + fejlText).build());
+            }
+        }
     }
 }

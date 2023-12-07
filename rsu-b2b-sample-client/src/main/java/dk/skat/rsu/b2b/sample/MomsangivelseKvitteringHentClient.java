@@ -51,7 +51,7 @@ public class MomsangivelseKvitteringHentClient extends BaseClient {
      * @throws JAXBException                  N/A
      * @throws DatatypeConfigurationException N/A
      */
-    public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
+    public MomsangivelseKvitteringHentOType invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
 
         configureBus(certicateAlias);
@@ -73,7 +73,7 @@ public class MomsangivelseKvitteringHentClient extends BaseClient {
         }
 
         MomsangivelseKvitteringHentOType out = port.getMomsangivelseKvitteringHent(momsangivelseKvitteringHentIType);
-        return MomsangivelseKvitteringHentMarshalling.toString(out);
+        return out;
     }
 
 }

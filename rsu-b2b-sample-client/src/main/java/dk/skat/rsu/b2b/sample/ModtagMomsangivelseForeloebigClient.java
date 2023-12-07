@@ -51,7 +51,7 @@ public class ModtagMomsangivelseForeloebigClient extends BaseClient {
      * @throws JAXBException                  N/A
      * @throws DatatypeConfigurationException N/A
      */
-    public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
+    public ModtagMomsangivelseForeloebigOType invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, JAXBException, DatatypeConfigurationException {
 
         configureBus(certicateAlias);
@@ -73,6 +73,6 @@ public class ModtagMomsangivelseForeloebigClient extends BaseClient {
         }
 
         ModtagMomsangivelseForeloebigOType out = port.getModtagMomsangivelseForeloebig(modtagMomsangivelseForeloebigIType);
-        return ModtagMomsangivelseForeloebigMarshalling.toString(out);
+        return out;
     }
 }
