@@ -67,13 +67,6 @@ public class ServiceTestAction implements Serializable{
         this.serviceTestForm = serviceTestForm;
     }
 
-    public String init()
-            throws Exception {
-        this.serviceTestForm = new ServiceTestForm();
-        return "success";
-    }
-
-
     public String execute(ServiceTestForm serviceTestForm1, MessageContext context)
             throws Exception {
 
@@ -177,6 +170,8 @@ public class ServiceTestAction implements Serializable{
                 }
             }
         } catch (Exception e) {
+            context.addMessage(new MessageBuilder().info().source("ERROR")
+                    .defaultText("Error occurred - see below").build());
             e.printStackTrace();
             serviceResponse = e.getMessage();
         }
