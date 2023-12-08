@@ -31,47 +31,18 @@ public class ServiceTestAction implements Serializable{
 
     private static final Logger LOGGER = Logger.getLogger(ServiceTestAction.class.getName());
     private ServiceTestForm serviceTestForm;
-    private String serviceResponse;
-    private String tID;
-    private String deepLink;
-
-    public String getDeepLink() {
-        return deepLink;
-    }
-
-    public void setDeepLink(String deepLink) {
-        this.deepLink = deepLink;
-    }
-
-    public String gettID() {
-        return tID;
-    }
-
-    public void settID(String tID) {
-        this.tID = tID;
-    }
-
-    public String getServiceResponse() {
-        return serviceResponse;
-    }
-
-    public void setServiceResponse(String serviceResponse) {
-        this.serviceResponse = serviceResponse;
-    }
-
-    public ServiceTestForm getServiceTestForm() {
-        return serviceTestForm;
-    }
 
     public void setServiceTestForm(ServiceTestForm serviceTestForm) {
         this.serviceTestForm = serviceTestForm;
     }
 
-    public String execute(ServiceTestForm serviceTestForm1, MessageContext context)
+    public TestResponse execute(ServiceTestForm serviceTestForm1, MessageContext context)
             throws Exception {
 
-        this.tID = "";
-        this.deepLink = "";
+        TestResponse testResolve = new TestResponse();
+
+        testResolve.setDeepLink("");
+        testResolve.settID("");
 
         if (this.serviceTestForm == null){
             this.setServiceTestForm(serviceTestForm1);
@@ -125,7 +96,7 @@ public class ServiceTestAction implements Serializable{
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 ModtagMomsangivelseForeloebigOType asObject = (ModtagMomsangivelseForeloebigOType) unmarshaller.unmarshal(inputStream);
                 if (asObject.getDybtlink() != null) {
-                    this.deepLink = "Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\" target=\"_blank\">" + asObject.getDybtlink().getUrlIndicator() + "</a>";
+                    testResolve.setDeepLink("Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\" target=\"_blank\">" + asObject.getDybtlink().getUrlIndicator() + "</a>");
                 }
 
             }
@@ -166,7 +137,7 @@ public class ServiceTestAction implements Serializable{
                     receipt.setTransactionId(receiptTransactionId);
                     receipt.setReceipt(asObject.getPDFkvittering().getDokumentFilIndholdData());
                     ReceiptsStorage.put(receipt);
-                    this.tID = receiptTransactionId;
+                    testResolve.settID(receiptTransactionId);
                 }
             }
         } catch (Exception e) {
@@ -176,9 +147,9 @@ public class ServiceTestAction implements Serializable{
             serviceResponse = e.getMessage();
         }
 
-        this.serviceResponse = serviceResponse;
+        testResolve.setServiceResponse(serviceResponse);
         LOGGER.info("response = " + serviceResponse);
-        return "success";
+        return testResolve;
     }
 
     private void addMessages(HovedOplysningerSvarType hovedOplysningerSvarType, MessageContext context) {

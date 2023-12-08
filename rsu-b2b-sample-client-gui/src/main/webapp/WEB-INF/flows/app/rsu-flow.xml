@@ -6,11 +6,11 @@
 
   <var name="model" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestForm"/>
   <var name="handler" class="dk.skat.rsu.b2b.sample.mvc.ServiceTestAction"/>
+  <var name="result" class="dk.skat.rsu.b2b.sample.mvc.TestResponse"/>
 
   <view-state id="indexflow" model="model" view="views/index.html">
     <transition on="test" to="indexflow" >
-      <evaluate expression="handler.execute(model, messageContext)" result="flowScope.result"/>
-      <set name="result" value="handler"/>
+      <evaluate expression="handler.execute(model, messageContext)" result="result"/>
     </transition>
 
   </view-state>
