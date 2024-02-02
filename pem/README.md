@@ -9,12 +9,11 @@ The following certificates are for **Transport Layer Security** only.
 ```
 Owner: CN=*.skat.dk, O=Skatteforvaltningen, L=Herning, ST=Herning, C=DK
 Issuer: CN=GlobalSign RSA OV SSL CA 2018, O=GlobalSign nv-sa, C=BE
-Serial number: 520918b4e8e48842ca30f22b
-Valid from: Thu Dec 01 21:21:02 CET 2022 until: Tue Jan 02 21:21:01 CET 2024
+Serial number: 4c50bf969b9d9687ec752a20
+Valid from: Thu Dec 07 14:06:14 CET 2023 until: Tue Jan 07 14:06:13 CET 2025
 Certificate fingerprints:
-	 MD5:  1C:0C:D8:FC:8C:AF:54:D4:9B:90:BE:6E:00:96:10:7C
-	 SHA1: 12:E6:4C:02:A5:AB:FB:BD:6D:A8:EC:2F:D4:8D:BF:E7:02:DC:0A:40
-	 SHA256: 22:52:90:32:C0:E7:B0:AC:FF:70:AD:19:A4:99:04:7B:59:5B:12:BC:95:D8:E3:69:1E:CC:52:66:A5:15:30:D2
+	 SHA1: 1B:06:01:45:E4:6B:4E:27:8E:D8:59:59:FB:7E:C0:75:F6:6F:8B:7C
+	 SHA256: 19:C0:53:48:5B:CC:60:3F:4F:E6:32:43:6F:B8:EC:3E:08:EC:C9:06:D2:84:CF:21:19:56:CF:61:2D:19:07:F0
 ```
 
 
