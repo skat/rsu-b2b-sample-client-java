@@ -347,6 +347,40 @@ Error code | Error Description (EN) | Error Description (DA)
 4817 | The search start date is later than the search end date | Søgedato start er efter søgedatoslut
 
 
+### Notification codes related to transactions
+
+The service **ModtagMomsangivelseForeloebig** will for every successful submition of a VAT declaration return a formal notice related to the transaction in the **Advis** section of the **HovedOplysningerSvar/SvarStruktur** structure. Example:
+
+```xml
+<ns:HovedOplysningerSvar>
+        <ns:TransaktionIdentifikator>...</ns:TransaktionIdentifikator>
+        <ns:ServiceIdentifikator>...</ns:ServiceIdentifikator>
+        <ns:TransaktionTid>...</ns:TransaktionTid>
+        <ns:SvarStruktur>
+            <ns:AdvisStruktur>
+                <ns:AdvisIdentifikator>5001</ns:AdvisIdentifikator>
+                <ns:AdvisTekst>Dette er en foreløbig ordinær angivelse</ns:AdvisTekst>
+            </ns:AdvisStruktur>
+        </ns:SvarStruktur>
+</ns:HovedOplysningerSvar>
+``` 
+
+Please observe that notification codes are NOT the same as error codes
+
+The service will return either one of the two codes:
+
+Error code | Error Description (EN) | Error Description (DA)
+------------ | ------------- | -----------------------
+5001 | This is a preliminary ordinary declaration pending user approval | Dette er en foreløbig ordinær angivelse
+5002 | This is a preliminary post declaration pending user approval | Dette er en foreløbig efterangivelse  
+
+The service **MomsangivelseKvitteringHent** will - similar to **ModtagMomsangivelseForeloebig** - return the following notice codes once the user has approved the declaration submitted via **ModtagMomsangivelseForeloebig** via skat.dk:
+
+Error code | Error Description (EN) | Error Description (DA)
+------------ | ------------- | -----------------------
+5003 | The post declaration has now been approved, a receipt is available on skat.dk | Din efterangivelse er nu godkendt, en kvittering er tilgængelig på skat.dk 
+5004 | The ordinary declaration has now been approved, a receipt is available on skat.dk | Din ordinær angivelse er nu godkendt, en kvittering er tilgængelig på skat.dk
+
 ## About the client
 
 The following is documentation of a sample client for the RSU B2B Web Service Gateway. The sample client is implemented based on the [Apache CXF](http://cxf.apache.org/) framework, the Spring Framework, and Java 8. See `pom.xml` file in this repo for details regarding the current versions of the mentioned frameworks in use. 
