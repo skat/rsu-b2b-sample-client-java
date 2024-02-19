@@ -65,7 +65,11 @@ The following diagram shows how the Web Services works.
 
 The first web service to use is **VirksomhedKalenderHent**. This Web Service returns dates for which the legal entity has to submit VAT Returns by. These dates are required, when submitting VAT Returns.
 
-The second web service is **ModtagMomsangivelseForeloebig**. This Web Services submits a draft of the VAT Returns to skat.dk with all the fields you need to fill in. The Web Service returns a deep link to skat.dk, where the legal entity can access the submitted VAT Returns and approve it.
+The second web service is **ModtagMomsangivelseForeloebig**. This Web Services submits a draft of the VAT Returns to skat.dk with all the fields you need to fill in. The Web Service returns a deep link to skat.dk, where the legal entity can access the submitted VAT Returns and approve it. 
+
+> **IMPORTANT / NEW FEATURE**: **ModtagMomsangivelseForeloebig** is as of 2024 now capable of not only accepting the draft of the VAT returns for the current VAT period, but is also able to
+> accept post declarations of previous VAT returns going three years back (as of current date). The service will return a notification code in the response telling if the submitted
+> draft was handled as the initial VAT returns draft or if it was handled as a post declaration draft adjusting a previously approved VAT returns. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes.
 
 The last web service is **MomsangivelseKvitteringHent**. This Web Service provide a receipt for the VAT Returns given that the legal entity has approved it. This service also includes payment information on how to pay any outstanding balance.
 
