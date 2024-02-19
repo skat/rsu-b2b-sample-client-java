@@ -72,6 +72,8 @@ The first web service to use is **VirksomhedKalenderHent**. This Web Service ret
 
 The second web service is **ModtagMomsangivelseForeloebig**. This Web Services submits a draft of the VAT Returns to skat.dk with all the fields you need to fill in. The Web Service returns a deep link to skat.dk, where the legal entity can access the submitted VAT Returns and approve it. 
 
+ **ModtagMomsangivelseForeloebig** is as of 2024 also able to accept post declarations of previous VAT returns going three years back (as of current date). The service will return a notification code in the response telling if the submitted draft was handled as the initial/first VAT returns draft *or* if it was handled as a post declaration draft adjusting a previously approved VAT returns. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes. This feature enables RSU systems to submit draft adjustements to previous VAT returns.
+
 The last web service is **MomsangivelseKvitteringHent**. This Web Service provide a receipt for the VAT Returns given that the legal entity has approved it. This service also includes payment information on how to pay any outstanding balance.
 
 ### Get access to the APIs
