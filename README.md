@@ -2,6 +2,11 @@
 
 [![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
 
+> **IMPORTANT / NEW FEATURE**: **ModtagMomsangivelseForeloebig** is as of 2024 now capable of not only accepting the draft of the VAT returns for the current VAT period, but is also able to
+> accept post declarations of previous VAT returns going three years back (as of current date). The service will return a notification code in the response telling if the submitted
+> draft was handled as the initial VAT returns draft or if it was handled as a post declaration draft adjusting a previously approved VAT returns. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes.
+
+
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
 
 > **IMPORTANT NOTICE**: Skatteforvaltningen does not provide any kind of support for the code in this repository.
@@ -66,10 +71,6 @@ The following diagram shows how the Web Services works.
 The first web service to use is **VirksomhedKalenderHent**. This Web Service returns dates for which the legal entity has to submit VAT Returns by. These dates are required, when submitting VAT Returns.
 
 The second web service is **ModtagMomsangivelseForeloebig**. This Web Services submits a draft of the VAT Returns to skat.dk with all the fields you need to fill in. The Web Service returns a deep link to skat.dk, where the legal entity can access the submitted VAT Returns and approve it. 
-
-> **IMPORTANT / NEW FEATURE**: **ModtagMomsangivelseForeloebig** is as of 2024 now capable of not only accepting the draft of the VAT returns for the current VAT period, but is also able to
-> accept post declarations of previous VAT returns going three years back (as of current date). The service will return a notification code in the response telling if the submitted
-> draft was handled as the initial VAT returns draft or if it was handled as a post declaration draft adjusting a previously approved VAT returns. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes.
 
 The last web service is **MomsangivelseKvitteringHent**. This Web Service provide a receipt for the VAT Returns given that the legal entity has approved it. This service also includes payment information on how to pay any outstanding balance.
 
