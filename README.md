@@ -342,6 +342,8 @@ The RSU B2B Gateway generates two types of error code.
 
 Error code | Error Description (EN) | Error Description (DA)
 ------------ | ------------- | -----------------------
+ 471 | There are no VAT returns for the company | Der findes ingen angivelser for virksomheden
+ 475 | There are no VAT returns for the requested periods in which the company has reported | Der findes ingen angivelser for de ønskede perioder hvor virksomheden har indberettet
 4801 | RSU is not delegated by the legal entity (See [Onboard Legal Entities](#onboard-legal-entities)) | RSU er ikke delegeret af virksomheden
 4802 | The VAT period is not open | Ikke åben periode 
 4803 | The VAT period has not ended | Periode ikke afsluttet
