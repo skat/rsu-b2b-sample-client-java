@@ -2,9 +2,7 @@
 
 [![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
 
-> **IMPORTANT / NEW FEATURE**: **ModtagMomsangivelseForeloebig** is as of 2024 now capable of not only accepting the draft of the VAT returns for the current VAT period, but is also able to
-> accept post declarations of previous VAT returns going three years back (as of current date). The service will return a notification code in the response telling if the submitted
-> draft was handled as the initial VAT returns draft or if it was handled as a post declaration draft adjusting a previously approved VAT returns. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes.
+> **ModtagMomsangivelseForeloebig** is as of 2024 able to accept corrections to previous VAT returns going three (3) years back (as of current date). The service will return a notification code in the response telling if the submitted draft was (A) handled as the first VAT returns draft *OR* (B) if it was handled as a draft with the purpose of correcting a previously approved VAT returns. If your submitted draft is handled as a correction you will get code `5002` in `<ns:AdvisIdentifikator>5002</ns:AdvisIdentifikator>`. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes.
 
 
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
@@ -72,7 +70,9 @@ The first web service to use is **VirksomhedKalenderHent**. This Web Service ret
 
 The second web service is **ModtagMomsangivelseForeloebig**. This Web Services submits a draft of the VAT Returns to skat.dk with all the fields you need to fill in. The Web Service returns a deep link to skat.dk, where the legal entity can access the submitted VAT Returns and approve it. 
 
- **ModtagMomsangivelseForeloebig** is as of 2024 also able to accept post declarations of previous VAT returns going three years back (as of current date). The service will return a notification code in the response telling if the submitted draft was handled as the initial/first VAT returns draft *or* if it was handled as a post declaration draft adjusting a previously approved VAT returns. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes. This feature enables RSU systems to submit draft adjustements to previous VAT returns.
+ **ModtagMomsangivelseForeloebig** is as of 2024 able to accept corrections to previous VAT returns going three (3) years back (as of current date). The service will return a notification code in the response telling if the submitted draft was (A) handled as the first VAT returns draft *OR* (B) if it was handled as a draft with the purpose of correcting a previously approved VAT returns. If your submitted draft is handled as a correction you will get code `5002` in `<ns:AdvisIdentifikator>5002</ns:AdvisIdentifikator>`.
+ 
+See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes. This feature will enable RSU systems and their users to submit draft corrections to a VAT returns approved previously. The company still has to login on skat.dk and approve the submitted draft with corrections.
 
 The last web service is **MomsangivelseKvitteringHent**. This Web Service provide a receipt for the VAT Returns given that the legal entity has approved it. This service also includes payment information on how to pay any outstanding balance.
 
