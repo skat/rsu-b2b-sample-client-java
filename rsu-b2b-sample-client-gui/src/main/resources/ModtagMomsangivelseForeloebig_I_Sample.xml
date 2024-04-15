@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModtagMomsangivelseForeloebig_I xmlns="urn:oio:skat:nemvirksomhed:ws:1.0.0"
+                                 xmlns:ns="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+                                 xmlns:ns1="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/"
+                                 xmlns:urn="urn:oio:skat:nemvirksomhed:1.0.0">
+    <ns:HovedOplysninger>
+        <ns:TransaktionIdentifikator>62c55920-e4d6-4b1f-a482-5bf201bfbd7e</ns:TransaktionIdentifikator>
+        <ns:TransaktionTid>2022-02-21T14:41:26.478+01:00</ns:TransaktionTid>
+    </ns:HovedOplysninger>
+    <Angivelse>
+        <AngiverVirksomhedSENummer>
+            <ns1:VirksomhedSENummerIdentifikator>12345678</ns1:VirksomhedSENummerIdentifikator>
+        </AngiverVirksomhedSENummer>
+        <Angivelsesoplysninger>
+            <urn:AngivelsePeriodeFraDato>2017-07-01+02:00</urn:AngivelsePeriodeFraDato>
+            <urn:AngivelsePeriodeTilDato>2017-09-30+02:00</urn:AngivelsePeriodeTilDato>
+        </Angivelsesoplysninger>
+        <Angivelsesafgifter>
+            <urn:MomsAngivelseAfgiftTilsvarBeloeb>1500</urn:MomsAngivelseAfgiftTilsvarBeloeb>
+            <urn:MomsAngivelseKoebsMomsBeloeb>500</urn:MomsAngivelseKoebsMomsBeloeb>
+            <urn:MomsAngivelseSalgsMomsBeloeb>2000</urn:MomsAngivelseSalgsMomsBeloeb>
+        </Angivelsesafgifter>
+    </Angivelse>
+</ModtagMomsangivelseForeloebig_I>

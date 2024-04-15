@@ -1,9 +1,11 @@
 package dk.skat.rsu.b2b.sample.mvc;
 
 import com.typesafe.config.Config;
+import org.springframework.core.io.ClassPathResource;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * ServiceTestForm
@@ -157,70 +159,25 @@ public class ServiceTestForm implements Serializable {
             this.environment = config.getString("default.environment");
             this.policy = config.getString("default.policy");
             this.certificateAlias = config.getString("default.certificateAlias");
-
-            String virksomhedSENummerIdentifikator = "12345678";
-
             // Just a sample request to get started!
-            requestMMF = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                    "<ModtagMomsangivelseForeloebig_I 	xmlns=\"urn:oio:skat:nemvirksomhed:ws:1.0.0\"\n" +
-                    "									xmlns:ns=\"http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/\"\n" +
-                    "									xmlns:ns1=\"http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/\"\n" +
-                    "									xmlns:urn=\"urn:oio:skat:nemvirksomhed:1.0.0\">\n" +
-                    "  <ns:HovedOplysninger>\n" +
-                    "    <ns:TransaktionIdentifikator>62c55920-e4d6-4b1f-a482-5bf201bfbd7e</ns:TransaktionIdentifikator>\n" +
-                    "    <ns:TransaktionTid>2022-02-21T14:41:26.478+01:00</ns:TransaktionTid>\n" +
-                    "  </ns:HovedOplysninger>\n" +
-                    "  <Angivelse>\n" +
-                    "    <AngiverVirksomhedSENummer>\n" +
-                    "      <ns1:VirksomhedSENummerIdentifikator>" + virksomhedSENummerIdentifikator + "</ns1:VirksomhedSENummerIdentifikator>\n" +
-                    "    </AngiverVirksomhedSENummer>\n" +
-                    "    <Angivelsesoplysninger>\n" +
-                    "      <urn:AngivelsePeriodeFraDato>2017-07-01+02:00</urn:AngivelsePeriodeFraDato>\n" +
-                    "      <urn:AngivelsePeriodeTilDato>2017-09-30+02:00</urn:AngivelsePeriodeTilDato>\n" +
-                    "    </Angivelsesoplysninger>\n" +
-                    "    <Angivelsesafgifter>\n" +
-                    "      <urn:MomsAngivelseAfgiftTilsvarBeloeb>1500</urn:MomsAngivelseAfgiftTilsvarBeloeb>\n" +
-                    "      <urn:MomsAngivelseKoebsMomsBeloeb>500</urn:MomsAngivelseKoebsMomsBeloeb>\n" +
-                    "      <urn:MomsAngivelseSalgsMomsBeloeb>2000</urn:MomsAngivelseSalgsMomsBeloeb>\n" +
-                    "    </Angivelsesafgifter>\n" +
-                    "  </Angivelse>\n" +
-                    "</ModtagMomsangivelseForeloebig_I>";
-
-            requestMKH = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                    "<MomsangivelseKvitteringHent_I 	xmlns=\"urn:oio:skat:nemvirksomhed:ws:1.0.0\"\n" +
-                    "								xmlns:ns=\"http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/\"\n" +
-                    "								xmlns:urn=\"urn:oio:skat:nemvirksomhed:1.0.0\"\n" +
-                    "								xmlns:ns1=\"http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/\">\n" +
-                    "  <ns:HovedOplysninger>\n" +
-                    "    <ns:TransaktionIdentifikator>53919099-3b28-45d5-81f3-d7fc371e0c25</ns:TransaktionIdentifikator>\n" +
-                    "    <ns:TransaktionTid>2022-02-21T14:18:03.431+01:00</ns:TransaktionTid>\n" +
-                    "  </ns:HovedOplysninger>\n" +
-                    "  <urn:TransaktionIdentifier>f3f772b0-dc02-4af3-bfde-16f1fa04804f</urn:TransaktionIdentifier>\n" +
-                    "  <Angiver>\n" +
-                    "    <ns1:VirksomhedSENummerIdentifikator>" + virksomhedSENummerIdentifikator + "</ns1:VirksomhedSENummerIdentifikator>\n" +
-                    "  </Angiver>\n" +
-                    "</MomsangivelseKvitteringHent_I>\n";
-
-            requestVKH = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                    "<urn:VirksomhedKalenderHent_I xmlns:urn=\"urn:oio:skat:nemvirksomhed:ws:1.0.0\"\n" +
-                    "                              xmlns:ns=\"http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/\"\n" +
-                    "                              xmlns:ns1=\"http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/\"\n" +
-                    "                              xmlns:urn1=\"urn:oio:skat:nemvirksomhed:1.0.0\">\n" +
-                    "    <ns:HovedOplysninger>\n" +
-                    "        <ns:TransaktionIdentifikator>33593B0D-E7CF-40A2-AE76-530B72DE6AE3</ns:TransaktionIdentifikator>\n" +
-                    "        <ns:TransaktionTid>2017-04-24T12:00:00.146+02:00</ns:TransaktionTid>\n" +
-                    "    </ns:HovedOplysninger>\n" +
-                    "    <ns1:VirksomhedSENummerIdentifikator>" + virksomhedSENummerIdentifikator + "</ns1:VirksomhedSENummerIdentifikator>\n" +
-                    "    <urn1:AngivelseTypeNavn>qwerty</urn1:AngivelseTypeNavn>\n" +
-                    "    <urn:AngivelseBetalingFristHentFra>\n" +
-                    "        <urn1:SoegeDatoFraDate>2017-01-01</urn1:SoegeDatoFraDate>\n" +
-                    "        <urn1:SoegeDatoTilDate>2017-03-31</urn1:SoegeDatoTilDate>\n" +
-                    "    </urn:AngivelseBetalingFristHentFra>\n" +
-                    "</urn:VirksomhedKalenderHent_I>";
-
+            requestMMF = getDocument("ModtagMomsangivelseForeloebig_I_Sample.xml");
+            requestMKH = getDocument("MomsangivelseKvitteringHent_I_Sample.xml");
+            requestVKH = getDocument("VirksomhedKalenderHent_I_Sample.xml");
             request = requestVKH;
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private String getDocument(String filename) throws IOException {
+        String document = "";
+        InputStream resource = new ClassPathResource(
+                filename).getInputStream();
+        try ( BufferedReader reader = new BufferedReader(
+                new InputStreamReader(resource)) ) {
+            document = reader.lines()
+                    .collect(Collectors.joining("\n"));
+        }
+        return document;
     }
 }
