@@ -449,11 +449,11 @@ In the following sections we describe a simple method for running the sample.
 
 ### Prerequisites
 
-For both methods the following tools are required:
+The following tools are required:
 
 * JDK 17
 * Maven 3.9.5
-* 
+
 ### Build and Run
 
 Clone this repository. 
