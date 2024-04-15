@@ -16,6 +16,8 @@ import org.springframework.binding.message.MessageContext;
 import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 import java.util.logging.Logger;
@@ -27,7 +29,7 @@ import java.io.Serializable;
  * @since 1.0
  */
 
-public class ServiceTestAction implements Serializable{
+public class ServiceTestAction implements Serializable {
 
     private static final Logger LOGGER = Logger.getLogger(ServiceTestAction.class.getName());
     private ServiceTestForm serviceTestForm;
@@ -39,12 +41,12 @@ public class ServiceTestAction implements Serializable{
     public TestResponse execute(ServiceTestForm serviceTestForm1, MessageContext context)
             throws Exception {
 
-        TestResponse testResolve = new TestResponse();
+        TestResponse testResponse = new TestResponse();
 
-        testResolve.setDeepLink("");
-        testResolve.settID("");
+        testResponse.setDeepLink("");
+        testResponse.setTransactionId("");
 
-        if (this.serviceTestForm == null){
+        if (this.serviceTestForm == null) {
             this.setServiceTestForm(serviceTestForm1);
         }
 
@@ -96,7 +98,7 @@ public class ServiceTestAction implements Serializable{
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 ModtagMomsangivelseForeloebigOType asObject = (ModtagMomsangivelseForeloebigOType) unmarshaller.unmarshal(inputStream);
                 if (asObject.getDybtlink() != null) {
-                    testResolve.setDeepLink("Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\" target=\"_blank\">" + asObject.getDybtlink().getUrlIndicator() + "</a>");
+                    testResponse.setDeepLink("Confirm Link: <a href=\"" + asObject.getDybtlink().getUrlIndicator() + "\" target=\"_blank\">" + asObject.getDybtlink().getUrlIndicator() + "</a>");
                 }
 
             }
@@ -137,19 +139,23 @@ public class ServiceTestAction implements Serializable{
                     receipt.setTransactionId(receiptTransactionId);
                     receipt.setReceipt(asObject.getPDFkvittering().getDokumentFilIndholdData());
                     ReceiptsStorage.put(receipt);
-                    testResolve.settID(receiptTransactionId);
+                    testResponse.setTransactionId(receiptTransactionId);
                 }
             }
         } catch (Exception e) {
             context.addMessage(new MessageBuilder().info().source("ERROR")
                     .defaultText("Error occurred - see below").build());
-            e.printStackTrace();
-            serviceResponse = e.getMessage();
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            serviceResponse = sw.toString();
+            pw.close();
+            sw.close();
         }
 
-        testResolve.setServiceResponse(serviceResponse);
+        testResponse.setServiceResponse(serviceResponse);
         LOGGER.info("response = " + serviceResponse);
-        return testResolve;
+        return testResponse;
     }
 
     private void addMessages(HovedOplysningerSvarType hovedOplysningerSvarType, MessageContext context) {

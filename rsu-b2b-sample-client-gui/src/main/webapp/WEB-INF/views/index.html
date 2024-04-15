@@ -20,6 +20,9 @@
           <ul class="navbar-nav mr-auto">
           </ul>
       </div>
+      <span class="navbar-text">
+          <span th:text="${#dates.format(#dates.createNow() , 'yyyy-MM-dd HH:mm:ss')}" th:remove="tag">title</span>
+      </span>
   </nav>
 
   <div class="container">
@@ -134,14 +137,14 @@
                     </div>
 
 
-                    <div th:if="${result != null && result.gettID != ''}" class="alert alert-info" role="alert" >
+                    <div th:if="${result != null && result.getTransactionId() != null && result.getTransactionId != ''}" class="alert alert-info" role="alert" >
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                      Download receipt (PDF): <a th:href="@{/download/{id}(id=${result.gettID()})}">Download PDF</a>
+                      Download receipt (PDF): <a th:href="@{/download/{id}(id=${result.getTransactionId()})}">Download PDF</a>
                     </div>
 
-                  <div th:if="${result != null && result.getDeepLink != ''}" class="alert alert-info" role="alert" >
+                  <div th:if="${result != null && result.getDeepLink() != null && result.getDeepLink != ''}" class="alert alert-info" role="alert" >
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>

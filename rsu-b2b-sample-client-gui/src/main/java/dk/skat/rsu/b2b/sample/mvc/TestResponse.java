@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class TestResponse implements Serializable {
     private String serviceResponse;
-    private String tID;
+    private String transactionId;
     private String deepLink;
 
     public String getDeepLink() {
@@ -15,12 +15,12 @@ public class TestResponse implements Serializable {
         this.deepLink = deepLink;
     }
 
-    public String gettID() {
-        return tID;
+    public String getTransactionId() {
+        return transactionId;
     }
 
-    public void settID(String tID) {
-        this.tID = tID;
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
 
     public String getServiceResponse() {
@@ -31,8 +31,4 @@ public class TestResponse implements Serializable {
         this.serviceResponse = serviceResponse;
     }
 
-    public TestResponse(){
-        this.settID("");
-        this.setDeepLink("");
-    }
 }
