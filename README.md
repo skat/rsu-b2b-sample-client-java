@@ -86,25 +86,26 @@ The web services are implemented as SOAP Web Services. This GitHub contains WSDL
 
 ### Security
 
-The Web Services are protected using both TLS over HTTPS and by WS-Security using a certificate to both encrypt and sign the requests.
+The Web Services are protected using both TLS over HTTPS and by WS-Security (using a certificate for signing the request and
+response).
 
 **Transport Layer Security (TLS)**
 
 To be able to use the services, you need to add the server certificate to your trust store. You can find the certificates for both test and production here [https://github.com/skat/emcs-b2b-ws/tree/master/crt](https://github.com/skat/emcs-b2b-ws/tree/master/crt)
 
-The sample client in this GitHub already has the server certificate for the test environment in the trust store.
+The sample client in this GitHub repository comes prepared with server certificate for the test environment in the trust store.
 
 **WS-Security Protocol**
 
 To be able to use the Web Services you also need a company certificate (VOCES3) from MitID Erhverv (OCES3).
 A company certificate for the test environment is provided by contacting Skattestyrelsen. 
-To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here:  [https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
+To be able to use the services in production, you need to get an official company certificate. 
+Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here: 
+[https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
 
-The company certificate is used to encrypt the soap:body of the request and to create a signature. The certificate is also used to validate and decrypt the response. See details of how to do the encryption, decryption and signature here: [https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements](https://github.com/skat/emcs-b2b-ws#ws-security-policy-requirements)
+The company certificate is used to sign the payload. The certificate is also used to validate and decrypt the response. 
 
-An example of a payload encrypted and signed can be found here: [https://github.com/skat/emcs-b2b-ws/blob/master/sample/request-test-system.xml](https://github.com/skat/emcs-b2b-ws/blob/master/sample/request-test-system.xml)
-
-**NOTE**: The links are for another system (the EMCS System) that provides another set of web services (APIs) from Skatteforvaltningen on the same platform as the services for VAT Returns. The security part of the two systems is identical.
+An example of a signed payload  can be found here: [rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml](/rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml)
 
 ### Legal Entity Identification
 
