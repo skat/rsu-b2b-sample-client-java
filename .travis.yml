@@ -1,5 +1,5 @@
 sudo: false
-dist: trusty
+dist: focal
 group: deprecated
 
 language: java
@@ -8,15 +8,16 @@ notifications:
   email: false
 
 jdk:
-  - oraclejdk8
+  - oraclejdk17
 
 before_install:
-  - wget --no-check-certificate https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-  - sha512sum -c apache-maven-3.6.3-bin.tar.gz.sha512
-  - tar xzvf apache-maven-3.6.3-bin.tar.gz
-  - export PATH=`pwd`/apache-maven-3.6.3/bin:$PATH
+  - wget https://archive.apache.org/dist/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz
+  - sha512sum -c apache-maven-3.9.5-bin.tar.gz.sha512
+  - tar xzvf apache-maven-3.9.5-bin.tar.gz
+  - export PATH=`pwd`/apache-maven-3.9.5/bin:$PATH
   - mvn -v
 
 script:
   - mvn --version
+  # Skip unit test in CI
   - mvn clean install

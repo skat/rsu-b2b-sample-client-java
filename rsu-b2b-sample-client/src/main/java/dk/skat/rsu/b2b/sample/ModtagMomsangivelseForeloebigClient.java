@@ -1,14 +1,14 @@
 package dk.skat.rsu.b2b.sample;
 
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.ws.BindingProvider;
 import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigIType;
 import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigOType;
 import oio.skat.nemvirksomhed.ws._1_0_0.ModtagMomsangivelseForeloebigServiceBindingQSService;
 import oio.skat.nemvirksomhed.ws._1_0_0.ModtagMomsangivelseForeloebigServicePortType;
 import org.apache.commons.io.IOUtils;
 
-import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.ws.BindingProvider;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
@@ -51,7 +51,7 @@ public class ModtagMomsangivelseForeloebigClient extends BaseClient {
      * @throws JAXBException                  N/A
      * @throws DatatypeConfigurationException N/A
      */
-    public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
+    public ModtagMomsangivelseForeloebigOType invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, JAXBException, DatatypeConfigurationException {
 
         configureBus(certicateAlias);
@@ -73,6 +73,6 @@ public class ModtagMomsangivelseForeloebigClient extends BaseClient {
         }
 
         ModtagMomsangivelseForeloebigOType out = port.getModtagMomsangivelseForeloebig(modtagMomsangivelseForeloebigIType);
-        return ModtagMomsangivelseForeloebigMarshalling.toString(out);
+        return out;
     }
 }

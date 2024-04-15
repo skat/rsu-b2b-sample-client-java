@@ -1,9 +1,6 @@
 # RSU B2B Sample Web Service Client written in Java
 
-[![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java)
-
-> **ModtagMomsangivelseForeloebig** is as of 2024 able to accept corrections to previous VAT returns going three (3) years back (as of current date). The service will return a notification code in the response telling if the submitted draft was (A) handled as the first VAT returns draft *OR* (B) if it was handled as a draft with the purpose of correcting a previously approved VAT returns. If your submitted draft is handled as a correction you will get code `5002` in `<ns:AdvisIdentifikator>5002</ns:AdvisIdentifikator>`. See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes.
-
+[![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java) ![Java17](https://img.shields.io/badge/Java-17-green.svg)
 
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
 
@@ -44,7 +41,6 @@ This GitHub contains documentation and a sample client for the RSU B2B Web Servi
    * [Run clients](#run-clients)
       * [Prerequisites](#prerequisites)
       * [Build and Run](#build-and-run)
-      * [Run on Tomcat](#run-on-tomcat)
       * [Change endpoints](#change-endpoints)
       * [Add new environment and endpoints](#add-new-environment-and-endpoints)
       * [Add another OCES3 certificate](#add-another-oces3-certificate)
@@ -68,11 +64,7 @@ The following diagram shows how the Web Services works.
 
 The first web service to use is **VirksomhedKalenderHent**. This Web Service returns dates for which the legal entity has to submit VAT Returns by. These dates are required, when submitting VAT Returns.
 
-The second web service is **ModtagMomsangivelseForeloebig**. This Web Services submits a draft of the VAT Returns to skat.dk with all the fields you need to fill in. The Web Service returns a deep link to skat.dk, where the legal entity can access the submitted VAT Returns and approve it. 
-
- **ModtagMomsangivelseForeloebig** is as of 2024 able to accept corrections to previous VAT returns going three (3) years back (as of current date). The service will return a notification code in the response telling if the submitted draft was (A) handled as the first VAT returns draft *OR* (B) if it was handled as a draft with the purpose of correcting a previously approved VAT returns. If your submitted draft is handled as a correction you will get code `5002` in `<ns:AdvisIdentifikator>5002</ns:AdvisIdentifikator>`.
- 
-See the section [Notification codes related to transactions](#notification-codes-related-to-transactions) for futher details on these notification codes. This feature will enable RSU systems and their users to submit draft corrections to a VAT returns approved previously. The company still has to login on skat.dk and approve the submitted draft with corrections.
+The second web service is **ModtagMomsangivelseForeloebig**. This Web Services submits a draft of the VAT Returns to skat.dk with all the fields you need to fill in. The Web Service returns a deep link to skat.dk, where the legal entity can access the submitted VAT Returns and approve it.
 
 The last web service is **MomsangivelseKvitteringHent**. This Web Service provide a receipt for the VAT Returns given that the legal entity has approved it. This service also includes payment information on how to pay any outstanding balance.
 
@@ -94,23 +86,26 @@ The web services are implemented as SOAP Web Services. This GitHub contains WSDL
 
 ### Security
 
-The Web Services are protected using both TLS over HTTPS and by WS-Security using a certificate to both encrypt and sign the requests.
+The Web Services are protected using both TLS over HTTPS and by WS-Security (using a certificate for signing the request and
+response).
 
 **Transport Layer Security (TLS)**
 
-To be able to use the services, you need to add the server certificate to your trust store. You can find the certificates for both test and production in [pem/README.md](/pem/README.md).
+To be able to use the services, you need to add the server certificate to your trust store. You can find the certificates for both test and production here [https://github.com/skat/emcs-b2b-ws/tree/master/crt](https://github.com/skat/emcs-b2b-ws/tree/master/crt)
 
-The sample client in this GitHub already has the server certificate for the test environment in the trust store.
+The sample client in this GitHub repository comes prepared with server certificate for the test environment in the trust store.
 
 **WS-Security Protocol**
 
 To be able to use the Web Services you also need a company certificate (VOCES3) from MitID Erhverv (OCES3).
 A company certificate for the test environment is provided by contacting Skattestyrelsen. 
-To be able to use the services in production, you need to get an official company certificate. Information on how to get this is attached when you get access to the test environment.
+To be able to use the services in production, you need to get an official company certificate. 
+Information on how to get this is attached when you get access to the test environment. See more on the security & certificates here: 
+[https://github.com/skat/emcs-b2b-ws#security](https://github.com/skat/emcs-b2b-ws#security)
 
-The company certificate is used to sign (seal) the soap:body of the request and other additional security headers such a timestamp. The certificate is also used to validate the response. 
+The company certificate is used to sign the payload. The certificate is also used to validate and decrypt the response. 
 
-An example of a signed request can be found here: [rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml](rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml)
+An example of a signed payload  can be found here: [rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml](/rsu-b2b-sample-client/src/test/resources/VirksomhedKalenderHent_I_Document_Complete_With_SOAPENV.xml)
 
 ### Legal Entity Identification
 
@@ -342,8 +337,6 @@ The RSU B2B Gateway generates two types of error code.
 
 Error code | Error Description (EN) | Error Description (DA)
 ------------ | ------------- | -----------------------
- 471 | There are no VAT returns for the company | Der findes ingen angivelser for virksomheden
- 475 | There are no VAT returns for the requested periods in which the company has reported | Der findes ingen angivelser for de ønskede perioder hvor virksomheden har indberettet
 4801 | RSU is not delegated by the legal entity (See [Onboard Legal Entities](#onboard-legal-entities)) | RSU er ikke delegeret af virksomheden
 4802 | The VAT period is not open | Ikke åben periode 
 4803 | The VAT period has not ended | Periode ikke afsluttet
@@ -356,43 +349,11 @@ Error code | Error Description (EN) | Error Description (DA)
 4817 | The search start date is later than the search end date | Søgedato start er efter søgedatoslut
 
 
-### Notification codes related to transactions
-
-The service **ModtagMomsangivelseForeloebig** will for every successful submition of a VAT declaration return a formal notice related to the transaction in the **Advis** section of the **HovedOplysningerSvar/SvarStruktur** structure. Example:
-
-```xml
-<ns:HovedOplysningerSvar>
-        <ns:TransaktionIdentifikator>...</ns:TransaktionIdentifikator>
-        <ns:ServiceIdentifikator>...</ns:ServiceIdentifikator>
-        <ns:TransaktionTid>...</ns:TransaktionTid>
-        <ns:SvarStruktur>
-            <ns:AdvisStruktur>
-                <ns:AdvisIdentifikator>5001</ns:AdvisIdentifikator>
-                <ns:AdvisTekst>Dette er en foreløbig ordinær angivelse</ns:AdvisTekst>
-            </ns:AdvisStruktur>
-        </ns:SvarStruktur>
-</ns:HovedOplysningerSvar>
-``` 
-
-Please observe that notification codes are NOT the same as error codes
-
-The service will return either one of the two codes:
-
-Error code | Error Description (EN) | Error Description (DA)
------------- | ------------- | -----------------------
-5001 | This is a preliminary ordinary declaration pending user approval | Dette er en foreløbig ordinær angivelse
-5002 | This is a preliminary post declaration pending user approval | Dette er en foreløbig efterangivelse  
-
-The service **MomsangivelseKvitteringHent** will - similar to **ModtagMomsangivelseForeloebig** - return the following notice codes once the user has approved the declaration submitted via **ModtagMomsangivelseForeloebig** via skat.dk:
-
-Error code | Error Description (EN) | Error Description (DA)
------------- | ------------- | -----------------------
-5003 | The post declaration has now been approved, a receipt is available on skat.dk | Din efterangivelse er nu godkendt, en kvittering er tilgængelig på skat.dk 
-5004 | The ordinary declaration has now been approved, a receipt is available on skat.dk | Din ordinær angivelse er nu godkendt, en kvittering er tilgængelig på skat.dk
-
 ## About the client
 
-The following is documentation of a sample client for the RSU B2B Web Service Gateway. The sample client is implemented based on the [Apache CXF](http://cxf.apache.org/) framework, the Spring Framework, and Java 8. See `pom.xml` file in this repo for details regarding the current versions of the mentioned frameworks in use. 
+The following is documentation of a sample client for the RSU B2B Web Service Gateway. The sample client is implemented based on the [Apache CXF](http://cxf.apache.org/) framework, the Spring Framework, and Java 17. See `pom.xml` file in this repo for details regarding the current versions of the mentioned frameworks in use. 
+
+For a **Java 8** based client please take a look at release [v1.3](https://github.com/skat/rsu-b2b-sample-client-java/releases/tag/v1.3)
 
 > **Looking for a .NET Core sample?** Skatteforvaltningen provides a sample Web Service Client written in .NET Core
 > [here](https://github.com/skat/rsu-b2b-sample-client-dotnet).
@@ -484,17 +445,14 @@ call the test environment of RSU B2B Web Service Gateway.
 
 The parameters (provided as a file named `app.conf`) can be obtained by contacting Skattestyrelsen.
 
-In the following sections we describe two methods for running the sample:
-
-* **Build and Run** - Clone repo, build repo, and run locally.
-* **Run on Tomcat** - Clone repo, build repo, and run on a Tomcat server.
+In the following sections we describe a simple method for running the sample.
 
 ### Prerequisites
 
-For both methods the following tools are required:
+The following tools are required:
 
-* JDK 1.8
-* Maven 3.3 (or above)
+* JDK 17
+* Maven 3.9.5
 
 ### Build and Run
 
@@ -514,47 +472,6 @@ $ mvn jetty:run -f rsu-b2b-sample-client-gui/pom.xml
 symbolic link to the actual location in `rsu-b2b-sample-client/src/main/resources/keystore`.
 
 Once Jetty is running open URL:
-
-```
-http://localhost:8080/rsu-b2b-sample-client-gui
-```
-
-### Run on Tomcat
-
-Clone this repository. Then execute:
-
-```sh
-$ mvn clean install
-```
-
-On your **server** create a directory named `rsu-b2b-sample-client-gui`.
-
-Copy these files to the directory `rsu-b2b-sample-client-gui`:
-
-```
-rsu-b2b-sample-client-gui/target/rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
-rsu-b2b-sample-client/src/main/resources/keystore/client-keystore.jks
-rsu-b2b-sample-client/src/main/resources/keystore/server-keystore.jks
-```
-
-Organize the files as follows: 
-
-```
-rsu-b2b-sample-client-gui/
-  rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
-  keystore/
-    client-keystore.jks
-    server-keystore.jks
-  app.conf
-```
-
-Then inside `rsu-b2b-sample-client-gui` run:
-
-```sh
-$ java -jar rsu-b2b-sample-client-gui-<VERSION>-war-exec.jar
-```
-
-Once Tomcat is running open URL:
 
 ```
 http://localhost:8080/rsu-b2b-sample-client-gui
@@ -669,7 +586,7 @@ $ keytool -delete -alias skatserver -keystore client-truststore.jks -storepass s
 Then you can add the new certificate to the trust store.
 
 ```sh
-$ keytool -import -alias skatserver -file newcert.crt -keystore client-truststore.jks -storepass storepassword
+$ keytool -import -alias skatserver -file emcs-b2b-server-prod-as-of-20171026.crt -keystore client-truststore.jks -storepass storepassword
 ```
 
 ## References

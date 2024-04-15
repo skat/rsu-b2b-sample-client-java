@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <title>RSU Sample GUI</title>
+
+      <!-- Bootstrap core CSS -->
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" />
+
+  </head>
+
+  <body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">RSU Sample GUI</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          </ul>
+      </div>
+      <span class="navbar-text">
+          <span th:text="${#dates.format(#dates.createNow() , 'yyyy-MM-dd HH:mm:ss')}" th:remove="tag">title</span>
+      </span>
+  </nav>
+
+  <div class="container">
+
+      <div class="row">
+          <div class="col-12">&nbsp;
+          </div>
+      </div>
+
+      <div class="row">
+
+          <div class="col-6">
+
+              <div class="card">
+
+                  <div class="card-header">
+                      <b>Service Request</b>
+                  </div>
+                  <div class="card-body">
+
+                      <form action="" method="post">
+
+                        <input type="hidden" th:field="*{model.requestMMF}" id="request_mmf"/>
+                        <input type="hidden" th:field="*{model.requestMKH}" id="request_mkh"/>
+                        <input type="hidden" th:field="*{model.requestVKH}" id="request_vkh"/>
+
+                        <div class="form-group">
+                          <label for="service">Service</label>
+                          <select class="form-control" th:field="*{model.service}" id="service" onchange="setRequest(this.value);">
+                            <option th:each="service : ${model.services}"
+                                    th:value="${service.value}"
+                                    th:text="${service.value}">
+                            </option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="environment">Environment</label>
+                          <select class="form-control" th:field="*{model.environment}" id="environment">
+                            <option th:each="environment : ${model.environments}"
+                                    th:value="${environment.value}"
+                                    th:text="${environment.value}">
+                            </option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="certificate">Certificate</label>
+                          <select class="form-control" th:field="*{model.certificateAlias}" id="certificate">
+                            <option th:each="certificate : ${model.certificates}"
+                                    th:value="${certificate.value}"
+                                    th:text="${certificate.value}">
+                            </option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="policy">Policy</label>
+                          <select class="form-control" th:field="*{model.policy}" id="policy">
+                            <option th:each="policy : ${model.policiesList}"
+                                    th:value="${policy.key}"
+                                    th:text="${policy.value}">
+                            </option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="txId">Override 'HovedOplysninger' (Transaction Id and Time)</label>
+                          <input type="checkbox" th:field="*{model.overrideTxInfo}" id="txId"/>
+                        </div>
+
+                          <div class="form-group">
+                            <label for="request">Request</label>
+                            <textarea th:field="*{model.request}" class="form-control" id="request" rows="16"></textarea>
+                          </div>
+
+                          <input type="submit" name="_eventId_test" value="Test" class="btn btn-primary"/>
+
+                      </form>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="col-6">
+
+              <div class="card">
+
+                  <div class="card-header">
+                      <b>Service Response</b>
+                  </div>
+
+                <div class="card-body">
+
+                    <div th:if="${#arrays.length(flowRequestContext.messageContext.getMessagesBySource('ERROR'))>0}">
+                        <div class="alert alert-danger" role="alert" th:each="err : ${flowRequestContext.messageContext.getMessagesBySource('ERROR')}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span th:text="${err.text}" th:remove="tag"></span>
+                        </div>
+                    </div>
+                    <div th:if="${#arrays.length(flowRequestContext.messageContext.getMessagesBySource('INFO'))>0}">
+                        <div class="alert alert-info" role="alert" th:each="info : ${flowRequestContext.messageContext.getMessagesBySource('INFO')}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span th:text="${info.text}" th:remove="tag"></span>
+                        </div>
+                    </div>
+
+
+                    <div th:if="${result != null && result.getTransactionId() != null && result.getTransactionId != ''}" class="alert alert-info" role="alert" >
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      Download receipt (PDF): <a th:href="@{/download/{id}(id=${result.getTransactionId()})}">Download PDF</a>
+                    </div>
+
+                  <div th:if="${result != null && result.getDeepLink() != null && result.getDeepLink != ''}" class="alert alert-info" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div th:utext="${result.deepLink}"></div>
+                  </div>
+
+                    <form name="response" action="#" method="get">
+                      <textarea class="form-control" id="response" rows="24" th:if="${result != null}" th:text="${result.getServiceResponse()}"></textarea>
+                    </form>
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/assets/js/jquery-3.2.1.slim.min.js}"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+
+    <script>
+        function setRequest (selectedIndex) {
+            if (selectedIndex.indexOf("ModtagMomsangivelseForeloebig") != -1 )
+            {
+                document.getElementById('request').value = document.getElementById('request_mmf').value;
+            }
+            else
+            {
+                if (selectedIndex.indexOf("MomsangivelseKvitteringHent") != -1 )
+                {
+                    document.getElementById('request').value = document.getElementById('request_mkh').value;
+                }
+                else
+                {
+                    document.getElementById('request').value = document.getElementById('request_vkh').value;
+                }
+            }
+        }
+    </script>
+
+  </body>
+
+</html>

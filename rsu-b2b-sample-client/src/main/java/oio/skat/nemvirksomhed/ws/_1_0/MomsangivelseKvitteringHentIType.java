@@ -1,16 +1,16 @@
 
 package oio.skat.nemvirksomhed.ws._1_0;
 
-import javax.xml.bind.annotation.*;
 
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerType;
+import jakarta.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for MomsangivelseKvitteringHent_IType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="MomsangivelseKvitteringHent_IType"&gt;
  *   &lt;complexContent&gt;
@@ -34,8 +34,8 @@ import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysnin
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="MomsangivelseKvitteringHent_I")
@@ -55,11 +55,11 @@ public class MomsangivelseKvitteringHentIType {
 
     /**
      * Gets the value of the hovedOplysninger property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HovedOplysningerType }
-     *     
+     *
      */
     public HovedOplysningerType getHovedOplysninger() {
         return hovedOplysninger;
@@ -67,11 +67,11 @@ public class MomsangivelseKvitteringHentIType {
 
     /**
      * Sets the value of the hovedOplysninger property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HovedOplysningerType }
-     *     
+     *
      */
     public void setHovedOplysninger(HovedOplysningerType value) {
         this.hovedOplysninger = value;
@@ -79,11 +79,11 @@ public class MomsangivelseKvitteringHentIType {
 
     /**
      * Gets the value of the transaktionIdentifier property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getTransaktionIdentifier() {
         return transaktionIdentifier;
@@ -91,11 +91,11 @@ public class MomsangivelseKvitteringHentIType {
 
     /**
      * Sets the value of the transaktionIdentifier property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setTransaktionIdentifier(String value) {
         this.transaktionIdentifier = value;
@@ -103,11 +103,11 @@ public class MomsangivelseKvitteringHentIType {
 
     /**
      * Gets the value of the angiver property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link MomsangivelseKvitteringHentIType.Angiver }
-     *     
+     *
      */
     public MomsangivelseKvitteringHentIType.Angiver getAngiver() {
         return angiver;
@@ -115,11 +115,11 @@ public class MomsangivelseKvitteringHentIType {
 
     /**
      * Sets the value of the angiver property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link MomsangivelseKvitteringHentIType.Angiver }
-     *     
+     *
      */
     public void setAngiver(MomsangivelseKvitteringHentIType.Angiver value) {
         this.angiver = value;
@@ -128,9 +128,9 @@ public class MomsangivelseKvitteringHentIType {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
@@ -142,8 +142,8 @@ public class MomsangivelseKvitteringHentIType {
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
@@ -156,11 +156,11 @@ public class MomsangivelseKvitteringHentIType {
 
         /**
          * Gets the value of the virksomhedSENummerIdentifikator property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getVirksomhedSENummerIdentifikator() {
             return virksomhedSENummerIdentifikator;
@@ -168,11 +168,11 @@ public class MomsangivelseKvitteringHentIType {
 
         /**
          * Sets the value of the virksomhedSENummerIdentifikator property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setVirksomhedSENummerIdentifikator(String value) {
             this.virksomhedSENummerIdentifikator = value;

@@ -1,13 +1,13 @@
 package dk.skat.rsu.b2b.sample;
 
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.ws.BindingProvider;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentOType;
 import oio.skat.nemvirksomhed.ws._1_0_0.VirksomhedKalenderHentServiceBindingQSService;
 import oio.skat.nemvirksomhed.ws._1_0_0.VirksomhedKalenderHentServicePortType;
 
-import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.ws.BindingProvider;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
@@ -52,29 +52,42 @@ public class VirksomhedKalenderHentClient extends BaseClient {
      * @throws JAXBException                  N/A
      * @throws DatatypeConfigurationException N/A
      */
-    public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
+    public VirksomhedKalenderHentOType invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
+            throws IOException, DatatypeConfigurationException, JAXBException {
+        InputStream inputStream = IOUtils.toInputStream(document, "UTF-8");
+        VirksomhedKalenderHentIType virksomhedKalenderHentIType = VirksomhedKalenderHentMarshalling.toObject(inputStream);
+        return invoke(virksomhedKalenderHentIType, certicateAlias, overrideHovedoplysninger);
+    }
+
+    /**
+         * Call VirksomhedKalenderHent service
+         *
+         * @param document                 Request document as String
+         * @param certicateAlias           Alias of certificate to use in call
+         * @param overrideHovedoplysninger If transaction Id and Time should be regenerated
+         * @throws IOException                    N/A
+         * @throws JAXBException                  N/A
+         * @throws DatatypeConfigurationException N/A
+         */
+    public VirksomhedKalenderHentOType invoke(VirksomhedKalenderHentIType virksomhedKalenderHentIType, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
 
         configureBus(certicateAlias);
 
         VirksomhedKalenderHentServiceBindingQSService service = new VirksomhedKalenderHentServiceBindingQSService();
         VirksomhedKalenderHentServicePortType port = service.getVirksomhedKalenderHentServiceBindingQSPort();
-
         // Set endpoint of service.
         BindingProvider bp = (BindingProvider)port;
         bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, this.endpointURL);
 
-        InputStream inputStream = IOUtils.toInputStream(document, "UTF-8");
-        VirksomhedKalenderHentIType virksomhedKalenderHentIType = VirksomhedKalenderHentMarshalling.toObject(inputStream);
 
         if (overrideHovedoplysninger) {
             virksomhedKalenderHentIType.getHovedOplysninger().setTransaktionIdentifikator(TransactionIdGenerator.getTransactionId());
             virksomhedKalenderHentIType.getHovedOplysninger().setTransaktionTid(getTransactionTime());
             LOGGER.info("HovedOplysninger populated with new Transaction Id and Time");
         }
-
         VirksomhedKalenderHentOType out = port.getVirksomhedKalenderHent(virksomhedKalenderHentIType);
-        return VirksomhedKalenderHentMarshalling.toString(out);
+        return out;
     }
 
 

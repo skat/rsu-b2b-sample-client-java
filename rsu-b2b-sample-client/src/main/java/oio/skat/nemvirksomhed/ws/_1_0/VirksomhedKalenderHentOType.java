@@ -4,9 +4,9 @@ package oio.skat.nemvirksomhed.ws._1_0;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerSvarType;
+import jakarta.xml.bind.annotation.*;
 
 
 /**

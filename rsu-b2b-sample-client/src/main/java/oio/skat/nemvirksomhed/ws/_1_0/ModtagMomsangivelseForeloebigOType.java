@@ -2,15 +2,14 @@
 package oio.skat.nemvirksomhed.ws._1_0;
 
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerSvarType;
-
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for ModtagMomsangivelseForeloebig_OType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ModtagMomsangivelseForeloebig_OType"&gt;
  *   &lt;complexContent&gt;
@@ -34,8 +33,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="ModtagMomsangivelseForeloebig_O")
@@ -128,9 +127,9 @@ public class ModtagMomsangivelseForeloebigOType {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
@@ -142,8 +141,8 @@ public class ModtagMomsangivelseForeloebigOType {
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
@@ -156,11 +155,11 @@ public class ModtagMomsangivelseForeloebigOType {
 
         /**
          * Gets the value of the urlIndicator property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getUrlIndicator() {
             return urlIndicator;
@@ -168,11 +167,11 @@ public class ModtagMomsangivelseForeloebigOType {
 
         /**
          * Sets the value of the urlIndicator property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setUrlIndicator(String value) {
             this.urlIndicator = value;

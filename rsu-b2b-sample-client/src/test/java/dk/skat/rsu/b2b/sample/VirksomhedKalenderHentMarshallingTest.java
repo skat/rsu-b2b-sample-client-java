@@ -1,10 +1,10 @@
 package dk.skat.rsu.b2b.sample;
 
+import java.io.InputStream;
+import jakarta.xml.bind.JAXBException;
 import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentIType;
 import org.junit.Test;
 
-import javax.xml.bind.JAXBException;
-import java.io.InputStream;
 
 import static org.junit.Assert.*;
 

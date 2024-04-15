@@ -1,14 +1,14 @@
 package dk.skat.rsu.b2b.sample;
 
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.ws.BindingProvider;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
 import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
 import oio.skat.nemvirksomhed.ws._1_0_0.MomsangivelseKvitteringHentServiceBindingQSService;
 import oio.skat.nemvirksomhed.ws._1_0_0.MomsangivelseKvitteringHentServicePortType;
 import org.apache.commons.io.IOUtils;
 
-import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.ws.BindingProvider;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
@@ -51,7 +51,7 @@ public class MomsangivelseKvitteringHentClient extends BaseClient {
      * @throws JAXBException                  N/A
      * @throws DatatypeConfigurationException N/A
      */
-    public String invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
+    public MomsangivelseKvitteringHentOType invoke(String document, String certicateAlias, boolean overrideHovedoplysninger)
             throws IOException, DatatypeConfigurationException, JAXBException {
 
         configureBus(certicateAlias);
@@ -73,7 +73,7 @@ public class MomsangivelseKvitteringHentClient extends BaseClient {
         }
 
         MomsangivelseKvitteringHentOType out = port.getMomsangivelseKvitteringHent(momsangivelseKvitteringHentIType);
-        return MomsangivelseKvitteringHentMarshalling.toString(out);
+        return out;
     }
 
 }

@@ -48,11 +48,11 @@
                      ConnectionTimeout="180000"/>
         <http:tlsClientParameters>
             <sec:keyManagers keyPassword="storepassword">
-                <sec:keyStore file="keystore/client-truststore.jks"
+                <sec:keyStore resource="keystore/client-truststore.jks"
                               password="storepassword" type="JKS"/>
             </sec:keyManagers>
             <sec:trustManagers>
-                <sec:keyStore file="keystore/client-truststore.jks"
+                <sec:keyStore resource="keystore/client-truststore.jks"
                               password="storepassword" type="JKS"/>
             </sec:trustManagers>
             <sec:cipherSuitesFilter>
