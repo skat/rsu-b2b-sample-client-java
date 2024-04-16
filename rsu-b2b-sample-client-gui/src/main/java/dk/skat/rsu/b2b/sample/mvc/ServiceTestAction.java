@@ -6,10 +6,7 @@ import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysnin
 import dk.skat.rsu.b2b.sample.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
-import oio.skat.nemvirksomhed.ws._1_0.ModtagMomsangivelseForeloebigOType;
-import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentIType;
-import oio.skat.nemvirksomhed.ws._1_0.MomsangivelseKvitteringHentOType;
-import oio.skat.nemvirksomhed.ws._1_0.VirksomhedKalenderHentOType;
+import oio.skat.nemvirksomhed.ws._1_0.*;
 import org.apache.commons.io.IOUtils;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
@@ -142,6 +139,17 @@ public class ServiceTestAction implements Serializable {
                     testResponse.setTransactionId(receiptTransactionId);
                 }
             }
+            if ("MomsangivelseStatusHent".equals(service)) {
+                System.out.println("---" + requestAsString);
+                MomsangivelseStatusHentClient client = new MomsangivelseStatusHentClient(endpoint, policy);
+                MomsangivelseStatusHentOType out = client.invoke(requestAsString, cert, serviceTestForm.isOverrideTxInfo());
+                serviceResponse = MomsangivelseStatusHentMarshalling.toString(out);
+                if (out != null && out.getHovedOplysningerSvar() != null) {
+                    addMessages(out.getHovedOplysningerSvar(), context);
+                }
+
+            }
+
         } catch (Exception e) {
             context.addMessage(new MessageBuilder().info().source("ERROR")
                     .defaultText("Error occurred - see below").build());

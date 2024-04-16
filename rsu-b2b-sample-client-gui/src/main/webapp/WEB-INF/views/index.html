@@ -48,6 +48,7 @@
                         <input type="hidden" th:field="*{model.requestMMF}" id="request_mmf"/>
                         <input type="hidden" th:field="*{model.requestMKH}" id="request_mkh"/>
                         <input type="hidden" th:field="*{model.requestVKH}" id="request_vkh"/>
+                        <input type="hidden" th:field="*{model.requestMSH}" id="request_msh"/>
 
                         <div class="form-group">
                           <label for="service">Service</label>
@@ -172,25 +173,23 @@
             crossorigin="anonymous"></script>
     <script th:src="@{/assets/js/bootstrap.min.js}"></script>
 
-    <script>
-        function setRequest (selectedIndex) {
-            if (selectedIndex.indexOf("ModtagMomsangivelseForeloebig") != -1 )
-            {
-                document.getElementById('request').value = document.getElementById('request_mmf').value;
-            }
-            else
-            {
-                if (selectedIndex.indexOf("MomsangivelseKvitteringHent") != -1 )
-                {
-                    document.getElementById('request').value = document.getElementById('request_mkh').value;
-                }
-                else
-                {
-                    document.getElementById('request').value = document.getElementById('request_vkh').value;
-                }
-            }
-        }
-    </script>
+  <script>
+      function setRequest(selectedIndex) {
+          if (selectedIndex.indexOf("ModtagMomsangivelseForeloebig") != -1) {
+              document.getElementById('request').value = document.getElementById('request_mmf').value;
+          } else {
+              if (selectedIndex.indexOf("MomsangivelseStatusHent") != -1) {
+                  document.getElementById('request').value = document.getElementById('request_msh').value;
+              } else {
+                  if (selectedIndex.indexOf("MomsangivelseKvitteringHent") != -1) {
+                      document.getElementById('request').value = document.getElementById('request_mkh').value;
+                  } else {
+                      document.getElementById('request').value = document.getElementById('request_vkh').value;
+                  }
+              }
+          }
+      }
+  </script>
 
   </body>
 

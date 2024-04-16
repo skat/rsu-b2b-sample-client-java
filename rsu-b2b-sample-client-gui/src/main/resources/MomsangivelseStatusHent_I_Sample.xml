@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MomsangivelseStatusHent_I xmlns="urn:oio:skat:nemvirksomhed:ws:1.0.0"
+                           xmlns:ns="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+                           xmlns:urn="urn:oio:skat:nemvirksomhed:1.0.0"
+                           xmlns:ns1="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/">
+    <ns:HovedOplysninger>
+        <ns:TransaktionIdentifikator>d5e62203-d2f1-4da2-80b7-e83359bdc468</ns:TransaktionIdentifikator>
+        <ns:TransaktionTid>2022-02-21T14:18:03.431+01:00</ns:TransaktionTid>
+    </ns:HovedOplysninger>
+    <urn:TransaktionIdentifier>f3f772b0-dc02-4af3-bfde-16f1fa04804f</urn:TransaktionIdentifier>
+    <Angiver>
+        <ns1:VirksomhedSENummerIdentifikator>12345678</ns1:VirksomhedSENummerIdentifikator>
+    </Angiver>
+</MomsangivelseStatusHent_I>

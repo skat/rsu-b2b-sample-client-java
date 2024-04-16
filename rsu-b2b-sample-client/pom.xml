@@ -122,6 +122,14 @@
                     classpath:MomsangivelseKvitteringHent/MomsangivelseKvitteringHent.wsdl
                   </wsdlLocation>
                 </wsdlOption>
+                <wsdlOption>
+                  <wsdl>
+                    ${basedir}/src/main/resources/MomsangivelseStatusHent/MomsangivelseStatusHent.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:MomsangivelseStatusHent/MomsangivelseStatusHent.wsdl
+                  </wsdlLocation>
+                </wsdlOption>
               </wsdlOptions>
             </configuration>
             <goals>
@@ -156,6 +164,10 @@
                   file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/VirksomhedKalenderHentIType.java"/>
                 <delete
                   file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/VirksomhedKalenderHentOType.java"/>
+                <delete
+                        file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/MomsangivelseStatusHentIType.java"/>
+                <delete
+                        file="${project.basedir}/target/generated/cxf/oio/skat/nemvirksomhed/ws/_1_0/MomsangivelseStatusHentOType.java"/>
               </target>
             </configuration>
           </execution>

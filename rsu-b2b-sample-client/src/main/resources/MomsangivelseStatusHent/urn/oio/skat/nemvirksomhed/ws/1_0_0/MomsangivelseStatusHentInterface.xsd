@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:nemvirksomhedws="urn:oio:skat:nemvirksomhed:ws:1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:nemvirksomhed:ws:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xml:lang="DA">
+	<xs:annotation>
+		<xs:documentation>At give RSU mulighed for at hente status for en given foreløbig momsangivelse.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="MomsangivelseStatusHent_I.xsd"/>
+	<xs:include schemaLocation="MomsangivelseStatusHent_O.xsd"/>
+	<xs:element name="MomsangivelseStatusHentInterface" type="nemvirksomhedws:MomsangivelseStatusHentInterfaceType"/>
+	<xs:complexType name="MomsangivelseStatusHentInterfaceType">
+		<xs:choice>
+			<xs:element ref="nemvirksomhedws:MomsangivelseStatusHent_I"/>
+			<xs:element ref="nemvirksomhedws:MomsangivelseStatusHent_O"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

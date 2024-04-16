@@ -32,6 +32,8 @@ public class ServiceTestForm implements Serializable {
 
     private String requestVKH;
 
+    private String requestMSH;
+
     private boolean overrideTxInfo;
 
     private Map<String,String> services;
@@ -134,6 +136,14 @@ public class ServiceTestForm implements Serializable {
 
     public void setRequestVKH(String requestVKH) { this.requestVKH = requestVKH; }
 
+    public String getRequestMSH() {
+        return requestMSH;
+    }
+
+    public void setRequestMSH(String requestMSH) {
+        this.requestMSH = requestMSH;
+    }
+
     public ServiceTestForm() {
         try {
             services = new HashMap<String,String>();
@@ -163,6 +173,7 @@ public class ServiceTestForm implements Serializable {
             requestMMF = getDocument("ModtagMomsangivelseForeloebig_I_Sample.xml");
             requestMKH = getDocument("MomsangivelseKvitteringHent_I_Sample.xml");
             requestVKH = getDocument("VirksomhedKalenderHent_I_Sample.xml");
+            requestMSH = getDocument("MomsangivelseStatusHent_I_Sample.xml");
             request = requestVKH;
         } catch (Exception e) {
             e.printStackTrace();
