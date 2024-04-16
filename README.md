@@ -151,7 +151,7 @@ The service also returns a frequency code for how often a legal entity needs to 
 AngivelseFrekvensTypeKode | Frequency | Frekvens (Danish)
 ---|---|---
 00 | None | Ingen
-01 | Immidiately | Straks
+01 | Immediately | Straks
 02 | Daily | Daglig
 05 | Weekly | Ugentlig
 06 | Every 14th day | 14 dage
