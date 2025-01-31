@@ -1,6 +1,6 @@
 # RSU B2B Sample Web Service Client written in Java
 
-[![Build Status](https://travis-ci.com/skat/rsu-b2b-sample-client-java.svg?token=pXpLRS1qCgHe3KVdbFyA&branch=master)](https://travis-ci.com/skat/rsu-b2b-sample-client-java) ![Java17](https://img.shields.io/badge/Java-17-green.svg)
+![Java17](https://img.shields.io/badge/Java-17-green.svg)
 
 This GitHub contains documentation and a sample client for the RSU B2B Web Service Gateway, that provides APIs (SOAP Web Services) to submit **VAT returns**. The [sample client](#about-the-client) is developed in Java and using open source libraries demonstrating how the APIs works.
 
