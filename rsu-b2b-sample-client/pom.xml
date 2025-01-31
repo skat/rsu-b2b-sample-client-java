@@ -12,7 +12,7 @@
   <name>rsu-b2b-sample-client</name>
   <properties>
     <cxf.version>4.0.5</cxf.version>
-    <cxf.spring.version>6.0.6</cxf.spring.version>
+    <cxf.spring.version>6.1.14</cxf.spring.version>
   </properties>
   <dependencies>
     <dependency>
