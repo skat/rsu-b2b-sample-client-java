@@ -20,7 +20,7 @@
 | 14  | Kulafgift                                                 | 40                   | -40                       |
 | 15  | CO2-afgift                                                | 50                   | -50                       |
 | 16  | Vandafgift                                                | 60                   | -60                       |
-| 17  | **Tilsvar (positiv: betaling, negativ: tilbagebetaling)** | **415**              | SUM = **415**             |
+| 17  | **Tilsvar (positiv: betaling, negativ: tilbagebetaling)** | **415**              | SUM COLUMN = **415**      |
 
 
 (*) Calculated as: (**Købsmoms (indgående moms)** * -1) + **Moms af varekøb i udlandet** + **Moms af ydelseskøb i udlandet med omvendt betalingspligt**
