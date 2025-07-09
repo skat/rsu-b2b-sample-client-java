@@ -78,7 +78,7 @@ From Skattestyrelsen you will get access the test environment (endpoints and cer
 
 ### Onboard Legal Entities
 
-Before a legal entity can use an RSU for submitting VAT Returns, that legal entity has to delegate rights to that RSU. This is done on skat.dk. A guide on how to delegate rights to an RSU is here: [https://skat.dk/erhverv/moms/momsregnskab](https://skat.dk/erhverv/moms/momsregnskab)
+Before a legal entity can use an RSU for submitting VAT Returns, that legal entity has to delegate rights to that RSU. This is done on skat.dk. A guide on how to delegate rights to an RSU is here: [https://info.skat.dk/data.aspx?oid=2339578&chk=220215](https://info.skat.dk/data.aspx?oid=2339578&chk=220215)
 
 ## About the web services
 
