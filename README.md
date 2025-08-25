@@ -303,7 +303,6 @@ Insert the value in the `MomsangivelseKvitteringHent_I` request:
 ## Subsequent declarations
 
 When a VAT return has already been approved by the user, and a new API call is made with a return for the same period, the new return will not be rejected. Instead, it is automatically converted into an subsequent declaration.
-the initial declaration.
 
 This allows corrections or updates to previously approved returns without requiring manual intervention.
 
