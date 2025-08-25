@@ -310,7 +310,7 @@ How to use this functionality with the sample client:
 
 
 1. Submit a new VAT return
-    *  Use the ModtagMomsangivelseForeloebig service exactly as with a normal return.
+    *  Use the **ModtagMomsangivelseForeloebig** service exactly as with a initial VAT return.
     *  Make sure to specify the exact same period (e.g. 2018-01-01 to 2018-03-31) as in the previously approved return.
 
 
@@ -326,14 +326,12 @@ How to use this functionality with the sample client:
 
 4. Retrieve receipt (optional)
     * Once the adjusted return is approved, you can use the MomsangivelsesSatushent service to fetch a status
-    * The flow is the same as for standard approvals: reuse the TransaktionIdentifier from the most recent ModtagMomsangivelseForeloebig response, and provide new HovedOplysninger with a unique TransaktionIdentifikator and timestamp.
+    * The flow is the same as for standard approvals: reuse the **TransaktionIdentifier** from the most recent **ModtagMomsangivelseForeloebig** response, and provide new **HovedOplysninger** with a unique **TransaktionIdentifikator** and timestamp.
     * The service will either return with a status note if the draft has been approved or not.
-
 
 The same error codes apply as for normal returns. However, we have made new advise codes that will inform you, if you have made a adjusted or a new ordinary vat report.
 
-
-The advis are:
+The advis codes are as follows:
 
 * `5001` :  With text (in Danish) *Dette er en foreløbig ordinær angivelse*: If a draft has been approved it will be finalized at 16:00 every day.
 
