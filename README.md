@@ -31,6 +31,7 @@ This GitHub contains documentation and a sample client for the RSU B2B Web Servi
       * [VirksomhedKalenderHent](#virksomhedkalenderhent)
       * [ModtagMomsangivelseForeloebig](#modtagmomsangivelseforeloebig)
       * [MomsangivelseKvitteringHent](#momsangivelsekvitteringhent)
+      * [Subsequent Declarations (NEW!)](#subsequent-declarations)
    * [Test cases and error codes](#test-cases-and-error-codes)
       * [Test cases](#test-cases)
       * [Errors](#errors)
@@ -297,6 +298,44 @@ Insert the value in the `MomsangivelseKvitteringHent_I` request:
 
 **Sample Request**
 * [MomsangivelseKvitteringHent_I](rsu-b2b-sample-client/src/test/resources/MomsangivelseKvitteringHent_I_Document.xml)
+
+
+## Subsequent declarations
+
+When a VAT return has already been approved by the user, and a new API call is made with a return for the same period, the new return will not be rejected. Instead, it is automatically converted into an subsequent declaration.
+
+This allows corrections or updates to previously approved returns without requiring manual intervention.
+
+How to use this functionality with the sample client:
+
+
+1. Submit a new VAT return
+    *  Use the **ModtagMomsangivelseForeloebig** service exactly as with a initial VAT return.
+    *  Make sure to specify the exact same period (e.g. 2018-01-01 to 2018-03-31) as in the previously approved return.
+
+
+2. Automatic conversion
+    *  Since the earlier return has already been approved, the system will interpret the new submission as an adjustment.
+    * The new return will then make a new draft ready to be approved by the user.
+
+
+3. Receive deep-link
+    * As with other calls, the service response includes a deep-link for user approval.
+    * This link points to the updated VAT return on skat.dk, where the user can review and approve the adjustment.
+
+
+4. Retrieve receipt (optional)
+    * Once the adjusted return is approved, you can use the MomsangivelsesSatushent service to fetch a status
+    * The flow is the same as for standard approvals: reuse the **TransaktionIdentifier** from the most recent **ModtagMomsangivelseForeloebig** response, and provide new **HovedOplysninger** with a unique **TransaktionIdentifikator** and timestamp.
+    * The service will either return with a status note if the draft has been approved or not.
+
+The same error codes apply as for normal returns. However, we have made new advise codes that will inform you, if you have made a adjusted or a new ordinary vat report.
+
+The advis codes are as follows:
+
+* `5001` :  With text (in Danish) *Dette er en foreløbig ordinær angivelse*: If a draft has been approved it will be finalized at 16:00 every day.
+
+* If we send in a new draft for the same period, SKAT will make a subsequent declaration. IF this happens we will get an advis `5002` :  *Dette er en foreløbig efterangivelse* to let us know that we have made a post declaration.
 
 
 ## Test cases and error codes
