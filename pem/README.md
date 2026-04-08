@@ -41,18 +41,17 @@ messages.
 
 ### Test Environment
 
-* OCES3 certificate for the [TEST Environment](/pem/ws-security/b2b-test-system.pem) (**Note**: Expires on April 10, 2026)
+* OCES3 certificate for the [TEST Environment](/pem/ws-security/b2b-test-system.pem) (**Note**: Expires on March 24, 2029)
 
 ```
 Owner: C=DK, OID.2.5.4.97=NTRDK-19552101, O=Skatteforvaltningen, SERIALNUMBER=UI:DK-O:G:5e50b9bb-22fd-483d-baf7-fd077ed975f5, CN=Skatteministeriet - B2B gateway TSE TEST
 Issuer: C=DK, O=Den Danske Stat, OU=Test - cti, CN=Den Danske Stat OCES udstedende-CA 1
-Serial number: 47748500ccf123e1d3a4798462540f4619f5269
-Valid from: Tue Apr 11 10:38:58 CEST 2023 until: Fri Apr 10 10:38:57 CEST 2026
+Serial number: 4c5f96b2ff8bfde1e126d13a348d4270481d1545
+Valid from: Wed Mar 25 15:11:30 CET 2026 until: Sat Mar 24 15:11:29 CET 2029
 Certificate fingerprints:
-MD5:  BC:92:99:10:25:84:5A:EA:3C:40:33:3F:E3:45:D7:8D
-SHA1: 6B:7F:D1:DD:CD:0B:98:A1:CC:66:55:CD:69:79:1E:74:77:87:50:D3
-SHA256: E2:BD:10:46:21:B5:07:D7:11:B3:C1:CB:6B:24:0B:6C:00:A5:B2:FB:3C:51:0A:80:E9:2B:57:24:70:3F:8E:DD
-Signature algorithm name: 1.2.840.113549.1.1.10
+	 SHA1: 81:07:4E:0B:CE:63:9C:EE:AD:ED:05:78:C0:58:51:54:38:21:4F:81
+	 SHA256: D8:11:FE:0D:1C:73:23:A3:9D:E1:4E:8B:35:DB:06:22:FD:FD:56:44:C8:F9:8D:28:DE:34:D8:A6:69:46:4D:E1
+Signature algorithm name: RSASSA-PSS
 Subject Public Key Algorithm: 3072-bit RSA key
 Version: 3
 ```
@@ -91,9 +90,6 @@ Version: 3
 ```
 
 ### PROD Environment 
-
-**Important**: The following certificate replace the existing PRODUCTION certificate on 23. June 2023 at 0700 hours CET. Please
-follow this page to check changes in the schedule.
 
 * OCES3 certificate for the [PROD Environment](/pem/ws-security/b2b-prod-system.pem) (**Note**: Expires on April 27, 2026)
 
