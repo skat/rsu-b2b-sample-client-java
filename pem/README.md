@@ -91,16 +91,16 @@ Version: 3
 
 ### PROD Environment 
 
-* OCES3 certificate for the [PROD Environment](/pem/ws-security/b2b-prod-system.pem) (**Note**: Expires on April 27, 2026)
+* OCES3 certificate for the [PROD Environment](/pem/ws-security/b2b-prod-system.pem) (**Note**: Expires on March 24, 2029)
 
 ```
 Owner: C=DK, OID.2.5.4.97=NTRDK-19552101, O=Skatteforvaltningen, SERIALNUMBER=UI:DK-O:G:bf204036-6f12-4d62-bcc7-5930618355c6, CN=Skatteforvaltningen - B2B gateway TSE
 Issuer: C=DK, O=Den Danske Stat, CN=Den Danske Stat OCES udstedende-CA 1
-Serial number: 77460c604bc7b989f36c6c856a5d28304ce06704
-Valid from: Fri Apr 28 10:09:37 CEST 2023 until: Mon Apr 27 10:09:36 CEST 2026
+Serial number: ef2e26471149e107205d29c809eff29dc6a6e36
+Valid from: Wed Mar 25 15:04:28 CET 2026 until: Sat Mar 24 15:04:27 CET 2029
 Certificate fingerprints:
-	 SHA1: EE:02:32:28:C9:9F:2D:0E:98:A7:D3:8B:B4:B2:37:F1:1F:63:BC:E1
-	 SHA256: 35:BD:E8:B4:CC:11:7F:02:1F:8B:72:AF:0B:43:E7:D8:27:B5:81:30:E8:EA:9F:B4:76:2B:A1:96:44:FC:28:A9
+	 SHA1: B5:F8:78:8F:38:F9:09:80:DB:36:EE:B4:5B:C8:7D:84:95:08:DF:68
+	 SHA256: 07:BE:69:65:E0:FA:A5:EB:F7:A4:8D:DF:F6:12:D4:9B:C8:CD:62:AF:0B:CC:C9:4E:0E:FF:C7:D2:50:5E:8B:7F
 Signature algorithm name: RSASSA-PSS
 Subject Public Key Algorithm: 3072-bit RSA key
 Version: 3
