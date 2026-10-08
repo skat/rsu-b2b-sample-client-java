@@ -152,7 +152,6 @@ public class ServiceTestForm implements Serializable {
                 certificates.put(alias,config.getString("certificateCommenNames." + alias));
             }
             policiesList.put("rsu-policy-sign.xml","Timestamp-Sign");
-            policiesList.put("rsu-policy.xml","Timestamp-Sign-Encrypt");
 
             // set default values
             this.service = config.getString("default.service");
